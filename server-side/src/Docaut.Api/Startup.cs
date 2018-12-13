@@ -4,10 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Docaut.Core.Repositories;
+using Docaut.Database.Models;
+using Docaut.Infrastructure.IoC;
+using Docaut.Infrastructure.Repositories;
+using Docaut.Infrastructure.Services;
+using Docaut.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -33,8 +40,13 @@ namespace Docaut.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddEntityFrameworkNpgsql()
+                .AddDbContext<DocautContext>(options =>
+                    options.UseNpgsql(connectionString: Configuration.GetConnectionString("DefaultConnection")));
+
             var builder = new ContainerBuilder();
-            builder.Populate(services);
+            builder.Populate(services);          
+            builder.RegisterModule(new ContainerModule(Configuration));
             this.ApplicationContainer = builder.Build();
             return new AutofacServiceProvider(this.ApplicationContainer);
         }
