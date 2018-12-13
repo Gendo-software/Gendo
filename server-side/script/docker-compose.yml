@@ -2,22 +2,21 @@ version: '3.1'
 services:
 
   postgres:
+    container_name: postgres-container
     image: postgres:11
     ports:
       - 5432:5432
-      
     restart: always
-    
-    container_name: postgres-container
-    
+   
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 53cret
-      POSTGRES_DB: postgres
+      POSTGRES_USER: gandalf
+      POSTGRES_PASSWORD: secre7
+      POSTGRES_DB: docaut_db
       
     volumes:
+     - ./init:/docker-entrypoint-initdb.d/
      - postgres-data:/var/lib/postgresql/data
-   
+
 volumes:
     postgres-data:
       external: true
