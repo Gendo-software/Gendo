@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "b31e268a-0a6b-42f7-8347-5cca398dc0c0",
+		"name": "Docaut.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"f46e1012-b948-4355-adb3-ae475a019516\", \n\t\"email\":\"email@email.com\",\n\t\"password\":\"86108946e5d7b1deec0599c5207112ad82265cb7\",\n\t\"name\":\"Jan\", \n\t\"surname\":\"Kowalski\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/f46e1012-b948-4355-adb3-ae475a019516",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"f46e1012-b948-4355-adb3-ae475a019516"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/email@email.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"email@email.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"f46e1012-b948-4355-adb3-ae475a019516\", \n\t\"email\":\"email@email.com\",\n\t\"password\":\"abc\",\n\t\"name\":\"Janusz\", \n\t\"surname\":\"Tracz\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/users/f46e1012-b948-4355-adb3-ae475a019516",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"users",
+								"f46e1012-b948-4355-adb3-ae475a019516"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
