@@ -1,0 +1,68 @@
+.tamplatesTable td{
+    vertical-align: middle !important;    
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.tamplatesTable td:nth-last-child(1){
+    color:red;   
+    text-align: right; 
+}
+
+.tamplatesTable td span{
+    font-size: 12pt;
+    padding-right: 12px;
+}
+
+/* Parameter table
+-------------------------------------------------- */
+.parameterTable td,
+.parameterTable th
+{    
+    vertical-align: middle !important;    
+    text-align: center;
+}
+
+.parameterTable td:nth-child(1),
+.parameterTable th:nth-child(1)
+{
+    text-align: left;    
+}
+.parameterTable td{
+    min-width: 9rem;
+}
+
+/* Checkbox in table
+-------------------------------------------------- */
+input[type="radio"],
+input[type="checkbox"] 
+{
+	margin-left:-99999px;
+	display:none;
+}
+input[type="radio"] + .fa ,
+input[type="checkbox"] + .fa {
+     opacity:0.15
+}
+input[type="radio"]:checked + .fa,
+input[type="checkbox"]:checked + .fa{
+    opacity:1
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin-bottom: 60px; /* Margin bottom by footer height */
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+  }

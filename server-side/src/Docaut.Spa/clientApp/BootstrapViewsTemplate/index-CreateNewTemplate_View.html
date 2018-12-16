@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="custom.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+  <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+
+  <title>Hello, world!</title>
+</head>
+
+<body>
+
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark  py-0">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img class="img-fluid" src="logo128x50.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
+          aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample07">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown07" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown07">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-md-0">
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    
+    <div class="container mt-5">
+
+      <!--Header-->      
+      <div class="row mb-5 align-items-center justify-content-center">
+        <div class="col-md-5 col-12">
+          <h1>Seeling Car</h1>
+        </div>
+        <div class="col-md-5 col-12">
+          <input type="text" class="form-control" placeholder="Template name">
+        </div>
+      </div>
+
+      <!--Main body-->
+      <div class="row">
+        <div class="col-12 col-md-12 mx-auto">
+          <h4>Main body:</h4>
+            <textarea id="main-text-area" class="form-control"></textarea>
+
+        </div>
+      </div>
+
+      <!--Main body param-->
+      <div class="row mx-0">
+        <div class="col border">
+
+          <div class="row">
+            <div class="col-12 col-md-12 mx-auto">
+              <h4>Parameters:</h2>
+            </div>
+            <div class="table-responsive col-12 col-md-12 mx-auto">
+
+
+              <!--table-->
+              <table class="table parameterTable">
+                  <thead class="thead-dark">
+                    <tr>                      
+                      <th scope="col">Variable name</th>
+                      <th scope="col">Display name</th>
+                      <th scope="col">Type</th>
+                      <th scope="col">Mandatory</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">BuyerName</th>
+                      <td> <input type="text" class="form-control"> </td>
+                      <td> 
+                        <select class="form-control">
+                            <option value="date">Date</option>
+                            <option value="number">Number</option>
+                            <option value="text">Text</option>
+                            <option value="currency">Currency</option>
+                        </select>   
+                      </td>
+                      <td>
+                          <label class="btn btn-secondary btn-sm">
+                              <input name="choices[2][]" class="form-control" type="checkbox" value="1">
+                              <i class="fa fa-check glyphicon glyphicon-ok"></i>
+                              <!-- also -->
+                         </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">BuyerSurname</th>
+                      <td> <input type="text" class="form-control"> </td>
+                      <td> 
+                        <select class="form-control">
+                            <option value="date">Date</option>
+                            <option value="number">Number</option>
+                            <option value="text">Text</option>
+                            <option value="currency">Currency</option>
+                        </select>   
+                      </td>
+                      <td>
+                          <label class="btn btn-secondary btn-sm">
+                              <input name="choices[2][]" class="form-control" type="checkbox" value="1">
+                              <i class="fa fa-check glyphicon glyphicon-ok"></i>
+                              <!-- also -->
+                         </label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th scope="row">BuyerIdNumber</th>
+                      <td> <input type="text" class="form-control"> </td>
+                      <td> 
+                        <select class="form-control">
+                            <option value="date">Date</option>
+                            <option value="number">Number</option>
+                            <option value="text">Text</option>
+                            <option value="currency">Currency</option>
+                        </select>   
+                      </td>
+                      <td>
+                          <label class="btn btn-secondary btn-sm">
+                              <input name="choices[2][]" class="form-control" type="checkbox" value="1">
+                              <i class="fa fa-check glyphicon glyphicon-ok"></i>
+                              <!-- also -->
+                         </label>
+                      </td>
+                    </tr>                    
+                  </tbody>
+                </table>              
+              <!-- end table-->
+
+              <!-- <table class="table table-hover table-borderless tamplatesTable">
+                <tbody>
+                  <tr>
+                    <td> 1. Seeling Car</td>
+                    <td><button type="button" class="btn btn-outline-primary btn-sm px-md-3">Create</button></td>
+                  </tr>
+                </tbody>
+              </table> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Optional section-->      
+      <div class="row mt-5">
+          <div class="col-12 col-md-12 mx-auto">
+            <h4 class="text-info">Optional Section:</h4>
+              <textarea id="aditional-1-text-area" class="form-control"></textarea>  
+          </div>
+        </div>
+      <!--Optional param-->  
+        <div class="row mx-0">
+          <div class="col border">
+  
+            <div class="row">
+              <div class="col-12 col-md-12 mx-auto">
+                <h4>Parameters:</h2>
+              </div>
+              <div class="table-responsive col-12 col-md-12 mx-auto">
+  
+  
+                <!--table-->
+                <table class="table parameterTable">
+                    <thead class="thead-dark">
+                      <tr>                      
+                        <th scope="col">Variable name</th>
+                        <th scope="col">Display name</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Mandatory</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">BuyerName</th>
+                        <td> <input type="text" class="form-control"> </td>
+                        <td> 
+                          <select class="form-control">
+                              <option value="date">Date</option>
+                              <option value="number">Number</option>
+                              <option value="text">Text</option>
+                              <option value="currency">Currency</option>
+                          </select>   
+                        </td>
+                        <td>
+                            <label class="btn btn-secondary btn-sm">
+                                <input name="choices[2][]" class="form-control" type="checkbox" value="1">
+                                <i class="fa fa-check glyphicon glyphicon-ok"></i>
+                                <!-- also -->
+                           </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">BuyerSurname</th>
+                        <td> <input type="text" class="form-control"> </td>
+                        <td> 
+                          <select class="form-control">
+                              <option value="date">Date</option>
+                              <option value="number">Number</option>
+                              <option value="text">Text</option>
+                              <option value="currency">Currency</option>
+                          </select>   
+                        </td>
+                        <td>
+                            <label class="btn btn-secondary btn-sm">
+                                <input name="choices[2][]" class="form-control" type="checkbox" value="1">
+                                <i class="fa fa-check glyphicon glyphicon-ok"></i>
+                                <!-- also -->
+                           </label>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">BuyerIdNumber</th>
+                        <td> <input type="text" class="form-control"> </td>
+                        <td> 
+                          <select class="form-control">
+                              <option value="date">Date</option>
+                              <option value="number">Number</option>
+                              <option value="text">Text</option>
+                              <option value="currency">Currency</option>
+                          </select>   
+                        </td>
+                        <td>
+                            <label class="btn btn-secondary btn-sm">
+                                <input name="choices[2][]" class="form-control" type="checkbox" value="1">
+                                <i class="fa fa-check glyphicon glyphicon-ok"></i>
+                                <!-- also -->
+                           </label>
+                        </td>
+                      </tr>                    
+                    </tbody>
+                  </table>              
+                <!-- end table-->
+  
+                <!-- <table class="table table-hover table-borderless tamplatesTable">
+                  <tbody>
+                    <tr>
+                      <td> 1. Seeling Car</td>
+                      <td><button type="button" class="btn btn-outline-primary btn-sm px-md-3">Create</button></td>
+                    </tr>
+                  </tbody>
+                </table> -->
+              </div>
+            </div>
+          </div>
+        </div>      
+
+      <!--Buttons-->
+      <div class="row my-5 text-right">
+        <div class="col-10 mx-auto">
+            <button type="button" class="btn btn-outline-primary btn-sm px-md-3">Save</button>
+            <button type="button" class="btn btn-outline-danger btn-sm px-md-3">Exit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="pt-3"></div>
+  <footer class="footer">
+    <div class="container text-center">
+      <span class="text-muted">Broonx software &copy; 2019 </span>
+    </div>
+  </footer>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/holder/2.9.6/holder.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script>
+    var Main_simplemde = new SimpleMDE({ element: $("#main-text-area")[0] });
+    var Optional_1_simplemde = new SimpleMDE({ element: $("#aditional-1-text-area")[0] });
+    
+  </script>
+
+</body>
+
+</html>
