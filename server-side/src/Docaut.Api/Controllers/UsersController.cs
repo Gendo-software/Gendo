@@ -2,34 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Docaut.Infrastructure.Commands;
+using Docaut.Infrastructure.Commands.Users;
 using Docaut.Infrastructure.DTO;
 using Docaut.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Docaut.Api.Controllers
 {
-    [Route("api/[controller]")]
-    public class UsersController : Controller
+    public class UsersController : ApiControllerBase
     {
         private readonly IUserService _userService;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ICommandDispatcher commandDispatcher)
+            :base(commandDispatcher)
         {
             _userService = userService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] UserDto user)
+        public async Task<IActionResult> Post([FromBody]CreateUser command)
         {
-            try
-            {
-                await _userService.CreateAsync(user.Id, user.Email, user.Password, user.Name, user.Surname);
-                return Created($"users/{user.Id}", null);
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await CommandDispatcher.DispatchAsync(command);
+            
+            return Created($"users/{command.Email}", null);
         }
 
         [HttpGet("{email}")]
@@ -40,31 +36,9 @@ namespace Docaut.Api.Controllers
                 var user = await _userService.GetAsync(email);
                 if(user == null)
                 {
-                    NotFound($"User with email: {email} not found");
+                    return NotFound($"User with email: {email} not found");
                 }
-                return new ObjectResult(user);
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Guid id, [FromBody] UserDto user)
-        {
-            try
-            {
-                var _user = await _userService.GetAsync(id);
-                if(_user == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    await _userService.UpdateAsync(user);
-                    return Ok();
-                }
+                return Json(user);
             }
             catch(Exception ex)
             {
@@ -75,23 +49,9 @@ namespace Docaut.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            try
-            {
-                var user = await _userService.GetAsync(id);
-                if(user == null)
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    await _userService.DeleteAsync(id);
-                    return Ok();
-                }
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            await CommandDispatcher.DispatchAsync(new DeleteUser() { Id = id });
+
+            return Ok();
         } 
     }
 }

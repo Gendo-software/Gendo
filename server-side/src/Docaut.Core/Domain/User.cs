@@ -10,7 +10,7 @@ namespace Docaut.Core.Domain
         public string Name { get; protected set; }
         public string Surname { get; protected set; }
 
-        public User()
+        protected User()
         {
         }
 

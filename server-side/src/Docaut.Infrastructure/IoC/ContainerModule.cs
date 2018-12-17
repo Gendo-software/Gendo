@@ -23,6 +23,7 @@ namespace Docaut.Infrastructure.IoC
             builder.RegisterInstance(AutoMapperConfig.Initialize())
                 .SingleInstance();
 
+            builder.RegisterModule<CommandModule>();
             builder.RegisterModule<ServiceModule>();
             builder.RegisterModule<RepositoryModule>();
         }      

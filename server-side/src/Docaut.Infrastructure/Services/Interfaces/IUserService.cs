@@ -9,7 +9,6 @@ namespace Docaut.Infrastructure.Services.Interfaces
         Task CreateAsync(Guid id, string email, string password, string name, string surname);
         Task<UserDto> GetAsync(string email);
         Task<UserDto> GetAsync(Guid id);
-        Task UpdateAsync(UserDto user);
         Task DeleteAsync(Guid id);
     }
 }
