@@ -12,11 +12,13 @@ namespace Docaut.Infrastructure.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly IEncrypter _encrypter;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IUserRepository userRepository, IMapper mapper, IEncrypter encrypter)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _encrypter = encrypter;
         }
 
         public async Task CreateAsync(Guid id, string email, string password, string name, string surname)
@@ -26,7 +28,9 @@ namespace Docaut.Infrastructure.Services
             {
                 throw new Exception($"The user with email '{email}' already exist in database");
             }
-            var user = new User(id, email, password, name, surname);
+            var salt = _encrypter.GetSalt(password);
+            var hash = _encrypter.GetHash(password, salt);
+            var user = new User(id, email, hash, name, surname);
             await _userRepository.AddAsync(user);
         }
 

@@ -1,5 +1,6 @@
 using System.Reflection;
 using Autofac;
+using Docaut.Infrastructure.Services;
 using Docaut.Infrastructure.Services.Interfaces;
 
 namespace Docaut.Infrastructure.IoC.Modules
@@ -16,6 +17,10 @@ namespace Docaut.Infrastructure.IoC.Modules
                    .Where(x => x.IsAssignableTo<IService>())
                    .AsImplementedInterfaces()
                    .InstancePerLifetimeScope();
+
+            builder.RegisterType<Encrypter>()
+                   .As<IEncrypter>()
+                   .SingleInstance();
         }
     }
 }

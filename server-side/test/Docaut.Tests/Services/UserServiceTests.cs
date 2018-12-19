@@ -5,6 +5,7 @@ using Docaut.Core.Domain;
 using Docaut.Core.Repositories;
 using Docaut.Infrastructure.DTO;
 using Docaut.Infrastructure.Services;
+using Docaut.Infrastructure.Services.Interfaces;
 using FluentAssertions;
 using Moq;
 using Xunit;
@@ -19,7 +20,8 @@ namespace Docaut.Tests.Services
         {
             var userRepository = new Mock<IUserRepository>();
             var mapper = new Mock<IMapper>();
-            var userService = new UserService(userRepository.Object, mapper.Object);
+            var encrypter = new Mock<IEncrypter>();
+            var userService = new UserService(userRepository.Object, mapper.Object, encrypter.Object);
 
             await userService.CreateAsync(new Guid("0b214bc2-0f6e-4c25-978f-a056c1aaadf3"), "email@email.com", "secret", "John", "Doe");
 
@@ -37,7 +39,8 @@ namespace Docaut.Tests.Services
                 .ReturnsAsync(existingUser);
 
             var mapper = new Mock<IMapper>();
-            var userService = new UserService(userRepository.Object, mapper.Object);
+            var encrypter = new Mock<IEncrypter>();
+            var userService = new UserService(userRepository.Object, mapper.Object, encrypter.Object);
             
             await Assert.ThrowsAsync<Exception>(() => userService.CreateAsync(new Guid("8c3910f4-11fa-44b3-b691-2e5e517768f9"), existingEmail, "secret", "John", "Kowalski")); 
             userRepository.Verify(x => x.AddAsync(It.IsAny<User>()), Times.Never);
@@ -65,7 +68,8 @@ namespace Docaut.Tests.Services
             mapper.Setup(x => x.Map<User, UserDto>(It.IsAny<User>()))
                 .Returns(userDto); 
 
-            var userService = new UserService(userRepository.Object, mapper.Object);
+            var encrypter = new Mock<IEncrypter>();
+            var userService = new UserService(userRepository.Object, mapper.Object, encrypter.Object);
             var result = await userService.GetAsync(email);
 
             result.Should().NotBeNull();
