@@ -37,19 +37,5 @@ namespace Docaut.Infrastructure.Repositories
             var _user = await _context.User.SingleOrDefaultAsync(x => x.UserId == id);
             return _mapper.Map<Database.Models.User, User>(_user);
         }
-
-        public async Task DeleteAsync(Guid id)
-        {
-            var _user = await _context.User.SingleOrDefaultAsync(x => x.UserId == id);
-            _context.User.Remove(_user);
-            await _context.SaveChangesAsync();
-        }
-        
-        public async Task UpdateAsync(User user)
-        {
-            var _user = _mapper.Map<User, Database.Models.User>(user);
-            _context.User.Update(_user);
-            await _context.SaveChangesAsync();
-        }
     }
 }

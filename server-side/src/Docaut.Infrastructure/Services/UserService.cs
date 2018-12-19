@@ -45,10 +45,5 @@ namespace Docaut.Infrastructure.Services
             var _user = await _userRepository.GetAsync(id);
             return _mapper.Map<User, UserDto>(_user);
         }
-
-        public async Task DeleteAsync(Guid id)
-        {
-            await _userRepository.DeleteAsync(id);
-        }
     }
 }

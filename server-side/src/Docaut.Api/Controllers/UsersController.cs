@@ -44,14 +44,6 @@ namespace Docaut.Api.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            await CommandDispatcher.DispatchAsync(new DeleteUser() { Id = id });
-
-            return Ok();
         } 
     }
 }
