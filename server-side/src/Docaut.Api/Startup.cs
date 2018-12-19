@@ -54,9 +54,6 @@ namespace Docaut.Api
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
             IApplicationLifetime appLifetime)
         {
-            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
-
             app.UseMvc();
         }
     }

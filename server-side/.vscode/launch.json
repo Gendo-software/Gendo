@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Docaut.Api/bin/Debug/netcoreapp2.1/Docaut.Api.dll",
+            "program": "${workspaceFolder}/src/Docaut.Api/bin/Debug/netcoreapp2.2/Docaut.Api.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/Docaut.Api",
             "stopAtEntry": false,
