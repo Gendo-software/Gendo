@@ -27,6 +27,34 @@ CREATE UNIQUE INDEX user_email_unique
 
 CREATE INDEX user_user_email_idx
   ON "user" USING btree (user_email);
+ 
+CREATE TABLE template (
+	id UUID NOT NULL,
+	current_version UUID NOT NULL,
+	user_id UUID NOT NULL,
+	deleted BOOLEAN NOT NULL DEFAULT FALSE,
+	during_editing BOOLEAN NOT NULL DEFAULT FALSE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	updated_at TIMESTAMPTZ,
+	CONSTRAINT template_pkey PRIMARY KEY (id),
+	FOREIGN KEY (user_id) REFERENCES "user" (user_id)
+);
 
+CREATE INDEX template_user_id_idx 
+  ON template USING btree (user_id);
 
+CREATE INDEX template_current_version_idx 
+  ON template USING btree (current_version);
+  
+CREATE TABLE template_version (
+  id UUID NOT NULL,
+  template_id UUID NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  name TEXT NOT NULL,
+  content JSON NOT NULL,
+  CONSTRAINT template_version_pkey PRIMARY KEY (id),
+  FOREIGN KEY (template_id) REFERENCES template (id)
+);
 
+CREATE INDEX template_version_template_id_idx 
+  ON template_version USING btree (template_id);
