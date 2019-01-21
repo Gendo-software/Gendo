@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 
-export default class CreateDocumentView extends Component {    
+export default class CreateDocumentView extends Component {
 
-    componentDidMount(){        
+    componentDidMount() {
         document.title = "Create document - Document Automation"
     }
 
     render() {
-        
+
         return (
-            <div className="container mt-5">            
+            <div className="container mt-5">
                 {/* <div class="alert alert-primary" role="alert">
   A simple primary alert—check it out!
 </div> */}
@@ -38,7 +38,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Name
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="text" />
                             </div>
@@ -46,7 +46,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Surname
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="text" />
                             </div>
@@ -54,7 +54,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Id Number
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="text" />
                             </div>
@@ -62,7 +62,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Address
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="text" />
                             </div>
@@ -70,7 +70,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Birth Date
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="date" />
                             </div>
@@ -88,7 +88,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Price
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="text" />
                             </div>
@@ -96,7 +96,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row align-items-center mt-1">
                             <div className="col-4">
                                 Something param
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="text" />
                             </div>
@@ -120,7 +120,7 @@ export default class CreateDocumentView extends Component {
                         <div className="row">
                             <div className="col-4">
                                 Secret until date:
-        </div>
+                            </div>
                             <div className="col">
                                 <input className="form-control d-inline" type="date" />
                             </div>
