@@ -17,11 +17,6 @@ namespace Docaut.Infrastructure.Handlers.Users
 
         public async Task HandleAsync(DeleteTemplate command)
         {
-            var template = await _templateService.GetAsync(command.Id);
-            if(template == null)
-            {
-                throw new Exception("Template does not exists.");
-            }
             await _templateService.DeleteAsync(command.Id);
         }
     }

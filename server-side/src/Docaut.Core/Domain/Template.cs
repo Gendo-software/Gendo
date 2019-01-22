@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using Docaut.Core.Domain.Exceptions;
 
 namespace Docaut.Core.Domain
 {
@@ -21,11 +21,21 @@ namespace Docaut.Core.Domain
             Id = id;
             CurrentVersion = currentVersion;
             UserId = userId;
-            Name = name;
+            SetName(name);
             Deleted = false; 
             DuringEditing = false;
             Content = content;
             CreatedAt = DateTime.UtcNow;
+        }
+
+        private void SetName(string name)
+        {
+            if(String.IsNullOrEmpty(name))
+            {
+                throw new DomainException(ErrorCodes.InvalidName, 
+                    "Name of template is invalid.");
+            }
+            Name = name;
         }
     }
 }

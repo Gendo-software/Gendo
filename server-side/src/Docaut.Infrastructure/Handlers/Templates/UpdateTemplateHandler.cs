@@ -17,11 +17,6 @@ namespace Docaut.Infrastructure.Handlers.Users
 
         public async Task HandleAsync(UpdateTemplate command)
         {
-            var template = _templateService.GetAsync(command.Id);
-            if(template == null)
-            {
-                throw new Exception("Template does not exists.");
-            }
             await _templateService.UpdateAsync(command.Id, Guid.NewGuid(), command.UserId, command.Name, command.Content.ToString());
         }
     }

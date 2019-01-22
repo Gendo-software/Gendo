@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Docaut.Api.Framework;
 using Docaut.Core.Repositories;
 using Docaut.Database.Models;
 using Docaut.Infrastructure.IoC;
@@ -54,6 +55,7 @@ namespace Docaut.Api
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
             IApplicationLifetime appLifetime)
         {
+            app.UseExceptionHandlerMiddleware();
             app.UseMvc();
         }
     }

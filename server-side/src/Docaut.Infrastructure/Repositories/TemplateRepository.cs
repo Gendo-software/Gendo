@@ -45,7 +45,7 @@ namespace Docaut.Infrastructure.Repositories
                     t => t.CurrentVersion,
                     v => v.Id,
                     (t, v) => new Template(t.Id, t.CurrentVersion, t.UserId, v.Name, v.Content))
-            .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Template>> GetAsync()
