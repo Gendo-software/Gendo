@@ -8,6 +8,7 @@ using Docaut.Api.Framework;
 using Docaut.Core.Repositories;
 using Docaut.Database.Models;
 using Docaut.Infrastructure.IoC;
+using Docaut.Infrastructure.Mongo;
 using Docaut.Infrastructure.Repositories;
 using Docaut.Infrastructure.Services;
 using Docaut.Infrastructure.Services.Interfaces;
@@ -55,6 +56,7 @@ namespace Docaut.Api
         public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory,
             IApplicationLifetime appLifetime)
         {
+            MongoConfigurator.Initialize();
             app.UseExceptionHandlerMiddleware();
             app.UseMvc();
         }

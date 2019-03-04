@@ -14,7 +14,7 @@ namespace Docaut.Core.Domain
         public string Content { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        protected Template() { }
+        public Template() { }
 
         public Template(Guid id, Guid currentVersion, Guid userId, string name, string content) 
         {

@@ -6,72 +6,108 @@ using AutoMapper;
 using Docaut.Core.Domain;
 using Docaut.Core.Repositories;
 using Docaut.Infrastructure.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace Docaut.Infrastructure.Repositories
 {
-    public class TemplateRepository : ITemplateRepository, IRepository
+    public class TemplateRepository : ITemplateRepository, IMongoRepository
     {
-        private Database.Models.DocautContext _context;
         private readonly IMapper _mapper;
-
-        public TemplateRepository(Database.Models.DocautContext context, IMapper mapper)
+        private readonly IMongoDatabase _database;
+        private IMongoCollection<Database.Models.Template> Templates => _database.GetCollection<Database.Models.Template>("templates");
+        private IMongoCollection<Database.Models.TemplateVersion> TemplateVersions => _database.GetCollection<Database.Models.TemplateVersion>("template_versions");
+        
+        public TemplateRepository(IMongoDatabase database, IMapper mapper)
         {
-            _context = context;
+            _database = database;
             _mapper = mapper;
         }
 
         public async Task AddAsync(Template template)
         {
             var _template = _mapper.Map<Template, Database.Models.Template>(template);
-            await _context.Template.AddAsync(_template);
-            await AddVersionAsync(template);
-            await _context.SaveChangesAsync();
+            using (var session = await _database.Client.StartSessionAsync())
+            {
+                session.StartTransaction(new TransactionOptions(readConcern: ReadConcern.Snapshot,
+                    writeConcern: WriteConcern.WMajority));
+                try
+                {
+                    await Templates.InsertOneAsync(_template);
+                    await AddVersionAsync(template);
+                }
+                catch
+                {
+                    await session.AbortTransactionAsync();
+                    throw;
+                }
+                await session.CommitTransactionAsync();
+            }
         }
 
         public async Task UpdateAsync(Template template)
         {
             var _template = _mapper.Map<Template, Database.Models.Template>(template);
-            await AddVersionAsync(template);
-            _context.Entry(_template).State = EntityState.Modified;
-            _context.Entry(_template).Property(x => x.CreatedAt).IsModified = false;
-            await _context.SaveChangesAsync();
+            using (var session = await _database.Client.StartSessionAsync())
+            {
+                session.StartTransaction(new TransactionOptions(readConcern: ReadConcern.Snapshot,
+                    writeConcern: WriteConcern.WMajority));
+                try
+                {
+                    var update = Builders<Database.Models.Template>.Update
+                        .Set("name", template.Name)
+                        .Set("currentVersion", template.CurrentVersion.ToString())
+                        .CurrentDate("lastUpdate");
+                    await Templates.UpdateOneAsync(x=>x.Id == template.Id, update);
+                    await AddVersionAsync(template);
+                }
+                catch
+                {
+                    await session.AbortTransactionAsync();
+                    throw;
+                }
+                await session.CommitTransactionAsync();
+            }
         }
 
         public async Task<Template> GetAsync(Guid id)
         {
-            return await _context.Template.Where(x => x.Id == id && x.Deleted == false)
-                .Join(_context.TemplateVersion,
-                    t => t.CurrentVersion,
-                    v => v.Id,
-                    (t, v) => new Template(t.Id, t.CurrentVersion, t.UserId, v.Name, v.Content))
-                .SingleOrDefaultAsync();
+            // it is not very nice
+            var _template = await Templates.Find(x => x.Id == id && x.Deleted == false)
+                .FirstOrDefaultAsync();
+            var template = _mapper.Map<Database.Models.Template, Template>(_template);
+            if(template != null)
+            {
+                var lastVersion = await TemplateVersions.Find(x => x.Id == template.CurrentVersion)
+                    .FirstOrDefaultAsync();
+                template.Content = lastVersion.Content.ToString();
+            }
+            return template;
         }
 
         public async Task<IEnumerable<Template>> GetAsync()
         {
-            return await _context.Template.Where(x => x.Deleted == false)
-                .Join(_context.TemplateVersion,
-                    t => t.CurrentVersion,
-                    v => v.Id,
-                    (t, v) => new Template(t.Id, t.CurrentVersion, t.UserId, v.Name, v.Content))
-                .ToListAsync();
+            var templates = await Templates.Find(x => x.Deleted == false).ToListAsync();
+            return templates.Select(_mapper.Map<Database.Models.Template, Template>);
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            var template = new Database.Models.Template { Id = id };
-            _context.Template.Attach(template);
-            template.Deleted = true;
-            await _context.SaveChangesAsync();
+            var update = Builders<Database.Models.Template>.Update
+                .Set("deleted", true)
+                .CurrentDate("lastUpdate");
+            await Templates.UpdateOneAsync(x => x.Id == id, update);
         }
 
         private async Task AddVersionAsync(Template template)
         {
-            var _templateVersion = _mapper.Map<Template, Database.Models.TemplateVersion>(template);
-            _templateVersion.Id = template.CurrentVersion;
-            _templateVersion.TemplateId = template.Id;
-            await _context.TemplateVersion.AddAsync(_templateVersion);
+            var templateVersion = new Database.Models.TemplateVersion();
+            templateVersion.Id = template.CurrentVersion;
+            templateVersion.TemplateId = template.Id;
+            templateVersion.CreatedAt = DateTime.UtcNow;
+            templateVersion.Name = template.Name;
+            templateVersion.Content = BsonDocument.Parse(template.Content.ToString());
+            await TemplateVersions.InsertOneAsync(templateVersion);
         }
     }
 }

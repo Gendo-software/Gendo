@@ -23,9 +23,11 @@ namespace Docaut.Infrastructure.IoC
             builder.RegisterInstance(AutoMapperConfig.Initialize())
                 .SingleInstance();
 
+            builder.RegisterModule<MongoModule>();
             builder.RegisterModule<CommandModule>();
             builder.RegisterModule<ServiceModule>();
             builder.RegisterModule<RepositoryModule>();
+            builder.RegisterModule(new SettingsModule(_configuration));
         }      
     }
 }

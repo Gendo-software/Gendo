@@ -56,17 +56,17 @@ namespace Docaut.Database.Models
 
                 entity.Property(e => e.DuringEditing).HasColumnName("during_editing");
 
-                entity.Property(e => e.UpdatedAt)
+                entity.Property(e => e.LastUpdate)
                     .HasColumnName("updated_at")
                     .HasColumnType("timestamp with time zone");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Template)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("template_user_id_fkey");
+                // entity.HasOne(d => d.User)
+                //     .WithMany(p => p.Template)
+                //     .HasForeignKey(d => d.UserId)
+                //     .OnDelete(DeleteBehavior.ClientSetNull)
+                //     .HasConstraintName("template_user_id_fkey");
             });
 
             modelBuilder.Entity<TemplateVersion>(entity =>
@@ -96,11 +96,11 @@ namespace Docaut.Database.Models
 
                 entity.Property(e => e.TemplateId).HasColumnName("template_id");
 
-                entity.HasOne(d => d.Template)
-                    .WithMany(p => p.TemplateVersion)
-                    .HasForeignKey(d => d.TemplateId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("template_version_template_id_fkey");
+                // entity.HasOne(d => d.Template)
+                //     .WithMany(p => p.TemplateVersion)
+                //     .HasForeignKey(d => d.TemplateId)
+                //     .OnDelete(DeleteBehavior.ClientSetNull)
+                //     .HasConstraintName("template_version_template_id_fkey");
             });
 
             modelBuilder.Entity<User>(entity =>

@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Docaut.Database.Models
 {
     public partial class TemplateVersion
     {
+        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; set; }
+        [BsonRepresentation(BsonType.String)]
         public Guid TemplateId { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Name { get; set; }
-        public string Content { get; set; }
-
-        public virtual Template Template { get; set; }
+        public BsonDocument Content { get; set; }
     }
 }

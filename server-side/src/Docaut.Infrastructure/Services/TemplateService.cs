@@ -27,14 +27,14 @@ namespace Docaut.Infrastructure.Services
 
         public async Task CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
-            var user = await _userRepository.GetOrFailAsync(userId);
+            //var user = await _userRepository.GetOrFailAsync(userId);
             var template = new Template(id, currentVersion, userId, name, content);
             await _templateRepository.AddAsync(template);
         }
 
         public async Task UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
-            var user = await _userRepository.GetOrFailAsync(userId);
+            //var user = await _userRepository.GetOrFailAsync(userId);
             var template = await _templateRepository.GetOrFailAsync(id);
 
             var newTemplate = new Template(id, currentVersion, userId, name, content);
@@ -50,6 +50,7 @@ namespace Docaut.Infrastructure.Services
         public async Task<TemplateDetailsDto> GetAsync(Guid id)
         {
             var template = await _templateRepository.GetOrFailAsync(id);
+            
             return _mapper.Map<Template,TemplateDetailsDto>(template);
         }
 
