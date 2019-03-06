@@ -11,13 +11,8 @@ namespace Docaut.Infrastructure.Mapper
         {
             return new MapperConfiguration(config => 
             {
-                config.RecognizePrefixes("User");
-                config.RecognizeDestinationPrefixes("User");
-                config.CreateMap<User, Database.Models.User>().ReverseMap();
                 config.CreateMap<Template, Database.Models.Template>().ReverseMap();
                 config.CreateMap<Template, Database.Models.TemplateVersion>().ReverseMap();
-                    
-                config.CreateMap<User, UserDto>().ReverseMap();
             })
             .CreateMapper();
         } 

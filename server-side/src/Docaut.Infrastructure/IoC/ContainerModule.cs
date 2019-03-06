@@ -26,7 +26,6 @@ namespace Docaut.Infrastructure.IoC
             builder.RegisterModule<MongoModule>();
             builder.RegisterModule<CommandModule>();
             builder.RegisterModule<ServiceModule>();
-            builder.RegisterModule<RepositoryModule>();
             builder.RegisterModule(new SettingsModule(_configuration));
         }      
     }

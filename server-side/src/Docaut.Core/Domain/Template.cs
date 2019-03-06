@@ -11,8 +11,8 @@ namespace Docaut.Core.Domain
         public string Name { get; set; }
         public bool Deleted { get; set; }
         public bool DuringEditing { get; set; }
-        public string Content { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string Content { get; set; }
 
         public Template() { }
 

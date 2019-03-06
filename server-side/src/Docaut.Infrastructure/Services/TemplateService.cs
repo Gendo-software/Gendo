@@ -15,26 +15,22 @@ namespace Docaut.Infrastructure.Services
     public class TemplateService : ITemplateService, IService
     {
         private readonly ITemplateRepository _templateRepository;
-        private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
 
-        public TemplateService(ITemplateRepository templateRepository, IUserRepository userRepository, IMapper mapper)
+        public TemplateService(ITemplateRepository templateRepository, IMapper mapper)
         {
             _templateRepository = templateRepository;
-            _userRepository = userRepository;
             _mapper = mapper;
         }
 
         public async Task CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
-            //var user = await _userRepository.GetOrFailAsync(userId);
             var template = new Template(id, currentVersion, userId, name, content);
             await _templateRepository.AddAsync(template);
         }
 
         public async Task UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
-            //var user = await _userRepository.GetOrFailAsync(userId);
             var template = await _templateRepository.GetOrFailAsync(id);
 
             var newTemplate = new Template(id, currentVersion, userId, name, content);

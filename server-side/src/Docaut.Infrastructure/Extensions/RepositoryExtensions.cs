@@ -18,16 +18,5 @@ namespace Docaut.Infrastructure.Extensions
             }
             return template;            
         }
-
-        public static async Task<User> GetOrFailAsync(this IUserRepository repository, Guid userId)
-        {
-            var user = await repository.GetAsync(userId);
-            if(user == null)
-            {
-                throw new ServiceException(ErrorCodes.UserNotFound, 
-                    $"User with id: '{userId}' was not found.");
-            }
-            return user;            
-        }
     }
 }

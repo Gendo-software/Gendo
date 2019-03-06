@@ -42,10 +42,6 @@ namespace Docaut.Api
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddEntityFrameworkNpgsql()
-                .AddDbContext<DocautContext>(options =>
-                    options.UseNpgsql(connectionString: Configuration.GetConnectionString("DefaultConnection")));
-
             var builder = new ContainerBuilder();
             builder.Populate(services);          
             builder.RegisterModule(new ContainerModule(Configuration));
