@@ -2,13 +2,14 @@ import React from 'react'
 import { Route, Link } from 'react-router-dom'
 import Home from './containers/home'
 import About from './containers/about'
-import NavBarComponent from './components/NavBarComponent';
 import MainView from './views/MainView';
 import FooterComponent from './components/FooterComponent';
 import CreateTemplateView from './views/CreateTemplateView';
 import CreateDocumentView from './views/CreateDocumentView';
 import config from './StaticConfig/config';
 import DebugInfoComponent from './components/DebugInfo/DebugInfoComponent';
+import NavBarComponent from './components/Navbar/NavBarComponent';
+import LoginComponent from './components/Login/LoginComponent';
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
     <Route exact path="/" component={MainView} />
     <Route exact path="/CreateTemplate" component={CreateTemplateView} />
     <Route exact path="/CreateDocument" component={CreateDocumentView} />
+    <Route exact path="/Login" component={LoginComponent} /> 
     <FooterComponent></FooterComponent>
   </div>
 )

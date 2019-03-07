@@ -19,12 +19,29 @@ import './assets/custom.css'
 import Config from './StaticConfig/config'
 Config.SetConfig(window.StaticConfig);
 
+let message = "";
+
+if(window.location.origin != "http://myapp.example:3000" ){
+message = 
+<div style = {{background: 'red', color:'white', width:'100%'}}>
+  <p>
+  This app in dev mode should be host on address "http://myapp.example:3000".
+  Auth0 login/register not working corect with localhost.
+  Please add [127.0.0.1	myapp.example] section: in "C:\Windows\System32\drivers\etc\"<br />
+  click to redirect --> <a href="http://myapp.example:3000">http://myapp.example:3000</a>
+  </p>
+  
+</div>  
+}
+
+
 const target = document.querySelector('#root')
 
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
+        {message}
         <App />
       </div>
     </ConnectedRouter>

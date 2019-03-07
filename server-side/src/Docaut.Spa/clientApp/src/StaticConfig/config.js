@@ -1,3 +1,4 @@
+
 export default class Config 
 {            
     static SetConfig(config){
@@ -18,5 +19,29 @@ export default class Config
 
     static get FutFeat(){
         return this._config.FutFeat;
+    }
+
+    static get AuthConfig() {
+        return {
+            clientId: '3qDfNo1DjVMvBIK8WOJPILRvsQqvsAgz',
+            domain:'dev-gendo.eu.auth0.com',
+            auth0LockOptions: {
+                rememberLastLogin: true,
+                languageDictionary: {
+                    title: "Gendo"
+                },
+            
+                theme: {
+                    //logo: http://myapp.example:3000/assets/logo.png ;
+                },
+            
+                auth: {
+                    redirectUrl: 'http://myapp.example:3000/Login',
+                    responseType: 'token id_token',    
+                    audience: "basicApi",
+                    redirect: false,
+                }
+            }            
+        }
     }
 }

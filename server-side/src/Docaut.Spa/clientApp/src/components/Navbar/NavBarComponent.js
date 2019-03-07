@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import logo from './../assets/logo128x50.png';
+import logo from './../../assets/logo128x50.png';
 import { Link } from 'react-router-dom'
+import UserSection from './UserSectionComponent';
 
 export default class NavBarComponent extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class NavBarComponent extends Component {
             onClick={this.toggle} aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
-          <div className= {"collapse navbar-collapse " + show} isOpen = {this.toogle}>
+          <div className= {"collapse navbar-collapse " + show}>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <Link className="nav-link" to="/"><i className="fa fa-home" aria-hidden="true" /> Home<span className="sr-only">(current)</span></Link>
@@ -41,7 +42,7 @@ export default class NavBarComponent extends Component {
                 {/* <a className="nav-link" href="#">Link</a> */}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/CreateDocument"><i class="far fa-file-alt" aria-hidden="true" /> Create document<span className="sr-only">(current)</span></Link>
+                <Link className="nav-link" to="/CreateDocument"><i className="far fa-file-alt" aria-hidden="true" /> Create document<span className="sr-only">(current)</span></Link>
               </li>
 
               {/* disabled button template
@@ -60,10 +61,13 @@ export default class NavBarComponent extends Component {
               </li> */}
 
             </ul>
-            {/* template search
-            <form className="form-inline my-2 my-md-0">
+            {/*template search*/}
+            {/* <form className="form-inline my-2 my-md-0">
               <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
             </form> */}
+            <UserSection />
+
+            
           </div>
         </div>
       </nav>      
