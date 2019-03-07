@@ -7,6 +7,7 @@ import MainView from './views/MainView';
 import FooterComponent from './components/FooterComponent';
 import CreateTemplateView from './views/CreateTemplateView';
 import CreateDocumentView from './views/CreateDocumentView';
+import config from './StaticConfig/config';
 
 const AppDefault = () => (
   <div>

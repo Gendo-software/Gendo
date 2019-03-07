@@ -14,6 +14,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //custom css
 import './assets/custom.css'
 
+
+//static config
+import Config from './StaticConfig/config'
+Config.SetConfig(window.StaticConfig);
+
 const target = document.querySelector('#root')
 
 render(
