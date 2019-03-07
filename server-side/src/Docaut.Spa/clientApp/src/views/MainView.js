@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 export default class MainView extends Component {
+
+    componentDidMount(){
+        document.title = "Home - Gendo"
+    }
     render() {
         return (
 

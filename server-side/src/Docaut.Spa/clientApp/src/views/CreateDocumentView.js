@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class CreateDocumentView extends Component {
 
     componentDidMount() {
-        document.title = "Create document - Document Automation"
+        document.title = "Create document - Gendo"
     }
 
     render() {

@@ -6,7 +6,7 @@ import Section from '../components/CreateTemplate/SectionComponent';
 export default class CreateTemplateView extends Component {
 
     componentDidMount(){        
-        document.title = "Create template - Document Automation"
+        document.title = "Create template - Gendo"
         // var Main_simplemde = new SimpleMDE({ element: $("#main-text-area")[0] });
         // var Optional_1_simplemde = new SimpleMDE({ element: $("#aditional-1-text-area")[0] });
 
