@@ -1,9 +1,10 @@
 using System;
+using Newtonsoft.Json.Linq;
 
 namespace Docaut.Infrastructure.DTO.Templates
 {
     public class TemplateDetailsDto
     {
-        public string Content { get; set; }
+        public JObject Content { get; set; }
     }
 }
