@@ -46,6 +46,8 @@ namespace Docaut.Api
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "gendo", Version = "v1"});
             });
+            services.AddMvcCore()
+                .AddMetricsCore();
             var builder = new ContainerBuilder();
             builder.Populate(services);          
             builder.RegisterModule(new ContainerModule(Configuration));
@@ -58,8 +60,8 @@ namespace Docaut.Api
         {
             MongoConfigurator.Initialize();
             app.UseExceptionHandlerMiddleware();
-            app.UseMvc();            
-            
+            app.UseMvc();       
+                 
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("v1/swagger.json", "gendo API v1");

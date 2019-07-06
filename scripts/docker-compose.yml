@@ -8,9 +8,7 @@ services:
       dockerfile: Dockerfile
     container_name: templates
     ports:
-      - '5010:5000'  
-    links:
-      - mongo
+      - '5010:5000'
     networks:
       - docaut
     environment:
@@ -30,6 +28,29 @@ services:
       - 27017:27017
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo:/data/db
+      
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    networks:
+      - docaut
+    volumes:
+      - grafana:/var/lib/grafana
+      
+  influxdb:
+    image: influxdb
+    container_name: influxdb
+    ports:
+      - '8086:8086'
+    networks:
+      - docaut
+    environment:
+      - INFLUXDB_DB=docaut 
+    volumes:
+      - influxdb:/var/lib/influxdb 
       
 networks:
   docaut:
@@ -37,4 +58,8 @@ networks:
     
 volumes:
   mongo:
+    driver: local
+  grafana:
+    driver: local
+  influxdb:
     driver: local
