@@ -3,10 +3,12 @@ using System.Threading.Tasks;
 using Docaut.Infrastructure.Commands;
 using Docaut.Infrastructure.Commands.Templates;
 using Docaut.Infrastructure.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Docaut.Api.Controllers
 {
+    [Authorize]    
     public class TemplatesController : ApiControllerBase
     {
         private readonly ITemplateService _templateService;
