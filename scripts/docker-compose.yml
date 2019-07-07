@@ -49,8 +49,6 @@ services:
       - docaut
     environment:
       - INFLUXDB_DB=docaut 
-    volumes:
-      - influxdb:/var/lib/influxdb 
       
 networks:
   docaut:
@@ -60,6 +58,4 @@ volumes:
   mongo:
     driver: local
   grafana:
-    driver: local
-  influxdb:
     driver: local
