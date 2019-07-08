@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import logo from './../../assets/img/logo128x50.png';
 import { Link } from 'react-router-dom'
 import UserSection from './UserSectionComponent';
-
 export default class NavBarComponent extends Component {
   constructor(props) {
     super(props)

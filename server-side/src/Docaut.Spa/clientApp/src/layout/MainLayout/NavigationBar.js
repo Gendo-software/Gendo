@@ -6,7 +6,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHome, faPlusSquare} from '@fortawesome/free-solid-svg-icons';
 import {faFileAlt} from '@fortawesome/free-regular-svg-icons';
 import {LinkContainer} from 'react-router-bootstrap';
-import UserSection from '../../components/Navbar/UserSectionComponent';
+import UserSection from 'components/Navbar/UserSectionComponent';
+
+
 
 
 export default class NavigationBar extends Component {
