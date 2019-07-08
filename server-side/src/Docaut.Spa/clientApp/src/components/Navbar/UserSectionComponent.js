@@ -56,6 +56,11 @@ export default class UserSection extends Component {
         console.dir(this.AuthCore.UserProfile);        
     }
 
+    LoginHere(){
+        this.authCore = AuthManager.getAuthObject();
+        this.authCore.ShowLoginBox();
+    }
+
     render() {
         return (
             <div>                
@@ -79,9 +84,10 @@ export default class UserSection extends Component {
                     {!this.AuthCore.UserIsLogged() &&
                         <React.Fragment>                        
                                 <li className="nav-item">
+                                    <button onClick={() => this.LoginHere()}>LoginHere!</button>
                                     <Link className="nav-link" to={{ pathname: "/Login", state: { from: window.location.pathname, mode: "Login" }}}>
                                         <i className="far fa-user" /> Login
-                                </Link>
+                                    </Link>                                    
                                 </li>
                                 <li className="nav-item">
                                     <Link className="nav-link" to={{ pathname: "/Login", state: { from: window.location.pathname, mode: "Register" }}}>

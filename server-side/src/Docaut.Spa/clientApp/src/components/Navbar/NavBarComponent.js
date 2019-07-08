@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import logo from './../../assets/logo128x50.png';
+import logo from './../../assets/img/logo128x50.png';
 import { Link } from 'react-router-dom'
 import UserSection from './UserSectionComponent';
 
@@ -38,11 +38,11 @@ export default class NavBarComponent extends Component {
                 {/* <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a> */}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/CreateTemplate"><i className="fa fa-plus-square" aria-hidden="true" /> Create template<span className="sr-only">(current)</span> </Link>
+                <Link className="nav-link" to="/Template/Create"><i className="fa fa-plus-square" aria-hidden="true" /> Create template<span className="sr-only">(current)</span> </Link>
                 {/* <a className="nav-link" href="#">Link</a> */}
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/CreateDocument"><i className="far fa-file-alt" aria-hidden="true" /> Create document<span className="sr-only">(current)</span></Link>
+                <Link className="nav-link" to="/Document/Create"><i className="far fa-file-alt" aria-hidden="true" /> Create document<span className="sr-only">(current)</span></Link>
               </li>
 
               {/* disabled button template

@@ -1,29 +1,31 @@
 import React from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import Home from './containers/home'
 import About from './containers/about'
-import MainView from './views/MainView';
-import FooterComponent from './components/FooterComponent';
-import CreateTemplateView from './views/CreateTemplateView';
-import CreateDocumentView from './views/CreateDocumentView';
-import config from './StaticConfig/config';
-import DebugInfoComponent from './components/DebugInfo/DebugInfoComponent';
-import NavBarComponent from './components/Navbar/NavBarComponent';
-import LoginComponent from './components/Login/LoginComponent';
-
+import MainView from './views/MainView'
+import FooterComponent from './components/FooterComponent'
+import CreateTemplateView from './views/CreateTemplateView'
+import CreateDocumentView from './views/CreateDocumentView'
+import config from './StaticConfig/config'
+import DebugInfoComponent from './components/DebugInfo/DebugInfoComponent'
+import NavBarComponent from './components/Navbar/NavBarComponent'
+import LoginComponent from './components/Login/LoginComponent'
+import MainLayout from './layout/MainLayout'
 
 const App = () => (
   <div>
-    {config.DebugMode ? <DebugInfoComponent/> : '' }
-    <NavBarComponent></NavBarComponent>
-    <Route exact path="/" component={MainView} />
-    <Route exact path="/CreateTemplate" component={CreateTemplateView} />
-    <Route exact path="/CreateDocument" component={CreateDocumentView} />
-    <Route exact path="/Login" component={LoginComponent} /> 
-    <FooterComponent></FooterComponent>
+    {config.DebugMode ? <DebugInfoComponent /> : ''}
+
+    <Switch>            
+      <MainLayout>        
+        <Route exact path="/Login" component={LoginComponent} />
+        <Route exact path="/" component={MainView} />
+        <Route exact path="/Template/Create" component={CreateTemplateView} />
+        <Route exact path="/Document/Create" component={CreateDocumentView} />
+      </MainLayout>
+    </Switch>
   </div>
 )
-
 
 //
 
