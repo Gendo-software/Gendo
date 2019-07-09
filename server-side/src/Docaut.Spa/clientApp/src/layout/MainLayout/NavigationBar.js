@@ -13,7 +13,7 @@ import UserSection from './UserSection';
 
 export default class NavigationBar extends Component {
   render() {  
-    return <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
+    return <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" className='py-0'>
         <Container>
           <Navbar.Brand href="#home">
             <img src={assets.img.logo128x50} />

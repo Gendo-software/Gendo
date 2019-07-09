@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export default class FooterComponent extends Component {
     render() {
-        return (
+        return (            
             <div>
                 <div className="pt-3" />
                 <footer className="footer">
