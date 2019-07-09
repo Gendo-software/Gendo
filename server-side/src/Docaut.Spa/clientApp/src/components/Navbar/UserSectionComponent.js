@@ -29,7 +29,7 @@ export default class UserSection extends Component {
         }
 
         if(this.AuthCore.UserIsLogged()){
-            this.AuthCore.GetUserProfile(receiveUserData.bind(this));
+            //this.AuthCore.GetUserProfile(receiveUserData.bind(this));
         }                            
     }
 
@@ -64,7 +64,7 @@ export default class UserSection extends Component {
     render() {
         return (
             <div>                
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav">
                     
                     {this.AuthCore.UserIsLogged() &&
                         <React.Fragment>

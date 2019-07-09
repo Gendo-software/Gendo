@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faHome, faPlusSquare} from '@fortawesome/free-solid-svg-icons';
 import {faFileAlt} from '@fortawesome/free-regular-svg-icons';
 import {LinkContainer} from 'react-router-bootstrap';
-import UserSection from 'components/Navbar/UserSectionComponent';
+import UserSection from './UserSection';
 
 
 
@@ -23,22 +23,24 @@ export default class NavigationBar extends Component {
             <Nav className="mr-auto">
               <LinkContainer to="/" exact>
                 <Nav.Link>
-                  <FontAwesomeIcon icon={faHome} /> Home
+                  <FontAwesomeIcon icon={faHome} />
+                  {' '} Home
                 </Nav.Link>
               </LinkContainer>
 
               <LinkContainer to="/Template/Create" exact>
                 <Nav.Link>
-                  <FontAwesomeIcon icon={faPlusSquare} /> Create template
+                  <FontAwesomeIcon icon={faPlusSquare} />
+                  {' '} Create template
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/Document/Create" exact>
                 <Nav.Link>
-                  <FontAwesomeIcon icon={faFileAlt} /> Create document
+                  <FontAwesomeIcon icon={faFileAlt} />
+                  {' '} Create document
                 </Nav.Link>
               </LinkContainer>
             </Nav>
-
             <UserSection />
           </Navbar.Collapse>
         </Container>

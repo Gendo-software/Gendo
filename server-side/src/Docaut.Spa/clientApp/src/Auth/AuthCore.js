@@ -2,6 +2,7 @@ import AuthInfo from "./AuthInfo";
 import auth0lock from 'auth0-lock';
 import jwt_decode from 'jwt-decode';
 import Config from "../StaticConfig/config";
+import AuthEvents from "./AuthEvents";
 
 
 
@@ -18,18 +19,16 @@ export default class AuthCore {
     /// renewSession
 
     tokenRenewalTimeout;
-    UserProfile;
-
+    UserProfile;        
+    
     constructor(){
         console.log("Create authCore");
         this.createdDate = new Date();
         this.AuthInfo = new AuthInfo();
         
-        
-
-
         this.prepareLockObject();
-        this.restoreLastSession();                
+        this.restoreLastSession();                        
+        this._authEvents = new AuthEvents();
     }
     
     restoreLastSession(){
@@ -57,8 +56,8 @@ export default class AuthCore {
         //events
         this.lock.on("authenticated", (authResult) => {                        
             this.setSession(authResult);
-            this.lock.hide();            
-            this.onSuccess();
+            this.lock.hide();                                   
+            this.Events.emitLoginSuccess(authResult);
         });
 
         this.lock.on("unrecoverable_error", (result) => {                        
@@ -149,13 +148,13 @@ export default class AuthCore {
         });
     }
 
-    GetUserProfile(cb){
+    async GetUserProfile(cb){
         
         if(!this.UserProfile){
-            this.RefreshUserProfile(cb);            
+            await this.RefreshUserProfile(cb);            
         }        
         else{
-            cb(null, this.UserProfile)
+            return cb(null, this.UserProfile)
         }
 
     }
@@ -176,4 +175,8 @@ export default class AuthCore {
             });
     }
 
+    get Events ()
+    {                
+        return this._authEvents;
+    }    
 };
