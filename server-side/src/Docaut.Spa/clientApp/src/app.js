@@ -11,7 +11,7 @@ import DebugInfoComponent from './components/DebugInfo/DebugInfoComponent'
 import NavBarComponent from './components/Navbar/NavBarComponent'
 import LoginComponent from './components/Login/LoginComponent'
 import MainLayout from './layout/MainLayout'
-import Home from './pages/home/Home';
+import Home from './pages/Home'
 
 const App = () => (
   <div>

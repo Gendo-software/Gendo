@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Col, Table, Row, Button } from 'react-bootstrap'
-import './Home.css'
+import TemplateList from './home/TemplateList';
 
 
 export default class Home extends Component {
@@ -15,43 +15,7 @@ export default class Home extends Component {
           </Row>
           <Row>
             <Col lg={{ offset: 2, span: 5 }} className="mt-2">
-              <Table hover borderless className="Home__templatesTable" size="sm">
-                <tbody>
-                  <tr>
-                    <td> 1. Seeling Car</td>
-                    <td>
-                      <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3">
-                        Create
-                      </Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2. Selling a flat</td>
-                    <td>
-                      <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3">
-                        Create
-                      </Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3. Company starting</td>
-                    <td>
-                      <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3">
-                        Create
-                      </Button>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
+              <TemplateList onCreateClick={() => alert('yes')}/>
             </Col>
           </Row>
         </Container>
