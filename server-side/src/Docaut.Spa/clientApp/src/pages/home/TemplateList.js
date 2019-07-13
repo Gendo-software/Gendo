@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Button } from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 const mockValues = {
   templates: [
@@ -30,14 +31,17 @@ const TemplateList = props => {
                 <td className="px-3 align-middle">{`${++key}. ${
                   template.name
                 }`}</td>
-                <td className="text-right px-3">
-                  <Button
-                    variant="outline-primary"
-                    size="sm"
-                    className="px-3"
-                    onClick={() => props.onCreateClick(template)}>
-                    Create
-                  </Button>
+                <td className="text-right px-3">     
+                  <Link to={`Document/Create/${template.name}`} >
+                    <Button
+                      variant="outline-primary"
+                      size="sm"
+                      className="px-3"
+                      //onClick={() => props.onCreateClick(template)}
+                      >
+                      Create
+                    </Button>
+                  </Link>       
                 </td>
               </tr>
             )

@@ -7,6 +7,8 @@ export default class CreateDocumentView extends Component {
     }
 
     render() {
+        const urlParams = this.props.match.params;
+        console.dir(this.props.match)
 
         return (
             <div className="container mt-5">
@@ -24,7 +26,7 @@ export default class CreateDocumentView extends Component {
                 {/* Header*/}
                 <div className="row mb-3">
                     <div className="col-12  my-auto text-center">
-                        <h1><span className="text-muted">Contract:</span> Sell Car</h1>
+                        <h1><span className="text-muted">Contract:</span> {urlParams.templateName}</h1>
                     </div>
                 </div>
                 {/* BuyerParam*/}

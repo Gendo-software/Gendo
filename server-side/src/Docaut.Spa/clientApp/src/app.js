@@ -12,6 +12,7 @@ import NavBarComponent from './components/Navbar/NavBarComponent'
 import LoginComponent from './components/Login/LoginComponent'
 import MainLayout from './layout/MainLayout'
 import Home from './pages/Home'
+import CreateTemplate from './pages/templates/CreateTemplate';
 
 const App = () => (
   <div>
@@ -22,8 +23,9 @@ const App = () => (
         <Route exact path="/Login" component={LoginComponent} />
         <Route exact path="/oldHome" component={MainView} />
         <Route exact path="/" component={Home} />
-        <Route exact path="/Template/Create" component={CreateTemplateView} />
-        <Route exact path="/Document/Create" component={CreateDocumentView} />
+        <Route exact path ="/Template/CreateOld" component={CreateTemplateView} />
+        <Route exact path ="/Template/Create" component={CreateTemplate} />        
+        <Route exact path ="/Document/Create/:templateName" component={CreateTemplate} />
       </MainLayout>
     </Switch>
   </div>
