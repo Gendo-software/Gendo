@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Container, Col, Table, Row, Button } from 'react-bootstrap'
+import { Container, Col, Row} from 'react-bootstrap'
 import TemplateList from './home/TemplateList';
+import DocumentList from './home/DocumentList';
 
 
 export default class Home extends Component {
@@ -14,8 +15,8 @@ export default class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col lg={{ offset: 2, span: 5 }} className="mt-2">
-              <TemplateList onCreateClick={() => alert('yes')}/>
+            <Col lg={{ offset: 2, span: 5 }}>
+              <TemplateList onCreateClick={() => alert('onCreateClick')}/>
             </Col>
           </Row>
         </Container>
@@ -28,76 +29,7 @@ export default class Home extends Component {
           </Row>
           <Row>
             <Col lg={{ offset: 2, span: 5 }}>
-              <Table hover borderless className="Home__templatesTable" size="sm">
-                <tbody>
-                  <tr>
-                    <td>
-                      1. Volkswagen Passat
-                      <span className="d-block text-right border-top text-muted font-italic">
-                        Seeling Car
-                      </span>
-                    </td>
-                    <td>
-                      <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3 mr-1">
-                        Open
-                      </Button>
-                      <Button
-                        variant="outline-danger"
-                        size="sm"
-                        className="px-3 mr-1">
-                        <b>×</b>
-                      </Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      2. Opel Astra
-                      <span className="d-block text-right border-top text-muted font-italic">
-                        Seeling Car
-                      </span>
-                    </td>
-                    <td>
-                      <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3 mr-1">
-                        Open
-                      </Button>
-                      <Button
-                        variant="outline-danger"
-                        size="sm"
-                        className="px-3 mr-1">
-                        <b>×</b>
-                      </Button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      3. BMW X5
-                      <span className="d-block text-right border-top text-muted font-italic">
-                        Seeling Car
-                      </span>
-                    </td>
-                    <td>
-                      <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3 mr-1">
-                        Open
-                      </Button>
-                      <Button
-                        variant="outline-danger"
-                        size="sm"
-                        className="px-3 mr-1">
-                        <b>×</b>
-                      </Button>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
+              <DocumentList onOpenClick={() => alert('onOpenClick')} onDeleteClick={() => alert('onDeleteClick')}/>
             </Col>
           </Row>
         </Container>
