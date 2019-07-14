@@ -5,10 +5,8 @@ using AutoMapper;
 using Templates.Core.Domain;
 using Templates.Core.Repositories;
 using Templates.Infrastructure.DTO.Templates;
-using Templates.Infrastructure.Extensions;
 using Templates.Infrastructure.Services.Exceptions;
 using Templates.Infrastructure.Services.Interfaces;
-using Newtonsoft.Json.Linq;
 
 namespace Templates.Infrastructure.Services
 {
@@ -23,18 +21,20 @@ namespace Templates.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
+        public async Task<int> CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
             var template = new Template(id, currentVersion, userId, name, content);
             await _templateRepository.AddAsync(template);
+            return 0;
         }
 
-        public async Task UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
+        public async Task<int> UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
-            var template = await _templateRepository.GetOrFailAsync(id);
+            var template = await GetOrFailAsync(id);
 
             var newTemplate = new Template(id, currentVersion, userId, name, content);
             await _templateRepository.UpdateAsync(newTemplate);
+            return 0;
         }
 
         public async Task<IEnumerable<TemplateDto>> GetAsync()
@@ -45,15 +45,26 @@ namespace Templates.Infrastructure.Services
 
         public async Task<TemplateDetailsDto> GetAsync(Guid id)
         {
-            var template = await _templateRepository.GetOrFailAsync(id);
+            var template = await GetOrFailAsync(id);
             
             return _mapper.Map<Template,TemplateDetailsDto>(template);
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            var template = await _templateRepository.GetOrFailAsync(id);
+            var template = await GetOrFailAsync(id);
             await _templateRepository.DeleteAsync(id);
+        }
+
+        private async Task<Template> GetOrFailAsync(Guid templateId)
+        {
+            var template = await _templateRepository.GetAsync(templateId);
+            if(template == null)
+            {
+                throw new ServiceException(ErrorCodes.TemplateNotFound, 
+                    $"Template with id: '{templateId}' was not found.");
+            }
+            return template;            
         }
     }
 }

@@ -9,20 +9,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace Templates.Api.Controllers
 {
     [Authorize]    
-    public class TemplatesController : ApiControllerBase
+    public class TemplatesController : Controller
     {
+        private readonly ICommandDispatcher _commandDispatcher;
         private readonly ITemplateService _templateService;
         
-        public TemplatesController(ITemplateService templateService, ICommandDispatcher commandDispatcher)
-            :base(commandDispatcher)
+        public TemplatesController(ICommandDispatcher commandDispatcher, ITemplateService templateService)
         {
+            _commandDispatcher = commandDispatcher;
             _templateService = templateService;
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]CreateTemplate command)
         {
-            await CommandDispatcher.DispatchAsync(command);
+            await _commandDispatcher.DispatchAsync(command);
             
             return Created($"templates/{command.Id}", null);
         }
@@ -32,7 +33,7 @@ namespace Templates.Api.Controllers
         {
             command.Id = id;
             
-            await CommandDispatcher.DispatchAsync(command);
+            await _commandDispatcher.DispatchAsync(command);
             
             return Created($"templates/{command.Id}", null);
         }
@@ -62,7 +63,7 @@ namespace Templates.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            await CommandDispatcher.DispatchAsync(new DeleteTemplate() { Id = id });
+            await _commandDispatcher.DispatchAsync(new DeleteTemplate() { Id = id });
 
             return NoContent();
         }
