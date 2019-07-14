@@ -137,7 +137,7 @@ export default class Section extends Component {
               </div>
               <div className="table-responsive col-12 col-md-12 mx-auto">
                 {/*table*/}
-                <table className="table parameterTable">
+                <table className="table">
                   <thead className="thead-dark">
                     <tr>
                       <th scope="col">Variable name</th>
@@ -148,7 +148,7 @@ export default class Section extends Component {
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">BuyerName</th>
+                      <td>BuyerName</td>
                       <td> <input type="text" className="form-control" /> </td>
                       <td>
                         <select className="form-control">
@@ -167,7 +167,7 @@ export default class Section extends Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">BuyerSurname</th>
+                      <td>BuyerSurname</td>
                       <td> <input type="text" className="form-control" /> </td>
                       <td>
                         <select className="form-control">
@@ -186,7 +186,7 @@ export default class Section extends Component {
                       </td>
                     </tr>
                     <tr>
-                      <th scope="row">BuyerIdNumber</th>
+                      <td>BuyerIdNumber</td>
                       <td> <input type="text" className="form-control" /> </td>
                       <td>
                         <select className="form-control">

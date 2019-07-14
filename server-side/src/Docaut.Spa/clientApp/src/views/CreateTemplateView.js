@@ -32,7 +32,7 @@ export default class CreateTemplateView extends Component {
           </div>
         </div>
 
-        <Section name="MainSection" isOptional={false}></Section>
+        <Section name="Main section" isOptional={false}></Section>
 
         <Section name="Optional Section:" isOptional={true}></Section>
 

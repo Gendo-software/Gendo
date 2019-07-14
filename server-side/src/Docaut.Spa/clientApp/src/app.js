@@ -13,11 +13,11 @@ import LoginComponent from './components/Login/LoginComponent'
 import MainLayout from './layout/MainLayout'
 import Home from './pages/Home'
 import CreateTemplate from './pages/templates/CreateTemplate';
+import Test from './pages/Test';
 
 const App = () => (
   <div>
     {config.DebugMode ? <DebugInfoComponent /> : ''}
-
     <Switch>            
       <MainLayout>        
         <Route exact path="/Login" component={LoginComponent} />
@@ -25,7 +25,8 @@ const App = () => (
         <Route exact path="/" component={Home} />
         <Route exact path ="/Template/CreateOld" component={CreateTemplateView} />
         <Route exact path ="/Template/Create" component={CreateTemplate} />        
-        <Route exact path ="/Document/Create/:templateName" component={CreateTemplate} />
+        <Route exact path ="/Document/Create/:templateName" component={CreateDocumentView} />
+        <Route exact path ="/Test" component={Test} />
       </MainLayout>
     </Switch>
   </div>

@@ -1,4 +1,4 @@
-.tamplatesTable td{
+/* .tamplatesTable td{
     vertical-align: middle !important;    
     padding-top: 5px;
     padding-bottom: 5px;
@@ -11,7 +11,7 @@
 .tamplatesTable td span{
     font-size: 12pt;
     padding-right: 12px;
-}
+} */
 
 /* Parameter table
 -------------------------------------------------- */
@@ -33,7 +33,7 @@
 
 /* Checkbox in table
 -------------------------------------------------- */
-input[type="radio"],
+/* input[type="radio"],
 input[type="checkbox"] 
 {
 	margin-left:-99999px;
@@ -46,7 +46,7 @@ input[type="checkbox"] + .fa {
 input[type="radio"]:checked + .fa,
 input[type="checkbox"]:checked + .fa{
     opacity:1
-}
+} */
 
 
 /* Sticky footer styles

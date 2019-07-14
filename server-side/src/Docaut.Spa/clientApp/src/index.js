@@ -5,7 +5,6 @@ import { ConnectedRouter } from 'connected-react-router'
 import store, { history } from './store'
 import App from './app'
 
-import 'sanitize.css/sanitize.css'
 import './index.css'
 
 //https://reactstrap.github.io/
