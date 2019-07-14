@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "chrome",
+      "type": "chrome",      
       "request": "launch",
-      "name": "Launch Chrome against localhost",
-      "url": "http://localhost:3000",
+      "name": "Launch Chrome on myapp.example:3000",
+      "url": "http://myapp.example:3000",
       "webRoot": "${workspaceFolder}"
     },
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome on myapp.example:3000",
-      "url": "http://myapp.example:3000",
+      "name": "Launch Chrome against localhost",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
-    }
+    }    
   ]
 }

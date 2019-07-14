@@ -4,6 +4,7 @@ import SimpleMDEEditor from 'react-simplemde-editor';
 import "simplemde/dist/simplemde.min.css";
 import _ from 'lodash';
 import {InitHashMarking, MARKING_NAME}  from 'misc/HashMarking';
+import {NewTemplateConsumer} from 'context/NewTemplateContext';
 
 var showVariableState = false;
 var defaultMode;
@@ -75,40 +76,42 @@ export default class Editor extends Component {
     AddShowVariableToolbarAction(this);
   }
 
-  handleChange(...data) {
-    var value = data[0]
-    var regexInstance = new RegExp(regexForParametersParrent)
+  handleChange(value, onSectionChange) {       
+    
+    //var test = this.context;
+    
+    
 
-    var matches,
-      output = []
-    while ((matches = regexInstance.exec(value))) {
-      output.push(matches[2])
-    }
+    const event = {
+      target:{
+        name:'text',
+        value: value
+      }
+    };
 
-    output = _.uniq(output).sort()
-
-    if (!_.isEqual(this.state.fieldsCollection, output)) {
-      console.log(`setState new fields collection: ${output}`)
-      this.setState({ fieldsCollection: output })
-    }
+    onSectionChange(event, this.props.section);
   }
 
   render() {
     return (
-      <div>
-        <Row>
-          <Col>
-            <SimpleMDEEditor
-              onChange={this.handleChange.bind(this)}
-              //value={this.sampleText.Text}
-              options={{
-                spellChecker: false
-              }}
-              getMdeInstance={this.getMdeInstance.bind(this)}
-            />
-          </Col>
-        </Row>
-      </div>
+      <NewTemplateConsumer>
+        {({onSectionChange, name}) => 
+          (
+            <Row>
+              <Col>
+                <SimpleMDEEditor              
+                  onChange={(...params) => this.handleChange(...params, onSectionChange)}
+                  value={this.props.section.text}
+                  options={{
+                    spellChecker: false
+                  }}
+                  getMdeInstance={this.getMdeInstance.bind(this)}
+                />
+              </Col>
+            </Row>
+          )
+          }
+      </NewTemplateConsumer>      
     )
   }
 }

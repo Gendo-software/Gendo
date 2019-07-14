@@ -5,16 +5,11 @@ import { NewTemplateConsumer } from 'context/NewTemplateContext'
 const Sections = props => {
   return (
     <NewTemplateConsumer>
-      {({sections}) => (
+      {({ sections }) =>
         sections.map(section => {
-          return (
-            <Section
-              section={section}
-              onRemoveSectionClick={props.onRemoveSectionClick}
-            />
-          )
+          return <Section key={section.id} section={section} />
         })
-      )}
+      }
     </NewTemplateConsumer>
   )
 }

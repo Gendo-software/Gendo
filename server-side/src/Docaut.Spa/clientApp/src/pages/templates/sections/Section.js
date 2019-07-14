@@ -8,8 +8,8 @@ const Section = props => {
   return (
     <div className="mb-5">
       <SectionHeader section={props.section}/>
-      <Editor />
-      <ParametersSettings />
+      <Editor section={props.section} />
+      <ParametersSettings section={props.section}/>
     </div>
   )
 }

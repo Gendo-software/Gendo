@@ -6,12 +6,15 @@ import { NewTemplateConsumer } from 'context/NewTemplateContext';
 const SectionHeader = props => {
   return (
     <NewTemplateConsumer>
-      {({removeSection}) => (
+      {({removeSection, onSectionChange}) => (
               <div className="mb-2">
               <Row className="align-items-center">
                 <Col>
                   {(props.section.isOptional && (
-                    <Form.Control value={props.section.name} />
+                    <Form.Control value={props.section.name}
+                      onChange={(...params) => onSectionChange(...params, props.section)}                      
+                      name={'name'}
+                    />
                   )) || <h4>{props.section.name}</h4>}
                 </Col>
                 {props.section.isOptional && (
@@ -32,7 +35,7 @@ const SectionHeader = props => {
 }
 
 SectionHeader.propTypes = {
-  onRemoveSectionClick: PropTypes.func.isRequired
+
 }
 
 export default SectionHeader
