@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Templates.Api.Controllers
 {
     [Authorize]    
+    [Route("api/[controller]")]
     public class TemplatesController : Controller
     {
         private readonly ICommandDispatcher _commandDispatcher;
