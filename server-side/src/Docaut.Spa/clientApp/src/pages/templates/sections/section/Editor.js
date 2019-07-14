@@ -9,7 +9,7 @@ var showVariableState = false;
 var defaultMode;
 
 
-const regexForParametersParrent = /(##)(.+?)(##)/gi;
+const regexForParametersParrent = /(##)(\S+?)(##)/gi;
 
 function AddShowVariableToolbarAction(context)
 {

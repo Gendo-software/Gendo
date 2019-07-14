@@ -26,6 +26,6 @@ export function InitHashMarking(codeMirrorMode) {
     //var tempMode = CodeMirror.getMode(config, parserConfig.backdrop || "gfm");    
     //var tempMode = CodeMirror.getMode(config, "gfm");   
     var tempMode = codeMirrorMode;     
-    return CodeMirror.overlayMode(tempMode, mustacheOverlay);
+    return CodeMirror.overlayMode(tempMode, mustacheOverlay, true);
   });
 }      
