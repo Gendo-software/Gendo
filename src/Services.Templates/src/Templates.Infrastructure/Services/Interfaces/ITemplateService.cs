@@ -13,6 +13,6 @@ namespace Templates.Infrastructure.Services.Interfaces
         Task<int> UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content);
         Task<IEnumerable<TemplateDto>> GetAsync();
         Task<TemplateDetailsDto> GetAsync(Guid id);
-        Task DeleteAsync(Guid id);
+        Task<int> DeleteAsync(Guid id);
     }
 }

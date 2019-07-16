@@ -21,7 +21,7 @@ namespace Templates.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<int> CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
+        public async Task<int> CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content) //ok
         {
             var template = new Template(id, currentVersion, userId, name, content);
             await _templateRepository.AddAsync(template);
@@ -31,9 +31,10 @@ namespace Templates.Infrastructure.Services
         public async Task<int> UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
         {
             var template = await GetOrFailAsync(id);
-
-            var newTemplate = new Template(id, currentVersion, userId, name, content);
-            await _templateRepository.UpdateAsync(newTemplate);
+            template.CurrentVersion = currentVersion;
+            template.SetName(name);
+            template.SetContent(content);
+            await _templateRepository.UpdateAsync(template);
             return 0;
         }
 
@@ -46,14 +47,14 @@ namespace Templates.Infrastructure.Services
         public async Task<TemplateDetailsDto> GetAsync(Guid id)
         {
             var template = await GetOrFailAsync(id);
-            
             return _mapper.Map<Template,TemplateDetailsDto>(template);
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task<int> DeleteAsync(Guid id)
         {
             var template = await GetOrFailAsync(id);
             await _templateRepository.DeleteAsync(id);
+            return 0;
         }
 
         private async Task<Template> GetOrFailAsync(Guid templateId)

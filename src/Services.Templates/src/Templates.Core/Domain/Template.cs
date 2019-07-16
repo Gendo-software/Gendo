@@ -22,13 +22,13 @@ namespace Templates.Core.Domain
             CurrentVersion = currentVersion;
             UserId = userId;
             SetName(name);
+            SetContent(content);
             Deleted = false; 
             DuringEditing = false;
-            Content = content;
             CreatedAt = DateTime.UtcNow;
         }
 
-        private void SetName(string name)
+        public void SetName(string name)
         {
             if(String.IsNullOrEmpty(name))
             {
@@ -36,6 +36,16 @@ namespace Templates.Core.Domain
                     "Name of template is invalid.");
             }
             Name = name;
+        }
+
+        public void SetContent(string content)
+        {
+            if(String.IsNullOrEmpty(content))
+            {
+                throw new DomainException(ErrorCodes.EmptyContent, 
+                    "Content of template is empty");
+            }
+            Content = content;
         }
     }
 }

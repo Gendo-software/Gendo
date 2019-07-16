@@ -15,9 +15,11 @@ namespace Templates.Infrastructure.Handlers.Users
             _templateService = templateService;
         }
 
-        public async Task HandleAsync(UpdateTemplate command)
+        public async Task<int> HandleAsync(UpdateTemplate command)
         {
-            await _templateService.UpdateAsync(command.Id, Guid.NewGuid(), command.UserId, command.Name, command.Content.ToString());
+            var newVersion = Guid.NewGuid();
+            await _templateService.UpdateAsync(command.Id, newVersion, command.UserId, command.Name, command.Content.ToString());
+            return 0;
         }
     }
 }

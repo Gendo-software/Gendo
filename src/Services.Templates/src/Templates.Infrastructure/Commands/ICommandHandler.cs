@@ -5,6 +5,6 @@ namespace Templates.Infrastructure.Commands
 {
     public interface ICommandHandler<T> where T : ICommand 
     {
-        Task HandleAsync(T command); 
+        Task<int> HandleAsync(T command); 
     }
 }
