@@ -32,7 +32,7 @@ namespace Templates.Api
     {
         public IConfiguration Configuration { get; }
         public IContainer ApplicationContainer { get; private set; }
-
+        readonly string AllowOrigins = "_allowOrigins";
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -44,7 +44,17 @@ namespace Templates.Api
         }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
-        {
+        {            
+            services.AddCors(options => 
+            {
+                options.AddPolicy(AllowOrigins,
+                corsBuilder => 
+                {
+                    corsBuilder.WithOrigins("http://localhost",
+                                            "http://mypp.example");
+                });
+            });
+
             services.AddMvc();
             services.AddAuthentication(options =>
             {
@@ -89,6 +99,7 @@ namespace Templates.Api
             IApplicationLifetime appLifetime)
         {
             MongoConfigurator.Initialize();
+            app.UseCors(AllowOrigins);
             app.UseAuthentication();
             app.UseExceptionHandlerMiddleware();
             app.UseMvc();       
