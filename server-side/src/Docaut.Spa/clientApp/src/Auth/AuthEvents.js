@@ -2,7 +2,7 @@ import { EventEmitter } from "events";
 
 const events = {    
   onLoginSuccess: "onLoginSuccess"
-}
+};
 
 export default class AuthEvents {    
   constructor() {
@@ -20,4 +20,4 @@ export default class AuthEvents {
   emitLoginSuccess(authResults){
     this._ee.emit(events.onLoginSuccess, authResults);
   }
-};
+}

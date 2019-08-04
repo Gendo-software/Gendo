@@ -15,7 +15,7 @@ export default class NavigationBar extends Component {
     return <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" className='py-0'>
         <Container>
           <Navbar.Brand href="#home">
-            <img src={assets.img.logo128x50} />
+            <img src={assets.img.logo128x50} alt="Gendo"/>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

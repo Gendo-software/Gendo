@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Nav } from 'react-bootstrap'
-import AuthManager from '../../Auth/AuthManager'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-regular-svg-icons'
+import React, { Component } from 'react';
+import { Nav } from 'react-bootstrap';
+import AuthManager from '../../Auth/AuthManager';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSignOutAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
-const AuthCore = AuthManager.getAuthObject()
+const AuthCore = AuthManager.getAuthObject();
 
 export default class UserSection extends Component {
   state = { userName: '' }
@@ -13,27 +13,27 @@ export default class UserSection extends Component {
   refreshUser() {
     let receiveUserData = (error, profile) => {
       if (error) {
-        this.setState({ userName: 'unknown' })
+        this.setState({ userName: 'unknown' });
       } else if (profile) {
         this.setState({
           userName: profile.nickname
-        })
+        });
       }
-    }
+    };
 
     if (AuthCore.UserIsLogged()) {
-      AuthCore.GetUserProfile((...params) => receiveUserData(...params))
+      AuthCore.GetUserProfile((...params) => receiveUserData(...params));
     }
   }
 
   componentDidUpdate() {
     if (this.state.userName.length === 0) {
-      this.refreshUser()
+      this.refreshUser();
     }
   }
   componentDidMount() {
     AuthCore.Events.addLoginSuccess(() => this.refreshUser());    
-    this.refreshUser()
+    this.refreshUser();
   }
 
   onLogoutClick() {
@@ -42,7 +42,7 @@ export default class UserSection extends Component {
 
   onUserClick() {
     console.log("user profile clicked. userInfo:");
-    console.dir(AuthCore.UserProfile)
+    console.dir(AuthCore.UserProfile);
   }
 
   onLoginClick(){
@@ -69,7 +69,7 @@ export default class UserSection extends Component {
           </Nav.Link>
         </Nav.Item>
       </>
-    )
+    );
   }
 
   UserIsNotLoggedView() {
@@ -88,17 +88,19 @@ export default class UserSection extends Component {
           </Nav.Link>
         </Nav.Item>
       </>
-    )
+    );
   }
 
   render() {
     return (
       <div>
         <Nav>
-          {(AuthCore.UserIsLogged() && this.UserIsLoggedView()) ||
-            this.UserIsNotLoggedView()}
+          {AuthCore.UserIsLogged() ? 
+            this.UserIsLoggedView():
+            this.UserIsNotLoggedView()
+          }
         </Nav>
       </div>
-    )
+    );
   }
 }

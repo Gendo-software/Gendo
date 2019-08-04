@@ -12,8 +12,8 @@ export function InitHashMarking(codeMirrorMode) {
         var ch;
         // pattern for ##test## (without ' ' inside)
         if (stream.match("##")) {
-          while ((ch = stream.next()) != null && ch != " ") {            
-            if (ch == "#" && stream.next() == "#") {
+          while ((ch = stream.next()) != null && ch !== " ") {            
+            if (ch === "#" && stream.next() === "#") {
               stream.eat("#");
               return MARKING_NAME;
             }

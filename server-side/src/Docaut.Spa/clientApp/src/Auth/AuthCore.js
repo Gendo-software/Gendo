@@ -124,7 +124,7 @@ export default class AuthCore {
         if(timeout > 0) {
             this.tokenRenewalTimeout = setTimeout(() => {                
                 this.RenewSession();                
-            }, timeout)
+            }, timeout);
         }
     }
 
@@ -154,7 +154,7 @@ export default class AuthCore {
             await this.RefreshUserProfile(cb);            
         }        
         else{
-            return cb(null, this.UserProfile)
+            return cb(null, this.UserProfile);
         }
 
     }
@@ -164,7 +164,7 @@ export default class AuthCore {
             {
                 if(error){
                     console.error("error during try get user info");
-                    cb(error, null)
+                    cb(error, null);
                 }
                 else
                 {
@@ -179,4 +179,4 @@ export default class AuthCore {
     {                
         return this._authEvents;
     }    
-};
+}

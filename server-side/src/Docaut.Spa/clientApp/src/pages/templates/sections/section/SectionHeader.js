@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Row, Button, Col, Form } from 'react-bootstrap'
+import React from 'react';
+import { Row, Button, Col, Form } from 'react-bootstrap';
 import { NewTemplateConsumer } from 'context/NewTemplateContext';
 
 const SectionHeader = props => {
   return (
     <NewTemplateConsumer>
-      {({removeSection, onSectionChange}) => (
-              <div className="mb-2">
+      {({removeSection, onSectionChange}) => 
+              (<div className="mb-2">
               <Row className="align-items-center">
                 <Col>
                   {(props.section.isOptional && (
@@ -27,15 +26,15 @@ const SectionHeader = props => {
                   </Col>
                 )}
               </Row>
-            </div>
-      )}
+            </div>)
+      }
 
     </NewTemplateConsumer>
-  )
-}
+  );
+};
 
 SectionHeader.propTypes = {
 
-}
+};
 
-export default SectionHeader
+export default SectionHeader;

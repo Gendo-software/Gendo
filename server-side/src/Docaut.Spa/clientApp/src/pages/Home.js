@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Container, Col, Row} from 'react-bootstrap'
+import React, { Component } from 'react';
+import { Container, Col, Row} from 'react-bootstrap';
 import TemplateList from './home/TemplateList';
 import DocumentList from './home/DocumentList';
 
@@ -34,6 +34,6 @@ export default class Home extends Component {
           </Row>
         </Container>
       </>
-    )
+    );
   }
 }

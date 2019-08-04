@@ -1,26 +1,26 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'connected-react-router'
-import store, { history } from './store'
-import App from './app'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { ConnectedRouter } from 'connected-react-router';
+import store, { history } from './store';
+import App from './app';
 
-import './index.css'
+import './index.css';
 
 //https://reactstrap.github.io/
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //custom css
-import './assets/custom.css'
+import './assets/custom.css';
 
 
 //static config
-import Config from './StaticConfig/config'
+import Config from './StaticConfig/config';
 Config.SetConfig(window.StaticConfig);
 
 let message = "";
 
-if(window.location.origin != "http://myapp.example:3000" ){
+if(window.location.origin !== "http://myapp.example:3000" ){
 message = 
 <div style = {{background: 'red', color:'white', width:'100%'}}>
   <p>
@@ -34,7 +34,7 @@ message =
 }
 
 
-const target = document.querySelector('#root')
+const target = document.querySelector('#root');
 
 render(
   <Provider store={store}>
@@ -46,4 +46,4 @@ render(
     </ConnectedRouter>
   </Provider>,
   target
-)
+);

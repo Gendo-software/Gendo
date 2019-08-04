@@ -1,14 +1,14 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
-import config from './StaticConfig/config';
+import { Route, Switch } from 'react-router-dom';
 import DebugInfoComponent from './components/DebugInfo/DebugInfoComponent';
 import MainLayout from './layout/MainLayout';
 import Home from './pages/Home';
 import CreateTemplate from './pages/templates/CreateTemplate';
 import Test from './pages/Test';
+import config from './StaticConfig/config';
 
-const App = () => (
-  <div>
+const App = () => 
+  (<div>
     {config.DebugMode ? <DebugInfoComponent /> : ''}
     <Switch>
       <MainLayout>
@@ -17,8 +17,8 @@ const App = () => (
         <Route exact path="/Test" component={Test} />
       </MainLayout>
     </Switch>
-  </div>
-);
+  </div>)
+;
 
 //
 

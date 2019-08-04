@@ -1,7 +1,6 @@
-import React from 'react'
-import Editor from './section/Editor'
-import ParametersSettings from './section/ParametersSettings'
-import { Button, Row, Col } from 'react-bootstrap'
+import React from 'react';
+import Editor from './section/Editor';
+import ParametersSettings from './section/ParametersSettings';
 import SectionHeader from './section/SectionHeader';
 
 const Section = props => {
@@ -11,7 +10,7 @@ const Section = props => {
       <Editor section={props.section} />
       <ParametersSettings section={props.section}/>
     </div>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;

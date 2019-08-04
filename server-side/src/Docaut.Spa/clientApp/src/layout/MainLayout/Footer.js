@@ -1,5 +1,5 @@
-import React from 'react'
-import { Container } from 'react-bootstrap'
+import React from 'react';
+import { Container } from 'react-bootstrap';
 
 export default function Footer() {
   return (
@@ -11,5 +11,5 @@ export default function Footer() {
         </Container>
       </footer>
     </>
-  )
+  );
 }

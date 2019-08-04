@@ -35,8 +35,7 @@ export default class DebugInfoComponent extends Component {
   };
 
   getTemplates() {
-    const templatesApi = new TemplatesApiClient();
-    let templates = null;
+    const templatesApi = new TemplatesApiClient();    
 
     templatesApi
       .getTemplates()

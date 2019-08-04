@@ -1,6 +1,6 @@
-import React from 'react'
-import { Table, Button } from 'react-bootstrap'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { Table, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const mockValues = {
@@ -18,7 +18,7 @@ const mockValues = {
       id: 'guid-id-3'
     }
   ]
-}
+};
 
 const TemplateList = props => {
   return (
@@ -34,26 +34,25 @@ const TemplateList = props => {
                 <td className="text-right px-3">     
                   <Link to={`Document/Create/${template.name}`} >
                     <Button
-                      variant="outline-primary"
-                      size="sm"
-                      className="px-3"
-                      //onClick={() => props.onCreateClick(template)}
-                      >
+                        variant="outline-primary"
+                        size="sm"
+                        className="px-3"
+                    >
                       Create
                     </Button>
                   </Link>       
                 </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </Table>
     </div>
-  )
-}
+  );
+};
 
 TemplateList.propTypes = {
   onCreateClick: PropTypes.func.isRequired
-}
+};
 
-export default TemplateList
+export default TemplateList;

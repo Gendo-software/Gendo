@@ -39,9 +39,9 @@ export default class Config
                     redirectUrl: 'http://myapp.example:3000/Login',
                     responseType: 'token id_token',    
                     audience: "basicApi",
-                    redirect: false,
+                    redirect: false
                 }
             }            
-        }
+        };
     }
 }

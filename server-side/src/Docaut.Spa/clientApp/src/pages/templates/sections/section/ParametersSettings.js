@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Table, Form, Container } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Form, Table } from 'react-bootstrap';
 import { NewTemplateConsumer } from '../../../../context/NewTemplateContext';
 
 
