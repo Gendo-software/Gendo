@@ -5,8 +5,8 @@ export default class Config
         this._config = config;
     }
 
-    static get ApiAddress(){
-        return this._config.ItemsApiAddress;
+    static get ApiBaseUrl(){
+        return this._config.ApiBaseUrl;
     }
     
     static get ExampleValue(){    

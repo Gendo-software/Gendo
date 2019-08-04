@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import AuthManager from '../../Auth/AuthManager'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
@@ -27,7 +27,7 @@ export default class UserSection extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.userName.length == 0) {
+    if (this.state.userName.length === 0) {
       this.refreshUser()
     }
   }
