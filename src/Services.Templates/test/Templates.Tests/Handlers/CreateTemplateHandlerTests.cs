@@ -25,7 +25,7 @@ namespace Templates.Tests.Controllers
         {
             var command = new CreateTemplate() { 
                 Id = Guid.Parse(id),
-                UserId = Guid.Parse("ec31a6a7-eb13-4b67-9dbb-9728b7711f8d"),
+                UserId = "auth0|5c81a3686d3d732e6aa9e88f"
                 Name = "Foo template",
                 Content = JObject.Parse("{\"foo\" : \"bar\"}")
             };

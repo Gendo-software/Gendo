@@ -7,7 +7,7 @@ namespace Templates.Core.Domain
     {
         public Guid Id { get; set; }
         public Guid CurrentVersion { get; set; }
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public bool Deleted { get; set; }
         public bool DuringEditing { get; set; }
@@ -16,7 +16,7 @@ namespace Templates.Core.Domain
 
         public Template() { }
 
-        public Template(Guid id, Guid currentVersion, Guid userId, string name, string content) 
+        public Template(Guid id, Guid currentVersion, string userId, string name, string content) 
         {
             Id = id;
             CurrentVersion = currentVersion;

@@ -21,14 +21,14 @@ namespace Templates.Infrastructure.Services
             _mapper = mapper;
         }
 
-        public async Task<int> CreateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content) //ok
+        public async Task<int> CreateAsync(Guid id, Guid currentVersion, string userId, string name, string content) //ok
         {
             var template = new Template(id, currentVersion, userId, name, content);
             await _templateRepository.AddAsync(template);
             return 0;
         }
 
-        public async Task<int> UpdateAsync(Guid id, Guid currentVersion, Guid userId, string name, string content)
+        public async Task<int> UpdateAsync(Guid id, Guid currentVersion, string userId, string name, string content)
         {
             var template = await GetOrFailAsync(id);
             template.CurrentVersion = currentVersion;
