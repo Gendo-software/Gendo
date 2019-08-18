@@ -3,6 +3,8 @@ import uuid from 'uuid/v1';
 import _ from 'lodash';
 import detectHashInText from '../misc/detectHashInText';
 import sampleText from './../assets/sampleText';
+import TemplatesApiClient from '../api/clients/TemplatesApiClient';
+import AuthManager from '../Auth/AuthManager';
 
 const NewTemplateContext = React.createContext();
 
@@ -88,6 +90,35 @@ export default class NewTemplateProvider extends Component {
     this.setState({sections: newSections});
   }
 
+  saveTemplate(){    
+    const userProfile = AuthManager.getAuthObject().UserProfile;
+    console.dir(userProfile);
+
+    let template = {
+      name: this.state.name,
+      content: {sections:this.state.sections},
+      userId: userProfile.sub
+    }
+
+    const templatesApi = new TemplatesApiClient();
+    templatesApi.saveTemplate(template)
+    .then(response =>{
+      alert('success?');
+      console.dir(response);
+    })
+    .catch(error => {
+      alert('error during save template');
+    })
+  }
+
+  onTemplateChange(event){
+    const propName = event.target.name;
+    let newState = {...this.state};
+    newState[propName] = event.target.value;
+
+    this.setState({...newState});
+  }
+
   render() {
     const { children } = this.props;
     return (      
@@ -98,7 +129,9 @@ export default class NewTemplateProvider extends Component {
           addSection: this.addSection.bind(this),
           removeSection: this.removeSection.bind(this),
           onSectionChange: this.onSectionChange.bind(this),
-          onSectionFieldChange: this.onSectionFieldChange.bind(this)
+          onSectionFieldChange: this.onSectionFieldChange.bind(this),
+          saveTemplate: this.saveTemplate.bind(this),
+          onTemplateChange: this.onTemplateChange.bind(this)
         }}
       >
         {children}

@@ -32,5 +32,11 @@ export default class ApiClientBase {
       // check interceptor instead this solution
     });
   };
-  post = async (url, data) => {};
+  post = async (url, data) => {
+    console.log(`request ${url}, data: ${data}`);
+    return this.axiosInstance.post(url, data).catch(ex => {
+      logError(ex);
+      throw ex;
+    });
+  };
 }

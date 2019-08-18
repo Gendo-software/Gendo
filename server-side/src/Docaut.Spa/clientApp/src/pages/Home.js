@@ -2,9 +2,29 @@ import React, { Component } from 'react';
 import { Container, Col, Row} from 'react-bootstrap';
 import TemplateList from './home/TemplateList';
 import DocumentList from './home/DocumentList';
+import TemplatesApiClient from '../api/clients/TemplatesApiClient';
 
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props)
+    
+    this.state = {
+       templates:[]
+    }
+  }
+
+  componentDidMount(){
+    const templatesApi = new TemplatesApiClient();
+    templatesApi.getTemplates()
+      .then(response => {
+        this.setState({templates: response.data });
+      })
+      .catch(error => {
+        alert(`api error`);
+      })
+  }
+  
   render() {
     return (
       <>
@@ -16,7 +36,7 @@ export default class Home extends Component {
           </Row>
           <Row>
             <Col lg={{ offset: 2, span: 5 }}>
-              <TemplateList onCreateClick={() => alert('onCreateClick')}/>
+              <TemplateList templates = {this.state.templates} onCreateClick={() => alert('onCreateClick')}/>
             </Col>
           </Row>
         </Container>

@@ -1,6 +1,7 @@
-export const templatesRoutesParam = parameter => {
+export const TemplatesRoutesParam = parameter => {
   return {
     templateById: `/templates/${parameter}`
+
   };
 };
 
