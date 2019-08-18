@@ -50,8 +50,10 @@ namespace Templates.Api
                 options.AddPolicy(AllowOrigins,
                 corsBuilder => 
                 {
-                    corsBuilder.WithOrigins("http://localhost",
-                                            "http://mypp.example");
+                    corsBuilder
+                        .AllowAnyHeader()
+                        .WithOrigins("http://localhost",
+                            "http://myapp.example:3000");
                 });
             });
 
