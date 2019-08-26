@@ -21,7 +21,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = string.Empty;
             var content = "{\"foo\" : \"bar\"}";
             
@@ -30,7 +30,7 @@ namespace Templates.Tests.Controllers
             var templateService = new TemplateService(templateRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => templateService.CreateAsync(id, versionId, userId,templateName,content));
+                () => templateService.CreateAsync(id, versionId,userId,templateName,content));
 
             templateRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Template>()), Times.Never);
             exception.Code.Should().Be("invalid_name");
@@ -41,7 +41,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = "Foo template";
             var content = string.Empty;
             
@@ -61,7 +61,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = "Foo template";
             var content = "{\"foo\" : \"bar\"}";
             
@@ -79,7 +79,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = "Foo template";
             var content = "{\"foo\" : \"bar\"}";
             
@@ -101,7 +101,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = string.Empty;
             var content = "{\"foo\" : \"bar\"}";
             
@@ -124,7 +124,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = "Test template";
             var content = string.Empty;
             
@@ -147,7 +147,7 @@ namespace Templates.Tests.Controllers
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = Guid.Parse("d1c5463d-012a-4ab5-bdfc-f99ad37b5d00");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
             var templateName = "Test template";
             var content = "{\"foo\" : \"bar\"}";
             
