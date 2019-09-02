@@ -3,6 +3,7 @@ import { Container, Col, Row} from 'react-bootstrap';
 import TemplateList from './home/TemplateList';
 import DocumentList from './home/DocumentList';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
+import InfoContent from './home/InfoContent';
 
 
 export default class Home extends Component {
@@ -28,6 +29,9 @@ export default class Home extends Component {
   render() {
     return (
       <>
+      <Container className="mt-5">
+        <InfoContent/>
+      </Container>
         <Container className="mt-5">
           <Row>
             <Col lg={{ offset: 2 }}>

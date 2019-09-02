@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import CreateTemplate from './pages/templates/CreateTemplate';
 import Test from './pages/Test';
 import config from './StaticConfig/config';
-import CreateDocumentView from './pages/documents/CreateDocument_old';
 import CreateDocument from './pages/documents/CreateDocument';
 
 const App = () => 
@@ -16,9 +15,8 @@ const App = () =>
       <MainLayout>
         <Route exact path="/" component={Home} />
         <Route exact path="/Template/Create" component={CreateTemplate} />
-        <Route exact path="/Test" component={Test} />
-        <Route exact path="/Document/CreateOld" component={CreateDocumentView} />
         <Route exact path="/Document/Create/:templateId" component={CreateDocument} />
+        <Route exact path="/Test" component={Test} />
       </MainLayout>
     </Switch>
   </div>)
