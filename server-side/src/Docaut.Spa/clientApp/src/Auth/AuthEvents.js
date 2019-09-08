@@ -1,23 +1,23 @@
-import { EventEmitter } from "events";
+import { EventEmitter } from 'events';
 
-const events = {    
-  onLoginSuccess: "onLoginSuccess"
+const events = {
+  onLoginSuccess: 'onLoginSuccess'
 };
 
-export default class AuthEvents {    
+export default class AuthEvents {
   constructor() {
-    this._ee = new EventEmitter();    
+    this._ee = new EventEmitter();
   }
-    
-  addLoginSuccess(cb){
+
+  addLoginSuccess(cb) {
     this._ee.on(events.onLoginSuccess, cb);
   }
 
-  removeLoginSuccess(cb){
+  removeLoginSuccess(cb) {
     this._ee.off(events.onLoginSuccess, cb);
   }
-  
-  emitLoginSuccess(authResults){
+
+  emitLoginSuccess(authResults) {
     this._ee.emit(events.onLoginSuccess, authResults);
   }
 }

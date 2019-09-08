@@ -14,7 +14,7 @@ function FormBody(props) {
   return (
     <Form onSubmit={props.onSubmit}>
       <FormSection sectionData={mainSectinon} />
-      
+
       {optionalSections.map(section => (
         <FormSection key={section.id} sectionData={section} />
       ))}
@@ -29,7 +29,7 @@ function FormBody(props) {
 }
 
 FormBody.propTypes = {
-  formData: PropTypes.object,
+  formData: PropTypes.object
 };
 
 export default FormBody;

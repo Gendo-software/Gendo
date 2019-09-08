@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Form } from "react-bootstrap";
+import React, { Fragment } from 'react';
+import { Form } from 'react-bootstrap';
 
 export default ({
   children,
@@ -9,9 +9,8 @@ export default ({
 }) => (
   <Fragment>
     <Form.Control {...input} {...props} />
-    {touched && error &&
-    <Form.Control.Feedback type="invalid">
-      {error}
-    </Form.Control.Feedback>}
+    {touched && error && (
+      <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
+    )}
   </Fragment>
-)
+);

@@ -47,19 +47,17 @@ const DocumentList = props => {
                 </td>
                 <td className="px-3 text-right align-middle">
                   <Button
-                      onClick = {() => props.onOpenClick(doc)}
-                      variant="outline-primary"
-                      size="sm"
-                      className="px-3 mr-1"
-                  >
+                    onClick={() => props.onOpenClick(doc)}
+                    variant="outline-primary"
+                    size="sm"
+                    className="px-3 mr-1">
                     Open
                   </Button>
                   <Button
-                      onClick={() => props.onDeleteClick(doc)}
-                      variant="outline-danger"
-                      size="sm"
-                      className="px-3 mr-1"
-                  >
+                    onClick={() => props.onDeleteClick(doc)}
+                    variant="outline-danger"
+                    size="sm"
+                    className="px-3 mr-1">
                     <b>×</b>
                   </Button>
                 </td>

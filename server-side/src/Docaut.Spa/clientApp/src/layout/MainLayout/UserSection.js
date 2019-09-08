@@ -8,7 +8,7 @@ import { faSignOutAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 const AuthCore = AuthManager.getAuthObject();
 
 export default class UserSection extends Component {
-  state = { userName: '' }
+  state = { userName: '' };
 
   refreshUser() {
     let receiveUserData = (error, profile) => {
@@ -32,7 +32,7 @@ export default class UserSection extends Component {
     }
   }
   componentDidMount() {
-    AuthCore.Events.addLoginSuccess(() => this.refreshUser());    
+    AuthCore.Events.addLoginSuccess(() => this.refreshUser());
     this.refreshUser();
   }
 
@@ -41,15 +41,15 @@ export default class UserSection extends Component {
   }
 
   onUserClick() {
-    console.log("user profile clicked. userInfo:");
+    console.log('user profile clicked. userInfo:');
     console.dir(AuthCore.UserProfile);
   }
 
-  onLoginClick(){
+  onLoginClick() {
     AuthCore.ShowLoginBox();
   }
 
-  onRegisterClick(){
+  onRegisterClick() {
     AuthCore.ShowRegisterBox();
   }
 
@@ -58,14 +58,12 @@ export default class UserSection extends Component {
       <>
         <Nav.Item onClick={this.onUserClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faUser} />
-            {' '}Witaj {this.state.userName}
+            <FontAwesomeIcon icon={faUser} /> Witaj {this.state.userName}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item onClick={this.onLogoutClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faSignOutAlt} />
-            {' '}Logout
+            <FontAwesomeIcon icon={faSignOutAlt} /> Logout
           </Nav.Link>
         </Nav.Item>
       </>
@@ -77,14 +75,12 @@ export default class UserSection extends Component {
       <>
         <Nav.Item onClick={this.onLoginClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faUser} />
-            {' '}Login
+            <FontAwesomeIcon icon={faUser} /> Login
           </Nav.Link>
         </Nav.Item>
         <Nav.Item onClick={this.onRegisterClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faUserPlus} />
-            {' '}Register
+            <FontAwesomeIcon icon={faUserPlus} /> Register
           </Nav.Link>
         </Nav.Item>
       </>
@@ -95,10 +91,9 @@ export default class UserSection extends Component {
     return (
       <div>
         <Nav>
-          {AuthCore.UserIsLogged() ? 
-            this.UserIsLoggedView():
-            this.UserIsNotLoggedView()
-          }
+          {AuthCore.UserIsLogged()
+            ? this.UserIsLoggedView()
+            : this.UserIsNotLoggedView()}
         </Nav>
       </div>
     );

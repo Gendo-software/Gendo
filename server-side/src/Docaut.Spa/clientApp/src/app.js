@@ -8,20 +8,23 @@ import Test from './pages/Test';
 import config from './StaticConfig/config';
 import CreateDocument from './pages/documents/CreateDocument';
 
-const App = () => 
-  (<div>
+const App = () => (
+  <div>
     {config.DebugMode ? <DebugInfoComponent /> : ''}
     <Switch>
       <MainLayout>
         <Route exact path="/" component={Home} />
         <Route exact path="/Template/Create" component={CreateTemplate} />
-        <Route exact path="/Document/Create/:templateId" component={CreateDocument} />
+        <Route
+          exact
+          path="/Document/Create/:templateId"
+          component={CreateDocument}
+        />
         <Route exact path="/Test" component={Test} />
       </MainLayout>
     </Switch>
-  </div>)
-;
-
+  </div>
+);
 //
 
 //Valid validObject // rules override in inherited class

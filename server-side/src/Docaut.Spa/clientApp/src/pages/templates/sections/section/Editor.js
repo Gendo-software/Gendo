@@ -86,8 +86,8 @@ export default class Editor extends Component {
   render() {
     return (
       <NewTemplateConsumer>
-        {({ onSectionChange, name }) => 
-          (<Row>
+        {({ onSectionChange, name }) => (
+          <Row>
             <Col>
               <SimpleMDEEditor
                 onChange={(...params) =>
@@ -100,8 +100,8 @@ export default class Editor extends Component {
                 getMdeInstance={this.getMdeInstance.bind(this)}
               />
             </Col>
-          </Row>)
-        }
+          </Row>
+        )}
       </NewTemplateConsumer>
     );
   }

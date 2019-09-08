@@ -29,7 +29,7 @@ function FormSection(props) {
 }
 
 FormSection.propTypes = {
-  sectionData: PropTypes.object,
+  sectionData: PropTypes.object
 };
 
 export default FormSection;

@@ -1,5 +1,8 @@
 import ApiClientBase from './ApiClientBase';
-import { TemplatesRoutes, TemplatesRoutesParam } from '../routes/TemplatesRoutes';
+import {
+  TemplatesRoutes,
+  TemplatesRoutesParam
+} from '../routes/TemplatesRoutes';
 
 export default class TemplatesApiClient extends ApiClientBase {
   getTemplates = () => {
@@ -8,11 +11,11 @@ export default class TemplatesApiClient extends ApiClientBase {
 
   getTemplate = templateName => {
     return this.get(TemplatesRoutesParam(templateName).templateById);
-  }
+  };
 
-  saveTemplate = (template) => {
+  saveTemplate = template => {
     console.log('save template');
     console.dir(template);
     return this.post(TemplatesRoutes.templates, template);
-  }
+  };
 }
