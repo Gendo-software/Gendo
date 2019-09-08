@@ -5,6 +5,11 @@ import NewTemplateProvider, {
   NewTemplateConsumer
 } from '../../context/NewTemplateContext';
 
+// Przerobić na templateEditor
+// Mode: New/Edit
+// 1. Create template / Edit template
+// 2. buttonOnclick function
+
 export default class CreateTemplate extends Component {
   render() {
     return (

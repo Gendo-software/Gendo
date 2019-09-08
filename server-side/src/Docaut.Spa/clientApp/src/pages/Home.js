@@ -39,7 +39,7 @@ export default class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col lg={{ offset: 2, span: 5 }}>
+            <Col lg={{ offset: 2, span: 6 }}>
               <TemplateList templates = {this.state.templates} onCreateClick={() => alert('onCreateClick')}/>
             </Col>
           </Row>

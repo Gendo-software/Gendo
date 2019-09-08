@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const TemplateList = props => {
-  const {templates} = props;
+  const { templates } = props;
   return (
     <div className="border">
       <Table hover borderless size="sm" className="m-0">
@@ -15,16 +15,20 @@ const TemplateList = props => {
                 <td className="px-3 align-middle">{`${++key}. ${
                   template.name
                 }`}</td>
-                <td className="text-right px-3">     
-                  <Link to={`Document/Create/${template.id}`} >
+                <td className="text-right px-3">
+                  <Link to={`Document/Create/${template.id}`}>
                     <Button
-                        variant="outline-primary"
-                        size="sm"
-                        className="px-3"
-                    >
+                      variant="outline-primary"
+                      size="sm"
+                      className="px-3">
                       Create
                     </Button>
-                  </Link>       
+                  </Link>{' '}
+                  <Link to={`Template/Edit/${template.id}`}>
+                    <Button variant="outline-info" size="sm" className="px-3">
+                      Edit
+                    </Button>
+                  </Link>
                 </td>
               </tr>
             );
