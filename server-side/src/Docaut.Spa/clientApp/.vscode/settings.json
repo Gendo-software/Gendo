@@ -1,4 +1,9 @@
 {
   "javascript.preferences.importModuleSpecifier": "relative",
+  "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "prettier.disableLanguages": ["js"]
 }
