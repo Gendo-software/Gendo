@@ -62,7 +62,8 @@ export default class ParametersSettings extends Component {
                             this.props.section,
                             onSectionFieldChange
                           )
-                        }>
+                        }
+                      >
                         <option value="text">Text</option>
                         <option value="date">Date</option>
                         <option value="number">Number</option>

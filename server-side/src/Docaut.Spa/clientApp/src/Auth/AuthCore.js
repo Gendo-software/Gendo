@@ -88,13 +88,13 @@ export default class AuthCore {
 
   ShowLoginBox() {
     this.lock.show({
-      initialScreen: 'login'
+      initialScreen: 'login',
     });
   }
 
   ShowRegisterBox() {
     this.lock.show({
-      initialScreen: 'signUp'
+      initialScreen: 'signUp',
     });
   }
   setSession(authResult) {
@@ -134,7 +134,7 @@ export default class AuthCore {
     this.clearSession();
 
     this.lock.logout({
-      returnTo: window.location.origin
+      returnTo: window.location.origin,
     });
   }
 

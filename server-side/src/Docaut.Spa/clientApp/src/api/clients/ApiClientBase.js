@@ -20,8 +20,8 @@ export default class ApiClientBase {
       timeout: 30000,
       headers: {
         Authorization:
-          'Bearer ' + AuthManager.getAuthObject().AuthInfo.AccessToken
-      }
+          'Bearer ' + AuthManager.getAuthObject().AuthInfo.AccessToken,
+      },
     });
   }
   get = async (url, params) => {

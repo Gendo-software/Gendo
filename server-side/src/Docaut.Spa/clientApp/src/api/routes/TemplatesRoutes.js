@@ -1,9 +1,9 @@
 export const TemplatesRoutesParam = parameter => {
   return {
-    templateById: `/templates/${parameter}`
+    templateById: `/templates/${parameter}`,
   };
 };
 
 export const TemplatesRoutes = {
-  templates: '/templates'
+  templates: '/templates',
 };

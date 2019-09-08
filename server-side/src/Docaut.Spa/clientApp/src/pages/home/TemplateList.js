@@ -20,7 +20,8 @@ const TemplateList = props => {
                     <Button
                       variant="outline-primary"
                       size="sm"
-                      className="px-3">
+                      className="px-3"
+                    >
                       Create
                     </Button>
                   </Link>{' '}
@@ -40,7 +41,7 @@ const TemplateList = props => {
 };
 
 TemplateList.propTypes = {
-  onCreateClick: PropTypes.func.isRequired
+  onCreateClick: PropTypes.func.isRequired,
 };
 
 export default TemplateList;

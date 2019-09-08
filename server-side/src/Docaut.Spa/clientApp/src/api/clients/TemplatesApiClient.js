@@ -1,7 +1,7 @@
 import ApiClientBase from './ApiClientBase';
 import {
   TemplatesRoutes,
-  TemplatesRoutesParam
+  TemplatesRoutesParam,
 } from '../routes/TemplatesRoutes';
 
 export default class TemplatesApiClient extends ApiClientBase {

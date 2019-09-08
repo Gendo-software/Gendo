@@ -16,7 +16,7 @@ export default class UserSection extends Component {
         this.setState({ userName: 'unknown' });
       } else if (profile) {
         this.setState({
-          userName: profile.nickname
+          userName: profile.nickname,
         });
       }
     };

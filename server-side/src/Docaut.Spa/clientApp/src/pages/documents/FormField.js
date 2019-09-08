@@ -46,7 +46,7 @@ function FormField(props) {
 FormField.propTypes = {
   displayName: PropTypes.string,
   name: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 export default FormField;

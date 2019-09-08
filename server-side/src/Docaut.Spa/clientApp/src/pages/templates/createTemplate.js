@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import Sections from './Sections';
 import NewTemplateProvider, {
-  NewTemplateConsumer
+  NewTemplateConsumer,
 } from '../../context/NewTemplateContext';
 
 // Przerobić na templateEditor

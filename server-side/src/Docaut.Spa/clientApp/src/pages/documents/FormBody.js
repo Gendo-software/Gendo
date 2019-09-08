@@ -29,7 +29,7 @@ function FormBody(props) {
 }
 
 FormBody.propTypes = {
-  formData: PropTypes.object
+  formData: PropTypes.object,
 };
 
 export default FormBody;

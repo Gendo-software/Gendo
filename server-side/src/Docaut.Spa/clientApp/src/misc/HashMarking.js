@@ -20,7 +20,7 @@ export function InitHashMarking(codeMirrorMode) {
         }
         while (stream.next() != null && !stream.match('##', false)) {}
         return null;
-      }
+      },
     };
     //var tempMode = CodeMirror.getMode(config, parserConfig.backdrop || "gfm");
     //var tempMode = CodeMirror.getMode(config, "gfm");

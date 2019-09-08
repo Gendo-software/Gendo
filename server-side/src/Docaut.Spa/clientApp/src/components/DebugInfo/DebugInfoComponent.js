@@ -3,7 +3,7 @@ import AuthManager from '../../Auth/AuthManager';
 import TemplatesApiClient from '../../api/clients/TemplatesApiClient';
 
 const debugInfoStyle = {
-  background: '#777'
+  background: '#777',
 };
 
 const shortenString = value => {
@@ -22,7 +22,7 @@ export default class DebugInfoComponent extends Component {
     super(props);
 
     this.state = {
-      templates: null
+      templates: null,
     };
     this.authCore = AuthManager.getAuthObject();
     this.refreshCounter = 0;

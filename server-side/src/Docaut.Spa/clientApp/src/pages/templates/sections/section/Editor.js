@@ -14,7 +14,7 @@ function AddShowVariableToolbarAction(context) {
     className: 'fa fa-hashtag',
     title: 'Show variable',
     default: true,
-    action: context.showVariablesToggle.bind(context)
+    action: context.showVariablesToggle.bind(context),
   };
   context.simpleMdeInstance.toolbar.push(showVariableToolbarButton);
   context.simpleMdeInstance.createToolbar();
@@ -27,11 +27,11 @@ export default class Editor extends Component {
     super(props);
 
     this.state = {
-      fieldsCollection: []
+      fieldsCollection: [],
     };
 
     this.mdeOptions = {
-      spellChecker: false
+      spellChecker: false,
     };
   }
   componentDidMount(x, y) {
@@ -76,8 +76,8 @@ export default class Editor extends Component {
     const event = {
       target: {
         name: 'text',
-        value: value
-      }
+        value: value,
+      },
     };
 
     onSectionChange(event, this.props.section);
@@ -95,7 +95,7 @@ export default class Editor extends Component {
                 }
                 value={this.props.section.text}
                 options={{
-                  spellChecker: false
+                  spellChecker: false,
                 }}
                 getMdeInstance={this.getMdeInstance.bind(this)}
               />

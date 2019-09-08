@@ -1,7 +1,7 @@
 import { EventEmitter } from 'events';
 
 const events = {
-  onLoginSuccess: 'onLoginSuccess'
+  onLoginSuccess: 'onLoginSuccess',
 };
 
 export default class AuthEvents {

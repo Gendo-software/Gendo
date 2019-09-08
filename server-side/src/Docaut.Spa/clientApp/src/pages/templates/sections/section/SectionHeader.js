@@ -25,7 +25,8 @@ const SectionHeader = props => {
                   variant={'outline-danger'}
                   onClick={(...params) =>
                     removeSection(...params, props.section)
-                  }>
+                  }
+                >
                   Remove this section
                 </Button>
               </Col>

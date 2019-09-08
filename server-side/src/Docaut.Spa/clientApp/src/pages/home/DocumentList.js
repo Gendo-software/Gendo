@@ -8,27 +8,27 @@ const mockValues = {
       name: 'Volkswagen Passat',
       template: {
         name: 'Seeling Car',
-        templateId: 'guid-id-1'
+        templateId: 'guid-id-1',
       },
-      id: 'guid-doc-id_1'
+      id: 'guid-doc-id_1',
     },
     {
       name: 'Opel Astra',
       template: {
         name: 'Seeling Car',
-        templateId: 'guid-id-1'
+        templateId: 'guid-id-1',
       },
-      id: 'guid-doc-id_2'
+      id: 'guid-doc-id_2',
     },
     {
       name: 'BMW X5',
       template: {
         name: 'Seeling Car',
-        templateId: 'guid-id-1'
+        templateId: 'guid-id-1',
       },
-      id: 'guid-doc-id_3'
-    }
-  ]
+      id: 'guid-doc-id_3',
+    },
+  ],
 };
 
 const DocumentList = props => {
@@ -50,14 +50,16 @@ const DocumentList = props => {
                     onClick={() => props.onOpenClick(doc)}
                     variant="outline-primary"
                     size="sm"
-                    className="px-3 mr-1">
+                    className="px-3 mr-1"
+                  >
                     Open
                   </Button>
                   <Button
                     onClick={() => props.onDeleteClick(doc)}
                     variant="outline-danger"
                     size="sm"
-                    className="px-3 mr-1">
+                    className="px-3 mr-1"
+                  >
                     <b>×</b>
                   </Button>
                 </td>
@@ -72,7 +74,7 @@ const DocumentList = props => {
 
 DocumentList.propTypes = {
   onDeleteClick: PropTypes.func.isRequired,
-  onOpenClick: PropTypes.func.isRequired
+  onOpenClick: PropTypes.func.isRequired,
 };
 
 export default DocumentList;

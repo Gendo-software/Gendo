@@ -11,8 +11,8 @@ class CreateDocument extends Component {
     this.state = {
       template: {
         data: null,
-        isLoaded: false
-      }
+        isLoaded: false,
+      },
     };
 
     this.templatesApi = new TemplatesApiClient();

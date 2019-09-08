@@ -17,9 +17,9 @@ export default class NewTemplateProvider extends Component {
         id: uuid(),
         isOptional: false,
         text: sampleText.Text,
-        fields: []
-      }
-    ]
+        fields: [],
+      },
+    ],
   };
 
   componentDidUpdate() {
@@ -40,7 +40,7 @@ export default class NewTemplateProvider extends Component {
       id: uuid(),
       isOptional: true,
       text: '',
-      fields: []
+      fields: [],
     };
     this.setState(prevState => {
       prevState.sections.push(newOptionalSection);
@@ -88,7 +88,7 @@ export default class NewTemplateProvider extends Component {
           name: newFieldName,
           type: 'text',
           mandatory: false,
-          displayName: ''
+          displayName: '',
         });
       });
       fieldsCollection = fieldsCollection.filter(
@@ -126,7 +126,7 @@ export default class NewTemplateProvider extends Component {
     let template = {
       name: this.state.name,
       content: { sections: this.state.sections },
-      userId: userProfile.sub
+      userId: userProfile.sub,
     };
 
     const templatesApi = new TemplatesApiClient();
@@ -161,8 +161,9 @@ export default class NewTemplateProvider extends Component {
           onSectionChange: this.onSectionChange.bind(this),
           onSectionFieldChange: this.onSectionFieldChange.bind(this),
           saveTemplate: this.saveTemplate.bind(this),
-          onTemplateChange: this.onTemplateChange.bind(this)
-        }}>
+          onTemplateChange: this.onTemplateChange.bind(this),
+        }}
+      >
         {children}
       </NewTemplateContext.Provider>
     );
