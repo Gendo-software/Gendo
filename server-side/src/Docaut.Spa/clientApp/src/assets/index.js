@@ -1,6 +1,6 @@
 const assets = {
   img: {
-    logo128x50: require('./img/logo128x50.png')
+    gendo179x50: require('./img/gendo179x50.png')
   }
 };
 

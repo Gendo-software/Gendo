@@ -15,10 +15,11 @@ export default class NavigationBar extends Component {
         bg="dark"
         variant="dark"
         expand="lg"
-        className="py-0">
+        className="py-0"
+      >
         <Container>
           <Navbar.Brand href="#home">
-            <img src={assets.img.logo128x50} alt="Gendo" />
+            <img src={assets.img.gendo179x50} alt="Gendo" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
