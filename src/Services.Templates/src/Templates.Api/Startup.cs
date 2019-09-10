@@ -51,6 +51,7 @@ namespace Templates.Api
                 corsBuilder => 
                 {
                     corsBuilder
+                        .AllowAnyMethod()
                         .AllowAnyHeader()
                         .WithOrigins("http://localhost",
                             "http://myapp.example:3000");
