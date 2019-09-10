@@ -4,7 +4,7 @@ import { Jumbotron } from 'react-bootstrap';
 export default function InfoContent() {
   return (
     <Jumbotron>
-      <h1>Hello, my dear user!</h1>
+      <h1>Hello my dear user :)</h1>
       <p>This is demo project created to show you our workshop.</p>
       <p>
         In this project we use most popular technologies - .net core, react.js,

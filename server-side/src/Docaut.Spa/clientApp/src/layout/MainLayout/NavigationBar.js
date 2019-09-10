@@ -19,7 +19,9 @@ export default class NavigationBar extends Component {
       >
         <Container>
           <Navbar.Brand href="#home">
-            <img src={assets.img.gendo179x50} alt="Gendo" />
+            <LinkContainer to="/" exact>
+              <img src={assets.img.gendo179x50} alt="Gendo" />
+            </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
