@@ -43,6 +43,10 @@ class Template extends Component {
     });
   };
 
+  exit = () => {
+    this.props.history.push('');
+  };
+
   render() {
     return (
       <Container className="mt-5">
@@ -90,7 +94,10 @@ class Template extends Component {
                 </Button>{' '}
               </>
             )}
-            <Button variant="outline-danger">Exit</Button>{' '}
+            <Button variant="outline-danger" onClick={this.exit}>
+              {' '}
+              Exit
+            </Button>{' '}
           </Col>
         </Row>
       </Container>

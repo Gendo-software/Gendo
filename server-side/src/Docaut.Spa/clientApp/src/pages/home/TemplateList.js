@@ -29,7 +29,15 @@ const TemplateList = props => {
                     <Button variant="outline-info" size="sm" className="px-3">
                       Edit
                     </Button>
-                  </Link>
+                  </Link>{' '}
+                  <Button
+                    variant="outline-danger"
+                    size="sm"
+                    className="px-3"
+                    onClick={() => props.onDeleteClick(template.id)}
+                  >
+                    X
+                  </Button>
                 </td>
               </tr>
             );
@@ -41,7 +49,7 @@ const TemplateList = props => {
 };
 
 TemplateList.propTypes = {
-  onCreateClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
 };
 
 export default TemplateList;

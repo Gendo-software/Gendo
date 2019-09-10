@@ -22,4 +22,8 @@ export default class TemplatesApiClient extends ApiClientBase {
   editTemplate = template => {
     return this.put(TemplatesRoutesParam(template.id).templateById, template);
   };
+
+  deleteTemplate = templateId => {
+    return this.delete(TemplatesRoutesParam(templateId).templateById);
+  };
 }

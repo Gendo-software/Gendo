@@ -14,7 +14,7 @@ export default class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  refreshTemplateList = () => {
     const templatesApi = new TemplatesApiClient();
     templatesApi
       .getTemplates()
@@ -24,7 +24,18 @@ export default class Home extends Component {
       .catch(error => {
         alert(`api error`);
       });
+  };
+  componentDidMount() {
+    this.refreshTemplateList();
   }
+
+  deleteTemplate = templateId => {
+    const templatesApi = new TemplatesApiClient();
+
+    templatesApi.deleteTemplate(templateId).then(response => {
+      this.refreshTemplateList();
+    });
+  };
 
   render() {
     return (
@@ -39,10 +50,10 @@ export default class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col lg={{ offset: 2, span: 6 }}>
+            <Col lg={{ offset: 2, span: 7 }}>
               <TemplateList
                 templates={this.state.templates}
-                onCreateClick={() => alert('onCreateClick')}
+                onDeleteClick={this.deleteTemplate}
               />
             </Col>
           </Row>

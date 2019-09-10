@@ -47,4 +47,12 @@ export default class ApiClientBase {
       throw ex;
     });
   };
+
+  delete = async (url, data) => {
+    console.log(`request ${url}, data: ${data}`);
+    return this.axiosInstance.delete(url, data).catch(ex => {
+      logError(ex);
+      throw ex;
+    });
+  };
 }
