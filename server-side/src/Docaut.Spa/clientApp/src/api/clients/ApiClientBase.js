@@ -39,4 +39,12 @@ export default class ApiClientBase {
       throw ex;
     });
   };
+
+  put = async (url, data) => {
+    console.log(`request ${url}, data: ${data}`);
+    return this.axiosInstance.put(url, data).catch(ex => {
+      logError(ex);
+      throw ex;
+    });
+  };
 }

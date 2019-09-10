@@ -6,9 +6,9 @@ import sampleText from './../assets/sampleText';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
 import AuthManager from '../Auth/AuthManager';
 
-const NewTemplateContext = React.createContext();
+const TemplateContext = React.createContext();
 
-export default class NewTemplateProvider extends Component {
+class TemplateProvider extends Component {
   state = {
     name: '',
     sections: [
@@ -20,10 +20,11 @@ export default class NewTemplateProvider extends Component {
         fields: [],
       },
     ],
+    id: '',
   };
 
   componentDidUpdate() {
-    console.dir(this.state);
+    // console.dir(this.state);
   }
   componentDidMount() {
     let newSections = [...this.state.sections];
@@ -119,7 +120,7 @@ export default class NewTemplateProvider extends Component {
     this.setState({ sections: newSections });
   };
 
-  saveTemplate() {
+  async createTemplate() {
     const userProfile = AuthManager.getAuthObject().UserProfile;
     console.dir(userProfile);
 
@@ -130,13 +131,36 @@ export default class NewTemplateProvider extends Component {
     };
 
     const templatesApi = new TemplatesApiClient();
-    templatesApi
-      .saveTemplate(template)
+    return templatesApi
+      .createTemplate(template)
       .then(response => {
-        alert('success?');
-        console.dir(response);
+        return response;
       })
       .catch(error => {
+        console.dir('error details', error);
+        alert('error during save template');
+      });
+  }
+
+  async editTemplate() {
+    const userProfile = AuthManager.getAuthObject().UserProfile;
+    console.dir(userProfile);
+
+    let template = {
+      name: this.state.name,
+      content: { sections: this.state.sections },
+      userId: userProfile.sub,
+      id: this.state.id,
+    };
+
+    const templatesApi = new TemplatesApiClient();
+    return templatesApi
+      .editTemplate(template)
+      .then(response => {
+        return response;
+      })
+      .catch(error => {
+        console.dir('error details', error);
         alert('error during save template');
       });
   }
@@ -149,10 +173,18 @@ export default class NewTemplateProvider extends Component {
     this.setState({ ...newState });
   }
 
+  setTemplateData(templateData) {
+    this.setState({
+      name: templateData.name,
+      sections: templateData.content.sections,
+      id: templateData.id,
+    });
+  }
+
   render() {
     const { children } = this.props;
     return (
-      <NewTemplateContext.Provider
+      <TemplateContext.Provider
         value={{
           name: this.state.name,
           sections: this.state.sections,
@@ -160,14 +192,38 @@ export default class NewTemplateProvider extends Component {
           removeSection: this.removeSection.bind(this),
           onSectionChange: this.onSectionChange.bind(this),
           onSectionFieldChange: this.onSectionFieldChange.bind(this),
-          saveTemplate: this.saveTemplate.bind(this),
+          createTemplate: this.createTemplate.bind(this),
+          editTemplate: this.editTemplate.bind(this),
           onTemplateChange: this.onTemplateChange.bind(this),
+          setTemplateData: this.setTemplateData.bind(this),
         }}
       >
         {children}
-      </NewTemplateContext.Provider>
+      </TemplateContext.Provider>
     );
   }
 }
 
-export const NewTemplateConsumer = NewTemplateContext.Consumer;
+export const withTemplateProvider = Component => {
+  const WrappedComponent = props => {
+    return (
+      <TemplateProvider>
+        <Component {...props} />
+      </TemplateProvider>
+    );
+  };
+
+  return WrappedComponent;
+};
+
+export const withTemplateConsumer = Component => {
+  const WrappedComponent = props => {
+    return (
+      <TemplateContext.Consumer>
+        {context => <Component {...props} templateContext={context} />}
+      </TemplateContext.Consumer>
+    );
+  };
+
+  return WrappedComponent;
+};

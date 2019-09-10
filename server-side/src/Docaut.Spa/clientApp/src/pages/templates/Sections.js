@@ -1,17 +1,11 @@
 import React from 'react';
 import Section from './sections/Section';
-import { NewTemplateConsumer } from 'context/NewTemplateContext';
+import { withTemplateConsumer } from 'context/TemplateContext';
 
 const Sections = props => {
-  return (
-    <NewTemplateConsumer>
-      {({ sections }) =>
-        sections.map(section => {
-          return <Section key={section.id} section={section} />;
-        })
-      }
-    </NewTemplateConsumer>
-  );
+  return props.templateContext.sections.map(section => (
+    <Section key={section.id} section={section} />
+  ));
 };
 
-export default Sections;
+export default withTemplateConsumer(Sections);

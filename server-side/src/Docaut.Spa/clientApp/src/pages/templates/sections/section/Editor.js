@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import SimpleMDEEditor from 'react-simplemde-editor';
 import 'simplemde/dist/simplemde.min.css';
 import { InitHashMarking, MARKING_NAME } from 'misc/HashMarking';
-import { NewTemplateConsumer } from 'context/NewTemplateContext';
+import { withTemplateConsumer } from '../../../../context/TemplateContext';
 
 var showVariableState = false;
 var defaultMode;
@@ -19,7 +19,7 @@ function AddShowVariableToolbarAction(context) {
   context.simpleMdeInstance.toolbar.push(showVariableToolbarButton);
   context.simpleMdeInstance.createToolbar();
 }
-export default class Editor extends Component {
+class Editor extends Component {
   simpleMdeInstance;
   mirrorCode;
 
@@ -85,24 +85,24 @@ export default class Editor extends Component {
 
   render() {
     return (
-      <NewTemplateConsumer>
-        {({ onSectionChange, name }) => (
-          <Row>
-            <Col>
-              <SimpleMDEEditor
-                onChange={(...params) =>
-                  this.handleChange(...params, onSectionChange)
-                }
-                value={this.props.section.text}
-                options={{
-                  spellChecker: false,
-                }}
-                getMdeInstance={this.getMdeInstance.bind(this)}
-              />
-            </Col>
-          </Row>
-        )}
-      </NewTemplateConsumer>
+      <Row>
+        <Col>
+          <SimpleMDEEditor
+            onChange={(...params) =>
+              this.handleChange(
+                ...params,
+                this.props.templateContext.onSectionChange
+              )
+            }
+            value={this.props.section.text}
+            options={{
+              spellChecker: false,
+            }}
+            getMdeInstance={this.getMdeInstance.bind(this)}
+          />
+        </Col>
+      </Row>
     );
   }
 }
+export default withTemplateConsumer(Editor);

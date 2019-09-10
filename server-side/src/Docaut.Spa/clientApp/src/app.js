@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import DebugInfoComponent from './components/DebugInfo/DebugInfoComponent';
 import MainLayout from './layout/MainLayout';
 import Home from './pages/Home';
-import CreateTemplate from './pages/templates/CreateTemplate';
+import Template, { templateMode } from './pages/templates/Template';
 import Test from './pages/Test';
 import config from './StaticConfig/config';
 import CreateDocument from './pages/documents/CreateDocument';
@@ -14,7 +14,20 @@ const App = () => (
     <Switch>
       <MainLayout>
         <Route exact path="/" component={Home} />
-        <Route exact path="/Template/Create" component={CreateTemplate} />
+        <Route
+          exact
+          path="/Template/Create"
+          render={routeProps => (
+            <Template {...routeProps} mode={templateMode.new} />
+          )}
+        />
+        <Route
+          exact
+          path="/Template/Edit/:templateId"
+          render={routeProps => (
+            <Template {...routeProps} mode={templateMode.edit} />
+          )}
+        />
         <Route
           exact
           path="/Document/Create/:templateId"
