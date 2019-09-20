@@ -66,7 +66,7 @@ const translations = {
       login: 'Zaloguj',
       register: 'Rejestracja',
       hello: 'Witaj',
-      logout: 'Wylguj',
+      logout: 'Wyloguj',
       save: 'Zapisz',
       exit: 'Wyjdź',
       name: 'Nazwa',

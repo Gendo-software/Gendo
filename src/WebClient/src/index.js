@@ -22,7 +22,7 @@ Config.SetConfig(window.StaticConfig);
 
 let message = '';
 
-if (window.location.origin !== 'http://myapp.example:3000') {
+if(window.location.origin != "http://myapp.example:3000" && window.location.origin != "http://myapp.example:3100" ){
   message = (
     <div style={{ background: 'red', color: 'white', width: '100%' }}>
       <p>
@@ -32,7 +32,8 @@ if (window.location.origin !== 'http://myapp.example:3000') {
         "C:\Windows\System32\drivers\etc\"
         <br />
         click to redirect -->{' '}
-        <a href="http://myapp.example:3000">http://myapp.example:3000</a>
+        <a href="http://myapp.example:3000">http://myapp.example:3000</a> or
+        <a href="http://myapp.example:3100">http://myapp.example:3100</a>
       </p>
     </div>
   );

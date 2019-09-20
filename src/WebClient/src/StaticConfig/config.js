@@ -34,7 +34,7 @@ export default class Config {
         },
 
         auth: {
-          redirectUrl: 'http://myapp.example:3000/Login',
+          redirectUrl: `${window.location.origin}/Login`,
           responseType: 'token id_token',
           audience: 'basicApi',
           redirect: false,

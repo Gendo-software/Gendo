@@ -2,6 +2,13 @@ version: '3.7'
 
 services:
 
+  spa:
+    build: 
+      context: ../src/WebClient
+      dockerfile: Dockerfile
+    ports:
+      - '3100:80'
+      
   templates-service:
     build: 
       context: ../src/Services.Templates
@@ -10,7 +17,7 @@ services:
     ports:
       - '5010:5000'
     networks:
-      - docaut
+      - gendo
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
       
@@ -23,7 +30,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: meerkat125
     networks:
-      - docaut
+      - gendo
     ports:
       - 27017:27017
     volumes:
@@ -36,7 +43,7 @@ services:
     ports:
       - 3500:3000
     networks:
-      - docaut
+      - gendo
     volumes:
       - grafana:/var/lib/grafana
       
@@ -46,13 +53,13 @@ services:
     ports:
       - '8086:8086'
     networks:
-      - docaut
+      - gendo
     environment:
-      - INFLUXDB_DB=docaut 
+      - INFLUXDB_DB=gendo 
       
 networks:
-  docaut:
-    name: docaut-network
+  gendo:
+    name: gendo-network
     
 volumes:
   mongo:

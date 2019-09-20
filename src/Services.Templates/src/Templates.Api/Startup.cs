@@ -54,7 +54,8 @@ namespace Templates.Api
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .WithOrigins("http://localhost",
-                            "http://myapp.example:3000");
+                            "http://myapp.example:3000",
+                            "http://myapp.example:3100");
                 });
             });
 
