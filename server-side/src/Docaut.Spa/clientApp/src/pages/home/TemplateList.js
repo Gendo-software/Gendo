@@ -2,9 +2,10 @@ import React from 'react';
 import { Table, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 const TemplateList = props => {
-  const { templates } = props;
+  const { templates, t } = props;
   return (
     <div className="border">
       <Table hover borderless size="sm" className="m-0">
@@ -22,12 +23,12 @@ const TemplateList = props => {
                       size="sm"
                       className="px-3"
                     >
-                      Create
+                      {t('common:create')}
                     </Button>
                   </Link>{' '}
                   <Link to={`Template/Edit/${template.id}`}>
                     <Button variant="outline-info" size="sm" className="px-3">
-                      Edit
+                      {t('common:edit')}
                     </Button>
                   </Link>{' '}
                   <Button
@@ -52,4 +53,4 @@ TemplateList.propTypes = {
   onDeleteClick: PropTypes.func.isRequired,
 };
 
-export default TemplateList;
+export default withTranslation('TemplateList')(TemplateList);

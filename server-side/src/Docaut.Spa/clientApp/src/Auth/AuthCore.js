@@ -151,7 +151,6 @@ export default class AuthCore {
         console.error('error during try get user info');
         cb(error, null);
       } else {
-        console.dir(profile);
         this.UserProfile = profile;
         cb(null, profile);
       }

@@ -31,6 +31,11 @@
     min-width: 9rem;
 }
 
+.navigationBar_changeLanguage:
+{
+    width: 40pt;
+    color:red
+}
 /* Checkbox in table
 -------------------------------------------------- */
 /* input[type="radio"],

@@ -5,6 +5,7 @@ import detectHashInText from '../misc/detectHashInText';
 import sampleText from './../assets/sampleText';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
 import AuthManager from '../Auth/AuthManager';
+import i18next from 'i18next';
 
 const TemplateContext = React.createContext();
 
@@ -13,7 +14,7 @@ class TemplateProvider extends Component {
     name: '',
     sections: [
       {
-        name: 'Main section',
+        name: i18next.t('Template:mainSection'),
         id: uuid(),
         isOptional: false,
         text: sampleText.Text,
@@ -34,10 +35,8 @@ class TemplateProvider extends Component {
     this.setState({ sections: newSections });
   }
   addSection = () => {
-    alert(sampleText);
-
     const newOptionalSection = {
-      name: 'tets1',
+      name: '',
       id: uuid(),
       isOptional: true,
       text: '',

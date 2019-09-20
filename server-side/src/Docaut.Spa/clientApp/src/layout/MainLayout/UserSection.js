@@ -4,11 +4,17 @@ import AuthManager from '../../Auth/AuthManager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSignOutAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { withTranslation } from 'react-i18next';
 
 const AuthCore = AuthManager.getAuthObject();
 
-export default class UserSection extends Component {
-  state = { userName: '' };
+let t;
+class UserSection extends Component {
+  constructor(props) {
+    super(props);
+    t = props.t;
+    this.state = { userName: '' };
+  }
 
   refreshUser() {
     let receiveUserData = (error, profile) => {
@@ -58,12 +64,12 @@ export default class UserSection extends Component {
       <>
         <Nav.Item onClick={this.onUserClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faUser} /> Witaj {this.state.userName}
+            <FontAwesomeIcon icon={faUser} /> {t('hello')} {this.state.userName}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item onClick={this.onLogoutClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faSignOutAlt} /> Logout
+            <FontAwesomeIcon icon={faSignOutAlt} /> {t('logout')}
           </Nav.Link>
         </Nav.Item>
       </>
@@ -75,12 +81,12 @@ export default class UserSection extends Component {
       <>
         <Nav.Item onClick={this.onLoginClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faUser} /> Login
+            <FontAwesomeIcon icon={faUser} /> {t('login')}
           </Nav.Link>
         </Nav.Item>
         <Nav.Item onClick={this.onRegisterClick}>
           <Nav.Link>
-            <FontAwesomeIcon icon={faUserPlus} /> Register
+            <FontAwesomeIcon icon={faUserPlus} /> {t('register')}
           </Nav.Link>
         </Nav.Item>
       </>
@@ -99,3 +105,5 @@ export default class UserSection extends Component {
     );
   }
 }
+
+export default withTranslation()(UserSection);

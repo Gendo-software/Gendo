@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
@@ -15,6 +15,9 @@ import './assets/custom.css';
 
 //static config
 import Config from './StaticConfig/config';
+
+import './locales/i18n';
+
 Config.SetConfig(window.StaticConfig);
 
 let message = '';
@@ -42,7 +45,9 @@ render(
     <ConnectedRouter history={history}>
       <div>
         {message}
-        <App />
+        <Suspense fallback="loading">
+          <App />
+        </Suspense>
       </div>
     </ConnectedRouter>
   </Provider>,

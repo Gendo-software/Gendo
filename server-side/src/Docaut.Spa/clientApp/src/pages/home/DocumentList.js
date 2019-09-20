@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, Button } from 'react-bootstrap';
+import { withTranslation } from 'react-i18next';
 
 const mockValues = {
   documents: [
@@ -32,6 +33,7 @@ const mockValues = {
 };
 
 const DocumentList = props => {
+  const { t } = props;
   return (
     <div className="border py-3">
       <Table hover borderless size="sm" className="m-0">
@@ -52,7 +54,7 @@ const DocumentList = props => {
                     size="sm"
                     className="px-3 mr-1"
                   >
-                    Open
+                    {t('common:open')}
                   </Button>
                   <Button
                     onClick={() => props.onDeleteClick(doc)}
@@ -77,4 +79,4 @@ DocumentList.propTypes = {
   onOpenClick: PropTypes.func.isRequired,
 };
 
-export default DocumentList;
+export default withTranslation('common')(DocumentList);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Table } from 'react-bootstrap';
 import { withTemplateConsumer } from '../../../../context/TemplateContext';
+import { compose } from 'redux';
+import { withTranslation } from 'react-i18next';
 
 class ParametersSettings extends Component {
   onTypeChange = (event, field, section, onSectionFieldChange) => {
@@ -16,16 +18,17 @@ class ParametersSettings extends Component {
   }
 
   render() {
+    const { t } = this.props;
     return (
       <div className="border py-2">
-        <h4 className="mx-2">Parameters</h4>
+        <h4 className="mx-2">{t('parameters')}</h4>
         <Table responsive borderless>
           <thead className="thead-dark">
             <tr>
-              <th scope="col">Variable name</th>
-              <th scope="col">Display name</th>
-              <th scope="col">Type</th>
-              <th scope="col">Mandatory</th>
+              <th scope="col">{t('variableName')}</th>
+              <th scope="col">{t('displayName')}</th>
+              <th scope="col">{t('type')}</th>
+              <th scope="col">{t('mandatory')}</th>
             </tr>
           </thead>
           <tbody>
@@ -62,10 +65,10 @@ class ParametersSettings extends Component {
                       )
                     }
                   >
-                    <option value="text">Text</option>
-                    <option value="date">Date</option>
-                    <option value="number">Number</option>
-                    <option value="currency">Currency</option>
+                    <option value="text">{t('common:text')}</option>
+                    <option value="date">{t('common:date')}</option>
+                    <option value="number">{t('common:number')}</option>
+                    <option value="currency">{t('common:currency')}</option>
                   </Form.Control>
                 </td>
                 <td className="align-middle text-center">
@@ -94,4 +97,7 @@ class ParametersSettings extends Component {
   }
 }
 
-export default withTemplateConsumer(ParametersSettings);
+export default compose(
+  withTranslation('Template'),
+  withTemplateConsumer
+)(ParametersSettings);

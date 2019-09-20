@@ -1,24 +1,21 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap';
+import { withTranslation } from 'react-i18next';
 
-export default function InfoContent() {
+function InfoContent(props) {
+  const { t } = props;
   return (
     <Jumbotron>
-      <h1>Hello my dear user :)</h1>
-      <p>This is demo project created to show you our workshop.</p>
-      <p>
-        In this project we use most popular technologies - .net core, react.js,
-        docker and another.
-      </p>
-      <hr />
+      <h1>{t('heloUser')}</h1>
 
-      <h4>What is Gendo?</h4>
-      <p>
-        The main feature of this system is to organize and speed up the process
-        of creating any kind of documents from templates. In our system it is
-        possible to design templates for different purposes.
-      </p>
+      <p>{t('p1')}</p>
+      <p>{t('p2')}</p>
+      <hr />
+      <h4>{t('WhatIsGendo')}</h4>
+      <p>{t('p3')}</p>
       <p>{/* <Button variant="primary">Learn more</Button> */}</p>
     </Jumbotron>
   );
 }
+
+export default withTranslation('infoContent')(InfoContent);

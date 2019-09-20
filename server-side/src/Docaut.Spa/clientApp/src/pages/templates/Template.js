@@ -8,6 +8,8 @@ import {
   withTemplateConsumer,
 } from '../../context/TemplateContext';
 import TemplatesApiClient from '../../api/clients/TemplatesApiClient';
+import { compose } from 'redux';
+import { withTranslation } from 'react-i18next';
 
 export const templateMode = {
   edit: 'edit',
@@ -48,17 +50,18 @@ class Template extends Component {
   };
 
   render() {
+    const { t } = this.props;
     return (
       <Container className="mt-5">
         <Row className="mb-5 align-items-center justify-content-center">
           <Col md={5} className="text-center">
             <h1 className="h3 mb-3">
               {this.props.mode === templateMode.new
-                ? 'Create template'
-                : 'Edit template'}
+                ? t('createTemplate')
+                : t('editTemplate')}
             </h1>
             <Form.Control
-              placeholder="Template name"
+              placeholder={t('templateName')}
               onChange={this.props.templateContext.onTemplateChange}
               name="name"
               value={this.props.templateContext.name}
@@ -73,7 +76,7 @@ class Template extends Component {
               variant="outline-success"
               onClick={this.props.templateContext.addSection}
             >
-              Add optional section
+              {t('addOptionalSection')}
             </Button>{' '}
           </Col>
         </Row>
@@ -83,20 +86,20 @@ class Template extends Component {
             {this.props.mode === templateMode.edit && (
               <>
                 <Button variant="outline-primary" onClick={this.editTemplate}>
-                  Save
+                  {t('common:save')}
                 </Button>{' '}
               </>
             )}
             {this.props.mode === templateMode.new && (
               <>
                 <Button variant="outline-primary" onClick={this.createTemplate}>
-                  Create new
+                  {t('createNew')}
                 </Button>{' '}
               </>
             )}
             <Button variant="outline-danger" onClick={this.exit}>
               {' '}
-              Exit
+              {t('common:exit')}
             </Button>{' '}
           </Col>
         </Row>
@@ -109,5 +112,8 @@ Template.propTypes = {
   mode: PropTypes.oneOf(Object.values(templateMode)),
 };
 
-// export default Template;
-export default withTemplateProvider(withTemplateConsumer(Template));
+export default compose(
+  withTranslation('Template'),
+  withTemplateProvider,
+  withTemplateConsumer
+)(Template);

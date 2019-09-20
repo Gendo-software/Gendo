@@ -1,8 +1,11 @@
 import React from 'react';
 import { Row, Button, Col, Form } from 'react-bootstrap';
 import { withTemplateConsumer } from 'context/TemplateContext';
+import { compose } from 'redux';
+import { withTranslation } from 'react-i18next';
 
 const SectionHeader = props => {
+  const { t } = props;
   return (
     <div className="mb-2">
       <Row className="align-items-center">
@@ -14,6 +17,7 @@ const SectionHeader = props => {
                 props.templateContext.onSectionChange(...params, props.section)
               }
               name={'name'}
+              placeholder={t('common:name')}
             />
           )) || <h4>{props.section.name}</h4>}
         </Col>
@@ -25,7 +29,7 @@ const SectionHeader = props => {
                 props.templateContext.removeSection(...params, props.section)
               }
             >
-              Remove this section
+              {t('removeThisSection')}
             </Button>
           </Col>
         )}
@@ -36,4 +40,7 @@ const SectionHeader = props => {
 
 SectionHeader.propTypes = {};
 
-export default withTemplateConsumer(SectionHeader);
+export default compose(
+  withTranslation('Template'),
+  withTemplateConsumer
+)(SectionHeader);
