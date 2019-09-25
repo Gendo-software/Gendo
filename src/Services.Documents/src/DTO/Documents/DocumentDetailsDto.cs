@@ -1,0 +1,13 @@
+using System;
+using Newtonsoft.Json.Linq;
+
+namespace DTO.Documents
+{
+    public class DocumentDetailsDto
+    {
+        public Guid Id { get; set; }
+        public string UserId { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public JObject Content { get; set; }
+    }
+}
