@@ -77,7 +77,7 @@ namespace Templates.Api
             });
 
             services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new Info { Title = "gendo", Version = "v1"});
+                c.SwaggerDoc("v1", new Info { Title = "gendo-services-templates", Version = "v1"});
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme
                 {
                     Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
@@ -110,7 +110,7 @@ namespace Templates.Api
             
             app.UseSwagger();
             app.UseSwaggerUI(c => {
-                c.SwaggerEndpoint("v1/swagger.json", "gendo API v1");
+                c.SwaggerEndpoint("v1/swagger.json", "gendo-services-templates API v1");
             });
         }
     }
