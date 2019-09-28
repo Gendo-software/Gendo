@@ -12,6 +12,10 @@ using Services.Exceptions;
 using Services.Interfaces;
 using Xunit;
 using Documents.Tests;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using System.Security.Principal;
 
 namespace Controllers
 {
@@ -35,20 +39,66 @@ namespace Controllers
 
         [Theory]
         [MemberData(nameof(TestData.DocumentsDto), MemberType = typeof(TestData))]
-        public async Task Get_DocumentExistsAndShouldBeReturned_MethodReturnJson(List<DocumentDto> data)
+        public async Task GetByUserId_DocumentExistsAndShouldBeReturned_MethodReturnJson(List<DocumentDto> data)
         {
+            IList<Claim> claimCollection = new List<Claim>
+            {
+                new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", 
+                    "auth0|d732e6aa9e88f5c81a3686d3")
+            };
+            var identityMock = new Mock<ClaimsIdentity>();
+            identityMock.Setup(x => x.Claims)
+                .Returns(claimCollection);
+
+            var moqContext = new Mock<HttpContext>();
+            moqContext.Setup(x=>x.User.Identity).Returns(identityMock.Object);
+
+            var userId = "auth0|d732e6aa9e88f5c81a3686d3";
             var command = new CreateDocument() { };
             var documentserviceMock = new Mock<IDocumentService>();
-            documentserviceMock.Setup(x => x.GetAsync())
+            documentserviceMock.Setup(x => x.GetAsync(userId))
                 .ReturnsAsync(data);
             var commandDispatcherMock = new Mock<ICommandDispatcher>();
 
             var documentsController = new DocumentsController(commandDispatcherMock.Object, documentserviceMock.Object);
 
-            var response = await documentsController.Get();
+            documentsController.ControllerContext.HttpContext = moqContext.Object;
+            
+            var response = await documentsController.GetByUserId(userId);
 
             response.Should().NotBeNull();
             response.Should().BeOfType<JsonResult>();
+        }
+
+        [Fact]
+        public async Task GetByUserId_UserIdFromTokenAndParameterAreDifferent_MethodReturn403()
+        {
+            IList<Claim> claimCollection = new List<Claim>
+            {
+                new Claim("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier", 
+                    "auth0|d732e6aa9e88f5c81a3686d3")
+            };
+            var identityMock = new Mock<ClaimsIdentity>();
+            identityMock.Setup(x => x.Claims)
+                .Returns(claimCollection);
+
+            var moqContext = new Mock<HttpContext>();
+            moqContext.Setup(x=>x.User.Identity).Returns(identityMock.Object);
+
+            var userId = "auth0|e88f5c81a3686d3d732e6aa9";
+            var command = new CreateDocument() { };
+            var documentserviceMock = new Mock<IDocumentService>();
+  
+            var commandDispatcherMock = new Mock<ICommandDispatcher>();
+
+            var documentsController = new DocumentsController(commandDispatcherMock.Object, documentserviceMock.Object);
+
+            documentsController.ControllerContext.HttpContext = moqContext.Object;
+
+            var response = await documentsController.GetByUserId(userId);
+
+            response.Should().NotBeNull();
+            response.Should().BeOfType<ForbidResult>();
         }
 
         [Fact]

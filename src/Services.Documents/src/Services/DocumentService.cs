@@ -39,9 +39,9 @@ namespace Services
             return 0;
         }
 
-        public async Task<IEnumerable<DocumentDto>> GetAsync()
+        public async Task<IEnumerable<DocumentDto>> GetAsync(string userId)
         {
-            var documents = await _documentRepository.GetAsync();
+            var documents = await _documentRepository.GetAsync(userId);
             return _mapper.Map<IEnumerable<Document>,IEnumerable<DocumentDto>>(documents);
         }
 

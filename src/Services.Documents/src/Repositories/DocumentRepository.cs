@@ -85,9 +85,9 @@ namespace Repositories
             return document;
         }
 
-        public async Task<IEnumerable<Document>> GetAsync()
+        public async Task<IEnumerable<Document>> GetAsync(string userId)
         {
-            var documents = await _documents.Find(x => x.Deleted == false).ToListAsync();
+            var documents = await _documents.Find(x => x.UserId == userId && x.Deleted == false).ToListAsync();
             return documents.Select(_mapper.Map<Models.Document, Document>);
         }
 

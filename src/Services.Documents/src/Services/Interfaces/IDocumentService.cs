@@ -9,7 +9,7 @@ namespace Services.Interfaces
     {
         Task<int> CreateAsync(Guid id, Guid templateVersionId, Guid currentVersion, string name, string userId, string content);
         Task<int> UpdateAsync(Guid id, Guid currentVersion, string name, string userId, string content);
-        Task<IEnumerable<DocumentDto>> GetAsync();
+        Task<IEnumerable<DocumentDto>> GetAsync(string userId);
         Task<DocumentDetailsDto> GetAsync(Guid id);
         Task<int> DeleteAsync(Guid id);
     }

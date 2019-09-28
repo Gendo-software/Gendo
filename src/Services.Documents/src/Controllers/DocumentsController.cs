@@ -5,6 +5,8 @@ using Commands.Documents;
 using Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using System.Linq;
 
 namespace Controllers
 {
@@ -40,9 +42,15 @@ namespace Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetByUserId(string userId)
         {
-            var documents = await _documentService.GetAsync();
+            var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+            var userIdFromToken = claimsIdentity.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value;
+            if(!userId.Equals(userIdFromToken))
+            {
+                return Forbid();
+            }
+            var documents = await _documentService.GetAsync(userId);
             if(documents == null)
             {
                 return NotFound();
@@ -51,7 +59,7 @@ namespace Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(Guid id)
+        public async Task<IActionResult> GetDetails(Guid id)
         {
             var document = await _documentService.GetAsync(id);
             if(document == null)
