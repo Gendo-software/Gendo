@@ -21,12 +21,12 @@ namespace Controllers
         public async Task Post_DocumentDoesNotExistsAndItShouldBeCreated_MethodReturn201()
         {
             var command = new CreateDocument() { };
-            var DocumentserviceMock = new Mock<IDocumentService>();
+            var documentserviceMock = new Mock<IDocumentService>();
             var commandDispatcherMock = new Mock<ICommandDispatcher>();
 
-            var DocumentsController = new DocumentsController(commandDispatcherMock.Object, DocumentserviceMock.Object);
+            var documentsController = new DocumentsController(commandDispatcherMock.Object, documentserviceMock.Object);
 
-            var response = await DocumentsController.Post(command);
+            var response = await documentsController.Post(command);
 
             response.Should().NotBeNull();
             response.Should().BeOfType<CreatedResult>();
@@ -38,14 +38,14 @@ namespace Controllers
         public async Task Get_DocumentExistsAndShouldBeReturned_MethodReturnJson(List<DocumentDto> data)
         {
             var command = new CreateDocument() { };
-            var DocumentserviceMock = new Mock<IDocumentService>();
-            DocumentserviceMock.Setup(x => x.GetAsync())
+            var documentserviceMock = new Mock<IDocumentService>();
+            documentserviceMock.Setup(x => x.GetAsync())
                 .ReturnsAsync(data);
             var commandDispatcherMock = new Mock<ICommandDispatcher>();
 
-            var DocumentsController = new DocumentsController(commandDispatcherMock.Object, DocumentserviceMock.Object);
+            var documentsController = new DocumentsController(commandDispatcherMock.Object, documentserviceMock.Object);
 
-            var response = await DocumentsController.Get();
+            var response = await documentsController.Get();
 
             response.Should().NotBeNull();
             response.Should().BeOfType<JsonResult>();
@@ -55,14 +55,14 @@ namespace Controllers
         public async Task Delete_DocumentDoesNotExists_ThrowException()
         {
             var id = Guid.Parse("cc846e51-132c-4a6a-bc96-c032491e383c");
-            var DocumentserviceMock = new Mock<IDocumentService>();
+            var documentserviceMock = new Mock<IDocumentService>();
             var commandDispatcherMock = new Mock<ICommandDispatcher>();
             commandDispatcherMock.Setup(x => x.DispatchAsync<ICommand>(It.IsAny<ICommand>()))
                 .Throws(new ServiceException(ErrorCodes.DocumentNotFound));
 
-            var DocumentsController = new DocumentsController(commandDispatcherMock.Object, DocumentserviceMock.Object);
+            var documentsController = new DocumentsController(commandDispatcherMock.Object, documentserviceMock.Object);
 
-            var exception = await Assert.ThrowsAsync<ServiceException>(() => DocumentsController.Delete(id));
+            var exception = await Assert.ThrowsAsync<ServiceException>(() => documentsController.Delete(id));
             exception.Code.Should().Be("document_not_found");
         }
     }

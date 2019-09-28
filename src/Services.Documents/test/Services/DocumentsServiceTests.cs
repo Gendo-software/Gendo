@@ -1,55 +1,57 @@
 using System;
 using System.Threading.Tasks;
 using AutoMapper;
+using Domain;
+using Domain.Exceptions;
+using Services;
 using FluentAssertions;
 using Moq;
 using Newtonsoft.Json.Linq;
-using Domain;
-using Domain.Exceptions;
 using Repositories.Interfaces;
-using DTO.Documents;
-using Services;
-using Services.Exceptions;
 using Xunit;
+using Services.Exceptions;
+using DTO.Documents;
 
-namespace Controllers
+namespace Documents.Tests.Controllers
 {
     public class DocumentsServiceTests
     {
         [Fact]
-        public async Task CreateAsync_DocumentContentIsEmpty_ThrowException()
+        public async Task CreateAsync_DocumentNameIsEmpty_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
-            var templateVersionId = Guid.Parse("b0a999a3-1908-4722-bb3b-866626ebd8c2");
+            var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
-            var content = string.Empty;
-            
-            var documentRepositoryMock = new Mock<IDocumentRepository>();
-            var mapperMock = new Mock<IMapper>();
-            var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
-
-            var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.CreateAsync(id, templateVersionId, versionId, userId, content));
-
-            documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Never);
-            exception.Code.Should().Be("empty_content");
-        }
-
-        [Fact]
-        public async Task CreateAsync_DocumentParametersAreGood_ReturnsZero()
-        {
-            var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
-            var templateVersionId = Guid.Parse("b0a999a3-1908-4722-bb3b-866626ebd8c2");
-            var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
-            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
+            var documentName = string.Empty;
             var content = "{\"foo\" : \"bar\"}";
             
             var documentRepositoryMock = new Mock<IDocumentRepository>();
             var mapperMock = new Mock<IMapper>();
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
-            var result = await documentService.CreateAsync(id, templateVersionId, versionId, userId, content);
+            var exception = await Assert.ThrowsAsync<DomainException>(
+                () => documentService.CreateAsync(id, templateVersionId, versionId, documentName, userId, content));
+
+            documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Never);
+            exception.Code.Should().Be("invalid_name");
+        }
+
+        [Fact]
+        public async Task CreateAsync_DocumentParametersAreGood_ReturnsZero()
+        {
+            var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
+            var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
+            var documentName = "Foo Document";
+            var content = "{\"foo\" : \"bar\"}";
+            
+            var documentRepositoryMock = new Mock<IDocumentRepository>();
+            var mapperMock = new Mock<IMapper>();
+            var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
+
+            var result = await documentService.CreateAsync(id, templateVersionId, versionId, documentName, userId, content);
             documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Once);
             result.Should().Be(0);
         }
@@ -58,8 +60,10 @@ namespace Controllers
         public async Task UpdateAsync_DocumentWithGivenIdDoesNotExists_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
+            var documentName = "Foo Document";
             var content = "{\"foo\" : \"bar\"}";
             
             var documentRepositoryMock = new Mock<IDocumentRepository>();
@@ -69,18 +73,44 @@ namespace Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<ServiceException>(
-                () => documentService.UpdateAsync(id, versionId, userId, content));
+                () => documentService.UpdateAsync(id, versionId, userId, documentName, content));
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("document_not_found");
         }
 
         [Fact]
+        public async Task UpdateAsync_DocumentNameIsEmpty_ThrowException()
+        {
+            var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
+            var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
+            var userId = "auth0|5c81a3686d3d732e6aa9e88f";
+            var documentName = string.Empty;
+            var content = "{\"foo\" : \"bar\"}";
+            
+            var documentRepositoryMock = new Mock<IDocumentRepository>();
+            documentRepositoryMock.Setup(x => x.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(new Document());
+
+            var mapperMock = new Mock<IMapper>();
+            var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
+
+            var exception = await Assert.ThrowsAsync<DomainException>(
+                () => documentService.UpdateAsync(id, versionId, documentName, userId, content));
+
+            documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
+            exception.Code.Should().Be("invalid_name");
+        }
+
+        [Fact]
         public async Task UpdateAsync_DocumentContentIsEmpty_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
+            var documentName = "Test Document";
             var content = string.Empty;
             
             var documentRepositoryMock = new Mock<IDocumentRepository>();
@@ -91,7 +121,7 @@ namespace Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.UpdateAsync(id, versionId, userId, content));
+                () => documentService.UpdateAsync(id, versionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("empty_content");
@@ -101,8 +131,10 @@ namespace Controllers
         public async Task UpdateAsync_DocumentParametersAreGood_ReturnsZero()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
+            var documentName = "Test Document";
             var content = "{\"foo\" : \"bar\"}";
             
             var documentRepositoryMock = new Mock<IDocumentRepository>();
@@ -112,7 +144,7 @@ namespace Controllers
             var mapperMock = new Mock<IMapper>();
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
-            var result = await documentService.UpdateAsync(id, versionId, userId, content);
+            var result = await documentService.UpdateAsync(id, versionId, documentName, userId, content);
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Once);
             result.Should().Be(0);
