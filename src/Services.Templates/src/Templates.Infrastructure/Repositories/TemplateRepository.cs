@@ -55,6 +55,7 @@ namespace Templates.Infrastructure.Repositories
                 try
                 {
                     var update = Builders<Database.Models.Template>.Update
+                        .Set("userId", template.UserId)
                         .Set("name", template.Name)
                         .Set("currentVersion", template.CurrentVersion.ToString())
                         .CurrentDate("lastUpdate");

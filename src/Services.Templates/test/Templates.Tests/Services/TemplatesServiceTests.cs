@@ -37,6 +37,26 @@ namespace Templates.Tests.Controllers
         }
 
         [Fact]
+        public async Task CreateAsync_UserIdIsEmpty_ThrowException()
+        {
+            var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
+            var userId = string.Empty;
+            var templateName = "Foo template";
+            var content = "{\"foo\" : \"bar\"}";
+            
+            var templateRepositoryMock = new Mock<ITemplateRepository>();
+            var mapperMock = new Mock<IMapper>();
+            var templateService = new TemplateService(templateRepositoryMock.Object, mapperMock.Object);
+
+            var exception = await Assert.ThrowsAsync<DomainException>(
+                () => templateService.CreateAsync(id, versionId,userId,templateName,content));
+
+            templateRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Template>()), Times.Never);
+            exception.Code.Should().Be("empty_user_id");
+        }
+
+        [Fact]
         public async Task CreateAsync_TemplateContentIsEmpty_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
@@ -117,6 +137,28 @@ namespace Templates.Tests.Controllers
 
             templateRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Template>()), Times.Never);
             exception.Code.Should().Be("invalid_name");
+        }
+
+        public async Task UpdateAsync_UserIdIsEmpty_ThrowException()
+        {
+            var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
+            var userId = string.Empty;
+            var templateName = "Foo template";
+            var content = "{\"foo\" : \"bar\"}";
+            
+            var templateRepositoryMock = new Mock<ITemplateRepository>();
+            templateRepositoryMock.Setup(x => x.GetAsync(It.IsAny<Guid>()))
+                .ReturnsAsync(new Template());
+
+            var mapperMock = new Mock<IMapper>();
+            var templateService = new TemplateService(templateRepositoryMock.Object, mapperMock.Object);
+
+            var exception = await Assert.ThrowsAsync<DomainException>(
+                () => templateService.UpdateAsync(id, versionId, userId,templateName,content));
+
+            templateRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Template>()), Times.Never);
+            exception.Code.Should().Be("empty_user_id");
         }
 
         [Fact]

@@ -20,7 +20,7 @@ namespace Templates.Core.Domain
         {
             Id = id;
             CurrentVersion = currentVersion;
-            UserId = userId;
+            SetUserId(userId);
             SetName(name);
             SetContent(content);
             Deleted = false; 
@@ -38,6 +38,16 @@ namespace Templates.Core.Domain
             Name = name;
         }
 
+        public void SetUserId(string userId)
+        {
+            if(String.IsNullOrEmpty(userId))
+            {
+                throw new DomainException(ErrorCodes.EmptyUserId, 
+                    "User ID is empty");
+            }
+            UserId = userId;
+        }
+        
         public void SetContent(string content)
         {
             if(String.IsNullOrEmpty(content))

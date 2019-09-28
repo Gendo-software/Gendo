@@ -32,6 +32,7 @@ namespace Templates.Infrastructure.Services
         {
             var template = await GetOrFailAsync(id);
             template.CurrentVersion = currentVersion;
+            template.SetUserId(userId);
             template.SetName(name);
             template.SetContent(content);
             await _templateRepository.UpdateAsync(template);
