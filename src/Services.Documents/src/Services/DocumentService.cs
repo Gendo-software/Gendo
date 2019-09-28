@@ -32,6 +32,7 @@ namespace Services
         {
             var document = await GetOrFailAsync(id);
             document.CurrentVersion = currentVersion;
+            document.SetUserId(userId);
             document.SetName(name);
             document.SetContent(content);
             await _documentRepository.UpdateAsync(document);

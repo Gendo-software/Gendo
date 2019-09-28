@@ -55,6 +55,7 @@ namespace Repositories
                 try
                 {
                     var update = Builders<Models.Document>.Update
+                        .Set("userId", document.UserId)
                         .Set("name", document.Name)
                         .Set("currentVersion", document.CurrentVersion.ToString())
                         .CurrentDate("lastUpdate");

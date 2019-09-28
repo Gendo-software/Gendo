@@ -21,7 +21,7 @@ namespace Domain
             Id = id;
             TemplateVersionId = templateVersionId;
             CurrentVersion = currentVersion;
-            UserId = userId;
+            SetUserId(userId);
             SetContent(content);
             SetName(name);
             Deleted = false;
@@ -36,6 +36,16 @@ namespace Domain
                     "Name of document is invalid.");
             }
             Name = name;
+        }
+        
+        public void SetUserId(string userId)
+        {
+            if(String.IsNullOrEmpty(userId))
+            {
+                throw new DomainException(ErrorCodes.EmptyUserId, 
+                    "User ID is empty");
+            }
+            UserId = userId;
         }
 
         public void SetContent(string content)
