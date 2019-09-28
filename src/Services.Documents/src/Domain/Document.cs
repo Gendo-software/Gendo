@@ -9,21 +9,33 @@ namespace Domain
         public Guid TemplateVersionId { get; set; }
         public Guid CurrentVersion { get; set; }
         public string UserId { get; set; }
+        public string Name { get; set; }
         public bool Deleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public string Content { get; set; }
 
         public Document() { }
 
-        public Document(Guid id, Guid templateVersionId, Guid currentVersion, string userId, string content) 
+        public Document(Guid id, Guid templateVersionId, Guid currentVersion, string name, string userId, string content) 
         {
             Id = id;
             TemplateVersionId = templateVersionId;
             CurrentVersion = currentVersion;
             UserId = userId;
             SetContent(content);
+            SetName(name);
             Deleted = false;
             CreatedAt = DateTime.UtcNow;
+        }
+
+        public void SetName(string name)
+        {
+            if(String.IsNullOrEmpty(name))
+            {
+                throw new DomainException(ErrorCodes.InvalidName, 
+                    "Name of document is invalid.");
+            }
+            Name = name;
         }
 
         public void SetContent(string content)

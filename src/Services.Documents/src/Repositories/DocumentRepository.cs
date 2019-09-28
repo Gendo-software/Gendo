@@ -55,7 +55,7 @@ namespace Repositories
                 try
                 {
                     var update = Builders<Models.Document>.Update
-                        //.Set("name", document.Name)
+                        .Set("name", document.Name)
                         .Set("currentVersion", document.CurrentVersion.ToString())
                         .CurrentDate("lastUpdate");
                     await _documents.UpdateOneAsync(x => x.Id == document.Id, update);
@@ -104,7 +104,7 @@ namespace Repositories
             documentVersion.Id = document.CurrentVersion;
             documentVersion.DocumentId = document.Id;
             documentVersion.CreatedAt = DateTime.UtcNow;
-            //documentVersion.Name = document.Name;
+            documentVersion.Name = document.Name;
             documentVersion.Content = BsonDocument.Parse(document.Content.ToString());
             await _documentVersions.InsertOneAsync(documentVersion);
         }

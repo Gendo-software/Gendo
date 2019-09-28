@@ -15,6 +15,7 @@ namespace Models
         public Guid CurrentVersion { get; set; }
         [BsonRepresentation(BsonType.String)]
         public string UserId { get; set; }
+        public string Name { get; set; }
         public bool Deleted { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? LastUpdate { get; set; }

@@ -21,17 +21,18 @@ namespace Services
             _mapper = mapper;
         }
 
-        public async Task<int> CreateAsync(Guid id, Guid templateVersionId, Guid currentVersion, string userId, string content)
+        public async Task<int> CreateAsync(Guid id, Guid templateVersionId, Guid currentVersion, string name, string userId, string content)
         {
-            var document = new Document(id, templateVersionId, currentVersion, userId, content);
+            var document = new Document(id, templateVersionId, currentVersion, name, userId, content);
             await _documentRepository.AddAsync(document);
             return 0;
         }
 
-        public async Task<int> UpdateAsync(Guid id, Guid currentVersion, string userId, string content)
+        public async Task<int> UpdateAsync(Guid id, Guid currentVersion, string name, string userId, string content)
         {
             var document = await GetOrFailAsync(id);
             document.CurrentVersion = currentVersion;
+            document.SetName(name);
             document.SetContent(content);
             await _documentRepository.UpdateAsync(document);
             return 0;

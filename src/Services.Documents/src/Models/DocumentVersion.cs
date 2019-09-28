@@ -11,6 +11,7 @@ namespace Models
         public Guid Id { get; set; }
         [BsonRepresentation(BsonType.String)]
         public Guid DocumentId { get; set; }
+        public string Name { get; set; }
         public DateTime CreatedAt { get; set; }
         public BsonDocument Content { get; set; }
     }
