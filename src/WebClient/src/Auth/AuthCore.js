@@ -16,7 +16,6 @@ export default class AuthCore {
   UserProfile;
 
   constructor() {
-    console.log('Create authCore');
     this.createdDate = new Date();
     this.AuthInfo = new AuthInfo();
 
@@ -86,6 +85,20 @@ export default class AuthCore {
     });
   }
 
+  async CheckSessionAsync() {
+    var self = this;
+    return new Promise(function(resolve, reject) {
+      self.lock.checkSession({}, (error, token) => {
+        if (error) {
+          console.error('Check session error', error);
+          reject(error);
+        } else {
+          resolve(token);
+        }
+      });
+    });
+  }
+
   ShowLoginBox() {
     this.lock.show({
       initialScreen: 'login',
@@ -138,22 +151,39 @@ export default class AuthCore {
     });
   }
 
-  async GetUserProfile(cb) {
+  GetUserProfile(cb) {
     if (!this.UserProfile) {
-      await this.RefreshUserProfile(cb);
+      this.RefreshUserProfile()
+        .then(profile => {
+          return cb(null, profile);
+        })
+        .catch(error => {
+          console.error(error);
+        });
     } else {
       return cb(null, this.UserProfile);
     }
   }
-  RefreshUserProfile(cb) {
-    this.lock.getUserInfo(this.AuthInfo.AccessToken, (error, profile) => {
-      if (error) {
-        console.error('error during try get user info');
-        cb(error, null);
-      } else {
-        this.UserProfile = profile;
-        cb(null, profile);
-      }
+  async GetUserProfileAsync() {
+    if (!this.UserProfile) {
+      return this.RefreshUserProfile();
+    } else {
+      return new Promise(resolve => {
+        resolve(this.UserProfile);
+      });
+    }
+  }
+  async RefreshUserProfile() {
+    const self = this;
+
+    return new Promise((resolve, reject) => {
+      self.lock.getUserInfo(self.AuthInfo.AccessToken, (error, profile) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(profile);
+        }
+      });
     });
   }
 

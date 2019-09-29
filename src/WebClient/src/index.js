@@ -1,9 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import store, { history } from './store';
-import App from './app';
+import App from './app/App';
 
 import './index.css';
 
@@ -17,12 +17,17 @@ import './assets/custom.css';
 import Config from './StaticConfig/config';
 
 import './locales/i18n';
+import AppContextProvider from './context/AppContext';
+import AuthManager from './Auth/AuthManager';
 
 Config.SetConfig(window.StaticConfig);
 
 let message = '';
 
-if(window.location.origin != "http://myapp.example:3000" && window.location.origin != "http://myapp.example:3100" ){
+if (
+  window.location.origin !== 'http://myapp.example:3000' &&
+  window.location.origin !== 'http://myapp.example:3100'
+) {
   message = (
     <div style={{ background: 'red', color: 'white', width: '100%' }}>
       <p>
@@ -40,16 +45,17 @@ if(window.location.origin != "http://myapp.example:3000" && window.location.orig
 }
 
 const target = document.querySelector('#root');
+window.debugInfo = { AuthManager: AuthManager.getAuthObject() };
 
 render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <div>
-        {message}
-        <Suspense fallback="loading">
+      <AppContextProvider>
+        <>
+          {message}
           <App />
-        </Suspense>
-      </div>
+        </>
+      </AppContextProvider>
     </ConnectedRouter>
   </Provider>,
   target

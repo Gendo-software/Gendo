@@ -7,9 +7,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 import UserSection from './UserSection';
 import { withTranslation } from 'react-i18next';
 import LangSwitch from './LangSwitch';
+import { compose } from 'redux';
+import { withAppContext } from '../../context/AppContext';
 
 const NavigationBar = props => {
-  const { t } = props;
+  const { t, appContext } = props;
   return (
     <Navbar
       collapseOnSelect
@@ -33,11 +35,13 @@ const NavigationBar = props => {
               </Nav.Link>
             </LinkContainer>
 
-            <LinkContainer to="/Template/Create" exact>
-              <Nav.Link>
-                <FontAwesomeIcon icon={faPlusSquare} /> {t('createTemplate')}
-              </Nav.Link>
-            </LinkContainer>
+            {appContext.isLogged && (
+              <LinkContainer to="/Template/Create" exact>
+                <Nav.Link>
+                  <FontAwesomeIcon icon={faPlusSquare} /> {t('createTemplate')}
+                </Nav.Link>
+              </LinkContainer>
+            )}
           </Nav>
           <LangSwitch />
           <UserSection />
@@ -47,4 +51,7 @@ const NavigationBar = props => {
   );
 };
 
-export default withTranslation()(NavigationBar);
+export default compose(
+  withTranslation(),
+  withAppContext
+)(NavigationBar);

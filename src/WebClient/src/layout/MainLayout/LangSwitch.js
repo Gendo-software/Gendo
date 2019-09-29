@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { Dropdown } from 'react-bootstrap';
 import i18n from '../../locales/i18n';
+import storage from '../../storage';
 
 const languages = [
   {
@@ -18,6 +19,7 @@ const languages = [
 
 class LangSwitch extends Component {
   handleSelectedLang(eventKey) {
+    localStorage.setItem(storage.localStorage.appLanguage, eventKey);
     i18n.changeLanguage(eventKey);
   }
 

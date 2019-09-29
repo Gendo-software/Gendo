@@ -14,6 +14,7 @@ function InfoContent(props) {
       <h4>{t('WhatIsGendo')}</h4>
       <p>{t('p3')}</p>
       <p>{/* <Button variant="primary">Learn more</Button> */}</p>
+      <p className="h4">{t('muted')}</p>
     </Jumbotron>
   );
 }

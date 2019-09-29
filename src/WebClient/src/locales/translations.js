@@ -33,6 +33,7 @@ const translations = {
         'The main feature of this system is to organize and speed up the process \
          of creating any kind of documents from templates. In our system \
          it is possible to design templates for different purposes.',
+      muted: 'Log in to see more ;)',
     },
     DocumentList: {},
     TemplateList: {},
@@ -50,6 +51,11 @@ const translations = {
       editTemplate: 'Edit template',
       templateName: 'Template name',
       mainSection: 'Main section',
+    },
+    AuthRoute: {
+      notAuthorized: 'Not authorized',
+      notAuthorizedDesc:
+        'You are not logged in or you do not have permission to access this page.',
     },
   },
   pl: {
@@ -85,7 +91,8 @@ const translations = {
       p3:
         'Główną funkcją systemu est organizacja oraz przyśpieszenie procesu tworzenia  \
          różnego rodzaju dokumentów z szablonów. W naszym systemie  \
-         jset możliwe projektowanie szablonów do róznych celów.',
+         jest możliwe projektowanie szablonów do róznych celów.',
+      muted: 'Zaloguj się aby zobaczyć więcej ;)',
     },
     DocumentList: {},
     TemplateList: {},
@@ -103,6 +110,11 @@ const translations = {
       editTemplate: 'Edycja szablonu',
       templateName: 'Nazwa szablonu',
       mainSection: 'Sekcja główna',
+    },
+    AuthRoute: {
+      notAuthorized: 'Brak uprawnień',
+      notAuthorizedDesc:
+        'Nie jesteś zalogowany lub nie masz uprawnień dostępu do tej strony.',
     },
   },
 };
