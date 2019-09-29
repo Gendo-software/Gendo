@@ -6,6 +6,7 @@ services:
     build: 
       context: ../src/WebClient
       dockerfile: Dockerfile
+    container_name: gendoWebClient
     ports:
       - '3100:80'
       

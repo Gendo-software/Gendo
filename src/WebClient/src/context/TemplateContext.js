@@ -4,8 +4,8 @@ import _ from 'lodash';
 import detectHashInText from '../misc/detectHashInText';
 import sampleText from './../assets/sampleText';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
-import AuthManager from '../Auth/AuthManager';
 import i18next from 'i18next';
+import { withAppContext } from './AppContext';
 
 const TemplateContext = React.createContext();
 
@@ -120,13 +120,13 @@ class TemplateProvider extends Component {
   };
 
   async createTemplate() {
-    const userProfile = AuthManager.getAuthObject().UserProfile;
-    console.dir(userProfile);
+    console.dir(this.props);
+    const { appContext } = this.props;
 
     let template = {
       name: this.state.name,
       content: { sections: this.state.sections },
-      userId: userProfile.sub,
+      userId: appContext.userProfile.sub,
     };
 
     const templatesApi = new TemplatesApiClient();
@@ -142,13 +142,13 @@ class TemplateProvider extends Component {
   }
 
   async editTemplate() {
-    const userProfile = AuthManager.getAuthObject().UserProfile;
-    console.dir(userProfile);
+    console.dir(this.props);
+    const { appContext } = this.props;
 
     let template = {
       name: this.state.name,
       content: { sections: this.state.sections },
-      userId: userProfile.sub,
+      userId: appContext.userProfile.sub,
       id: this.state.id,
     };
 
@@ -206,13 +206,13 @@ class TemplateProvider extends Component {
 export const withTemplateProvider = Component => {
   const WrappedComponent = props => {
     return (
-      <TemplateProvider>
+      <TemplateProvider appContext={props.appContext}>
         <Component {...props} />
       </TemplateProvider>
     );
   };
 
-  return WrappedComponent;
+  return withAppContext(WrappedComponent);
 };
 
 export const withTemplateConsumer = Component => {
