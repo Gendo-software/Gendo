@@ -10,7 +10,7 @@ namespace Templates.Database.Models
         [BsonRepresentation(BsonType.String)]
         public Guid Id { get; set; }
         [BsonRepresentation(BsonType.String)]
-        public Guid CurrentVersion { get; set; }
+        public Guid CurrentVersionId { get; set; }
         [BsonRepresentation(BsonType.String)]
         public string UserId { get; set; }
         public bool Deleted { get; set; }

@@ -57,7 +57,7 @@ namespace Templates.Infrastructure.Repositories
                     var update = Builders<Database.Models.Template>.Update
                         .Set("userId", template.UserId)
                         .Set("name", template.Name)
-                        .Set("currentVersion", template.CurrentVersion.ToString())
+                        .Set("currentVersionId", template.CurrentVersionId.ToString())
                         .CurrentDate("lastUpdate");
                     await Templates.UpdateOneAsync(x=>x.Id == template.Id, update);
                     await AddVersionAsync(template);
@@ -73,13 +73,12 @@ namespace Templates.Infrastructure.Repositories
 
         public async Task<Template> GetAsync(Guid id)
         {
-            // it is not very nice
             var _template = await Templates.Find(x => x.Id == id && x.Deleted == false)
                 .FirstOrDefaultAsync();
             var template = _mapper.Map<Database.Models.Template, Template>(_template);
             if(template != null)
             {
-                var lastVersion = await TemplateVersions.Find(x => x.Id == template.CurrentVersion)
+                var lastVersion = await TemplateVersions.Find(x => x.Id == template.CurrentVersionId)
                     .FirstOrDefaultAsync();
                 template.Content = lastVersion.Content.ToString();
             }
@@ -103,7 +102,7 @@ namespace Templates.Infrastructure.Repositories
         private async Task AddVersionAsync(Template template)
         {
             var templateVersion = new Database.Models.TemplateVersion();
-            templateVersion.Id = template.CurrentVersion;
+            templateVersion.Id = template.CurrentVersionId;
             templateVersion.TemplateId = template.Id;
             templateVersion.CreatedAt = DateTime.UtcNow;
             templateVersion.Name = template.Name;
