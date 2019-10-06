@@ -17,7 +17,7 @@ function FormSection(props) {
           {props.sectionData.fields.map(field => (
             <FormField
               key={field.name}
-              displayName={field.name}
+              displayName={field.displayName || field.name}
               name={field.name}
               type={field.type}
             />

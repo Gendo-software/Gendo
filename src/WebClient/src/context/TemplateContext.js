@@ -6,6 +6,7 @@ import sampleText from './../assets/sampleText';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
 import i18next from 'i18next';
 import { withAppContext } from './AppContext';
+import AppException from '../exceptions/AppException';
 
 const TemplateContext = React.createContext();
 
@@ -88,7 +89,7 @@ class TemplateProvider extends Component {
           name: newFieldName,
           type: 'text',
           mandatory: false,
-          displayName: '',
+          displayName: this.generateDisplayName(newFieldName),
         });
       });
       fieldsCollection = fieldsCollection.filter(
@@ -99,6 +100,10 @@ class TemplateProvider extends Component {
 
     return sections;
   }
+
+  generateDisplayName = fieldName => {
+    return fieldName.replace(/\./g, ' ');
+  };
 
   onSectionFieldChange = (event, section, field) => {
     let valueTemp = event.target.value;
@@ -137,7 +142,10 @@ class TemplateProvider extends Component {
       })
       .catch(error => {
         console.dir('error details', error);
-        alert('error during save template');
+        throw new AppException('error during save template', error);
+      })
+      .then(response => {
+        console.dir('response', response);
       });
   }
 
@@ -160,7 +168,7 @@ class TemplateProvider extends Component {
       })
       .catch(error => {
         console.dir('error details', error);
-        alert('error during save template');
+        throw new AppException('error during save template', error);
       });
   }
 
