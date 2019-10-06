@@ -3,13 +3,27 @@ import Config from 'StaticConfig/config';
 import AuthManager from '../../Auth/AuthManager';
 
 const logError = error => {
+  const errorDetails = getErrorDetails(error);
+
   console.error(`api request error:
+  errorMessage: ${errorDetails.message}
+  errorCode: ${errorDetails.code}
+  
   method: ${error.config.method}
   url: ${error.config.url}
   data: ${error.config.data}
   message: ${error.message}
   more details in below object:`);
   console.dir(JSON.parse(JSON.stringify(error)));
+  console.dir(JSON.parse(JSON.stringify(error.response)));
+};
+
+const getErrorDetails = error => {
+  if (error && error.response && error.response.data)
+    return {
+      message: error.response.data.message,
+      code: error.response.data.code,
+    };
 };
 
 export default class ApiClientBase {

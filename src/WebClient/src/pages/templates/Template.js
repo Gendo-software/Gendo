@@ -34,15 +34,33 @@ class Template extends Component {
   }
 
   editTemplate = () => {
-    this.props.templateContext.editTemplate().then(response => {
-      this.props.history.push('');
-    });
+    this.props.templateContext
+      .editTemplate()
+      .then(response => {
+        this.props.history.push('');
+      })
+      .catch(error => {
+        const errorData =
+          error.innerError &&
+          error.innerError.response &&
+          error.innerError.response.data;
+        alert(`error during save template.\ndetails: ${errorData.message}`);
+      });
   };
 
   createTemplate = () => {
-    this.props.templateContext.createTemplate().then(response => {
-      this.props.history.push('');
-    });
+    this.props.templateContext
+      .createTemplate()
+      .then(response => {
+        this.props.history.push('');
+      })
+      .catch(error => {
+        const errorData =
+          error.innerError &&
+          error.innerError.response &&
+          error.innerError.response.data;
+        alert(`error during save template.\ndetails: ${errorData.message}`);
+      });
   };
 
   exit = () => {
