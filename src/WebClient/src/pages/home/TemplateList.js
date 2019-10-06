@@ -3,6 +3,7 @@ import { Table, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
+import ConfirmButton from '../../components/ConfirmButton';
 
 const TemplateList = props => {
   const { templates, t } = props;
@@ -31,14 +32,10 @@ const TemplateList = props => {
                       {t('common:edit')}
                     </Button>
                   </Link>{' '}
-                  <Button
-                    variant="outline-danger"
-                    size="sm"
-                    className="px-3"
-                    onClick={() => props.onDeleteClick(template.id)}
-                  >
-                    X
-                  </Button>
+                  <ConfirmButton
+                    buttonLabel="xXx"
+                    okAction={() => props.onDeleteClick(template.id)}
+                  />
                 </td>
               </tr>
             );
