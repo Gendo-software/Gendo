@@ -28,16 +28,17 @@ const translations = {
       p1: 'This is demo project created to show you our workshop.',
       p2:
         'In this project we use most popular technologies - .net core, react.js, docker and another.',
-      WhatIsGendo: 'What is Gendo?',
+      whatIsGendo: 'What is Gendo?',
       p3:
         'The main feature of this system is to organize and speed up the process \
          of creating any kind of documents from templates. In our system \
          it is possible to design templates for different purposes.',
-      muted: 'Log in to see more ;)',
     },
     DocumentList: {},
     TemplateList: {},
-    Home: {},
+    Home: {
+      loginToSeeMore: 'Log in to see more ;)',
+    },
     Template: {
       createNew: 'Create new',
       addOptionalSection: 'Add optional section',
@@ -87,16 +88,17 @@ const translations = {
         'To jest projekt demostracyjny stworzony aby pokazać Ci nasz warsztat.',
       p2:
         'W tym projekcie używamy popularnych technologi - .net core, react.js, docker i innych',
-      WhatIsGendo: 'Co to jest Gendo?',
+      whatIsGendo: 'Co to jest Gendo?',
       p3:
         'Główną funkcją systemu est organizacja oraz przyśpieszenie procesu tworzenia  \
          różnego rodzaju dokumentów z szablonów. W naszym systemie  \
          jest możliwe projektowanie szablonów do róznych celów.',
-      muted: 'Zaloguj się aby zobaczyć więcej ;)',
     },
     DocumentList: {},
     TemplateList: {},
-    Home: {},
+    Home: {
+      loginToSeeMore: 'Zaloguj się aby zobaczyć więcej ;)',
+    },
     Template: {
       createNew: 'Stwórz nowy',
       addOptionalSection: 'Dodaj sekcję opcjonalną',

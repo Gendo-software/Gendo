@@ -59,6 +59,7 @@ class Home extends Component {
       <>
         <Container className="mt-5">
           <InfoContent />
+          {!appContext.isLogged && <p className="h4">{t('loginToSeeMore')}</p>}
         </Container>
 
         {appContext.isLogged && (
