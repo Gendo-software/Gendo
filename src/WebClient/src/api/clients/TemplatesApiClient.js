@@ -18,8 +18,6 @@ export default class TemplatesApiClient extends ApiClientBase {
   };
 
   createTemplate = template => {
-    console.log('save template');
-    console.dir(template);
     return this.post(TemplatesRoutes.templates, template);
   };
 

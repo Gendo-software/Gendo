@@ -114,7 +114,6 @@ class Document extends Component {
   }
 
   async saveDocument(formValue) {
-    console.dir('saveDocument', this.state);
     const documentObject = {
       id: this.state.document.id,
       content: formValue,

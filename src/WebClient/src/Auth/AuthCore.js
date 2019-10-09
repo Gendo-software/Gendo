@@ -52,11 +52,11 @@ export default class AuthCore {
     });
 
     this.lock.on('unrecoverable_error', result => {
-      console.log('unrecoverable_error');
+      console.error('unrecoverable_error');
       console.dir(result);
     });
     this.lock.on('authorization_error', result => {
-      console.log('authorization_error');
+      console.error('authorization_error');
       console.dir(result);
     });
   }

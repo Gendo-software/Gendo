@@ -23,7 +23,6 @@ export default class DocumentsApiClient extends ApiClientBase {
   };
 
   editDocument = document => {
-    console.dir(document);
     return this.put(DocumentsRoutesParam(document.id).documentById, document);
   };
 

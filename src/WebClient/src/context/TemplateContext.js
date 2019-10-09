@@ -4,7 +4,6 @@ import _ from 'lodash';
 import detectHashInText from '../misc/detectHashInText';
 import sampleText from './../assets/sampleText';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
-import i18next from 'i18next';
 import { withAppContext } from './AppContext';
 import AppException from '../exceptions/AppException';
 
@@ -25,9 +24,6 @@ class TemplateProvider extends Component {
     id: '',
   };
 
-  componentDidUpdate() {
-    // console.dir(this.state);
-  }
   componentDidMount() {
     let newSections = [...this.state.sections];
     this.state.sections.forEach(section => {
@@ -74,7 +70,6 @@ class TemplateProvider extends Component {
     const index = sections.findIndex(x => x.id === section.id);
     const fields = detectHashInText(text);
     if (!_.isEqual(sections[index].fields.map(x => x.name).sort(), fields)) {
-      //console.log(`setState new fields collection: ${fields}`);
       const newFieldsToAdd = _.difference(
         fields,
         sections[index].fields.map(x => x.name)
@@ -125,7 +120,6 @@ class TemplateProvider extends Component {
   };
 
   async createTemplate() {
-    console.dir(this.props);
     const { appContext } = this.props;
 
     let template = {
@@ -143,14 +137,10 @@ class TemplateProvider extends Component {
       .catch(error => {
         console.dir('error details', error);
         throw new AppException('error during save template', error);
-      })
-      .then(response => {
-        console.dir('response', response);
       });
   }
 
   async editTemplate() {
-    console.dir(this.props);
     const { appContext } = this.props;
 
     let template = {
