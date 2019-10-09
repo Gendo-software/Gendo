@@ -71,8 +71,6 @@ class Editor extends Component {
   }
 
   handleChange(value, onSectionChange) {
-    //var test = this.context;
-
     const event = {
       target: {
         name: 'text',

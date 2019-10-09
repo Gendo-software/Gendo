@@ -17,11 +17,14 @@ const translations = {
       logout: 'Logout',
       save: 'Save',
       exit: 'Exit',
+      back: 'Back',
+      download: 'Download',
       name: 'Name',
       text: 'Tekst',
       date: 'Date',
       number: 'Number',
       currency: 'Currency',
+      mainSection: 'Main section',
     },
     infoContent: {
       heloUser: 'Hello my dear user :)',
@@ -51,7 +54,10 @@ const translations = {
       createTemplate: 'Create template',
       editTemplate: 'Edit template',
       templateName: 'Template name',
-      mainSection: 'Main section',
+    },
+    Document: {
+      documentName: 'Document name',
+      contract: 'Contract',
     },
     AuthRoute: {
       notAuthorized: 'Not authorized',
@@ -76,11 +82,14 @@ const translations = {
       logout: 'Wyloguj',
       save: 'Zapisz',
       exit: 'Wyjdź',
+      back: 'Wstecz',
+      download: 'Pobierz',
       name: 'Nazwa',
       text: 'Tekst',
       date: 'Data',
       number: 'Numer',
       currency: 'Waluta',
+      mainSection: 'Sekcja główna',
     },
     infoContent: {
       heloUser: 'Witaj mój drogi użytkowniku :)',
@@ -111,7 +120,10 @@ const translations = {
       createTemplate: 'Tworzenie szablonu',
       editTemplate: 'Edycja szablonu',
       templateName: 'Nazwa szablonu',
-      mainSection: 'Sekcja główna',
+    },
+    Document: {
+      documentName: 'Nazwa dokumentu',
+      contract: 'Umowa',
     },
     AuthRoute: {
       notAuthorized: 'Brak uprawnień',

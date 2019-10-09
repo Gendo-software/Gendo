@@ -2,49 +2,33 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table, Button } from 'react-bootstrap';
 import { withTranslation } from 'react-i18next';
+import ConfirmButton from '../../components/ConfirmButton';
 
-const mockValues = {
-  documents: [
-    {
-      name: 'Volkswagen Passat',
-      template: {
-        name: 'Seeling Car',
-        templateId: 'guid-id-1',
-      },
-      id: 'guid-doc-id_1',
-    },
-    {
-      name: 'Opel Astra',
-      template: {
-        name: 'Seeling Car',
-        templateId: 'guid-id-1',
-      },
-      id: 'guid-doc-id_2',
-    },
-    {
-      name: 'BMW X5',
-      template: {
-        name: 'Seeling Car',
-        templateId: 'guid-id-1',
-      },
-      id: 'guid-doc-id_3',
-    },
-  ],
-};
+function getTemplateName(templateId, templatesList) {
+  const selectedTemplate = templatesList.find(
+    template => template.id === templateId
+  );
+  if (selectedTemplate) {
+    return selectedTemplate.name;
+  } else {
+    return '';
+  }
+}
 
 const DocumentList = props => {
   const { t } = props;
+
   return (
     <div className="border py-3">
       <Table hover borderless size="sm" className="m-0">
         <tbody>
-          {mockValues.documents.map((doc, key) => {
+          {props.documents.map((doc, key) => {
             return (
               <tr key={doc.id}>
-                <td className="px-3 align-middle">
+                <td className="px-3 align-middle" style={{ width: '70%' }}>
                   {`${++key} ${doc.name}`}
                   <span className="d-block border-top text-right text-muted font-italic">
-                    {doc.template.name}
+                    {getTemplateName(doc.templateId, props.templates)}
                   </span>
                 </td>
                 <td className="px-3 text-right align-middle">
@@ -56,14 +40,10 @@ const DocumentList = props => {
                   >
                     {t('common:open')}
                   </Button>
-                  <Button
-                    onClick={() => props.onDeleteClick(doc)}
-                    variant="outline-danger"
-                    size="sm"
-                    className="px-3 mr-1"
-                  >
-                    <b>×</b>
-                  </Button>
+                  <ConfirmButton
+                    buttonLabel="x"
+                    okAction={() => props.onDeleteClick(doc)}
+                  />
                 </td>
               </tr>
             );

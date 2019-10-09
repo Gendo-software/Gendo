@@ -3,8 +3,12 @@ import {
   TemplatesRoutes,
   TemplatesRoutesParam,
 } from '../routes/TemplatesRoutes';
+import Config from '../../StaticConfig/config';
 
 export default class TemplatesApiClient extends ApiClientBase {
+  constructor() {
+    super(Config.ApiTemplatesUrl);
+  }
   getTemplates = () => {
     return this.get(TemplatesRoutes.templates);
   };

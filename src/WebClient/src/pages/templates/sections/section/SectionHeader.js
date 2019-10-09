@@ -19,7 +19,7 @@ const SectionHeader = props => {
               name={'name'}
               placeholder={t('common:name')}
             />
-          )) || <h4>{props.section.name}</h4>}
+          )) || <h4>{t('common:mainSection')}</h4>}
         </Col>
         {props.section.isOptional && (
           <Col className="text-right">

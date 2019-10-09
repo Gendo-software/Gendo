@@ -7,6 +7,7 @@ import InfoContent from './home/InfoContent';
 import { withTranslation } from 'react-i18next';
 import { withAppContext } from '../context/AppContext';
 import { compose } from 'redux';
+import DocumentsApiClient from '../api/clients/DocumentsApiClient';
 
 class Home extends Component {
   constructor(props) {
@@ -15,12 +16,14 @@ class Home extends Component {
 
     this.state = {
       templates: [],
+      documents: [],
     };
+    this.templatesApi = new TemplatesApiClient();
+    this.documentsApi = new DocumentsApiClient();
   }
 
   refreshTemplateList = () => {
-    const templatesApi = new TemplatesApiClient();
-    templatesApi
+    this.templatesApi
       .getTemplates()
       .then(response => {
         this.setState({ templates: response.data });
@@ -29,9 +32,23 @@ class Home extends Component {
         alert(`api error`);
       });
   };
+
+  refreshDocumentList = () => {
+    this.documentsApi
+      .getDocuments(this.props.appContext.userProfile.sub)
+      .then(({ data: documentsList }) => {
+        this.setState({ documents: documentsList });
+      })
+      .catch(error => {
+        console.error(error);
+        alert('error during try get documents list');
+      });
+  };
+
   componentDidMount() {
     if (this.props.appContext.isLogged) {
       this.refreshTemplateList();
+      this.refreshDocumentList();
     }
   }
 
@@ -46,11 +63,19 @@ class Home extends Component {
   }
 
   deleteTemplate = templateId => {
-    const templatesApi = new TemplatesApiClient();
-
-    templatesApi.deleteTemplate(templateId).then(response => {
+    this.templatesApi.deleteTemplate(templateId).then(response => {
       this.refreshTemplateList();
     });
+  };
+
+  deleteDocument = document => {
+    this.documentsApi.deleteDocument(document.id).then(response => {
+      this.refreshDocumentList();
+    });
+  };
+
+  openDocument = document => {
+    this.props.history.push(`Document/Edit/${document.id}`);
   };
 
   render() {
@@ -88,10 +113,12 @@ class Home extends Component {
               </Col>
             </Row>
             <Row>
-              <Col lg={{ offset: 2, span: 5 }}>
+              <Col lg={{ offset: 2, span: 7 }}>
                 <DocumentList
-                  onOpenClick={() => alert('onOpenClick')}
-                  onDeleteClick={() => alert('onDeleteClick')}
+                  documents={this.state.documents}
+                  templates={this.state.templates}
+                  onOpenClick={this.openDocument}
+                  onDeleteClick={this.deleteDocument}
                 />
               </Col>
             </Row>

@@ -1,5 +1,4 @@
 import Axios from 'axios';
-import Config from 'StaticConfig/config';
 import AuthManager from '../../Auth/AuthManager';
 
 const logError = error => {
@@ -24,13 +23,15 @@ const getErrorDetails = error => {
       message: error.response.data.message,
       code: error.response.data.code,
     };
+  else return {};
 };
 
 export default class ApiClientBase {
-  constructor() {
-    console.log(`Create Axios instance: baseURL: ${Config.ApiBaseUrl}`);
+  constructor(baseURL) {
+    console.log(`Create Axios instance: baseURL: ${baseURL}`);
+
     this.axiosInstance = Axios.create({
-      baseURL: Config.ApiBaseUrl,
+      baseURL: baseURL,
       timeout: 30000,
       headers: {
         Authorization:
@@ -39,8 +40,8 @@ export default class ApiClientBase {
     });
   }
   get = async (url, params) => {
-    console.log(`request ${url}, params: ${params}`);
-    return this.axiosInstance.get(url).catch(ex => {
+    console.log(`request ${url}, params: ${JSON.stringify(params)}`);
+    return this.axiosInstance.get(url, { params: params }).catch(ex => {
       logError(ex);
       throw ex;
       // check interceptor instead this solution

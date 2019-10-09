@@ -3,8 +3,12 @@ export default class Config {
     this._config = config;
   }
 
-  static get ApiBaseUrl() {
-    return this._config.ApiBaseUrl;
+  static get ApiDocumentsUrl() {
+    return this._config.ApiDocumentsUrl;
+  }
+
+  static get ApiTemplatesUrl() {
+    return this._config.ApiTemplatesUrl;
   }
 
   static get ExampleValue() {

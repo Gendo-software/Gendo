@@ -33,7 +33,7 @@ const TemplateList = props => {
                     </Button>
                   </Link>{' '}
                   <ConfirmButton
-                    buttonLabel="xXx"
+                    buttonLabel="X"
                     okAction={() => props.onDeleteClick(template.id)}
                   />
                 </td>

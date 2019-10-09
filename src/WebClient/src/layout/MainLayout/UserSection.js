@@ -14,9 +14,9 @@ function onLogoutClick() {
   AuthCore.logout();
 }
 
-function onUserClick() {
+function onUserClick(props) {
   console.log('user profile clicked. userInfo:');
-  console.dir(AuthCore.UserProfile);
+  console.dir(props.userProfile, AuthCore.AuthInfo);
 }
 
 function onLoginClick() {
@@ -31,7 +31,7 @@ function UserIsLoggedView(props) {
   const { t } = props;
   return (
     <>
-      <Nav.Item onClick={onUserClick}>
+      <Nav.Item onClick={() => onUserClick(props)}>
         <Nav.Link>
           <FontAwesomeIcon icon={faUser} /> {t('hello')}{' '}
           {props.userProfile.nickname}

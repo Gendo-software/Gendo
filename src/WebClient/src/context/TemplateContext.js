@@ -15,7 +15,7 @@ class TemplateProvider extends Component {
     name: '',
     sections: [
       {
-        name: i18next.t('Template:mainSection'),
+        name: 'mainSection',
         id: uuid(),
         isOptional: false,
         text: sampleText.Text,

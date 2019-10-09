@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import MainLayout from '../layout/MainLayout';
 import Home from '../pages/Home';
 import Template, { templateMode } from '../pages/templates/Template';
-import CreateDocument from '../pages/documents/CreateDocument';
+import Document, { documentMode } from '../pages/documents/Document';
 import Test from '../pages/Test';
 import AuthRoute from './AuthRoute';
 
@@ -29,8 +29,18 @@ const ContentRouter = () => (
       <AuthRoute
         exact
         path="/Document/Create/:templateId"
-        component={CreateDocument}
+        render={routeProps => (
+          <Document {...routeProps} mode={documentMode.new} />
+        )}
       />
+      <AuthRoute
+        exact
+        path="/Document/Edit/:templateId"
+        render={routeProps => (
+          <Document {...routeProps} mode={documentMode.edit} />
+        )}
+      />
+
       <Route exact path="/Test" component={Test} />
     </MainLayout>
   </Switch>

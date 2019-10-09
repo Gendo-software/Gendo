@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DebugInfoComponent from '../components/DebugInfo/DebugInfoComponent';
+import DebugInfoComponent from '../components/debugInfo/DebugInfoComponent';
 import config from '../StaticConfig/config';
 
 import ContentRouter from './ContentRouter';
