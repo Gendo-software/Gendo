@@ -18,7 +18,7 @@ namespace Handlers.Documents
         public async Task<int> HandleAsync(UpdateDocument command)
         {
             var newVersion = Guid.NewGuid();
-            await _documentService.UpdateAsync(command.Id, newVersion, command.Name, command.UserId, command.Content.ToString());
+            await _documentService.UpdateAsync(command.Id, newVersion, command.TemplateVersionId, command.Name, command.UserId, command.Content.ToString());
             return 0;
         }
     }

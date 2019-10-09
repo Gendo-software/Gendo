@@ -25,7 +25,7 @@ namespace Handlers.Documents
                 result = 1;
             }
             var newVersion = Guid.NewGuid();
-            await _documentService.CreateAsync(command.Id, command.TemplateVersionId, newVersion, command.Name, command.UserId, command.Content.ToString());
+            await _documentService.CreateAsync(command.Id, command.TemplateId, command.TemplateVersionId, newVersion, command.Name, command.UserId, command.Content.ToString());
             return result;
         }
     }

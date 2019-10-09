@@ -6,6 +6,7 @@ namespace Domain
     public class Document
     {
         public Guid Id { get; set; }
+        public Guid TemplateId { get; set; }
         public Guid TemplateVersionId { get; set; }
         public Guid CurrentVersion { get; set; }
         public string UserId { get; set; }
@@ -16,9 +17,10 @@ namespace Domain
 
         public Document() { }
 
-        public Document(Guid id, Guid templateVersionId, Guid currentVersion, string name, string userId, string content) 
+        public Document(Guid id, Guid templateId,  Guid templateVersionId, Guid currentVersion, string name, string userId, string content) 
         {
             Id = id;
+            TemplateId = templateId;
             TemplateVersionId = templateVersionId;
             CurrentVersion = currentVersion;
             SetUserId(userId);
