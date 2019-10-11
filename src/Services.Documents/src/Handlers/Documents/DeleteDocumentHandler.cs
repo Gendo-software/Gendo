@@ -1,8 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Commands;
-using Commands.Documents;
-using Services.Exceptions;
+using Messages;
+using Messages.Commands;
 using Services.Interfaces;
 
 namespace Handlers.Documents

@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Commands
+namespace Messages
 {
     public interface ICommandDispatcher
     {

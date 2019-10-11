@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace Commands.Documents
+namespace Messages.Commands
 {
     public class UpdateDocument : ICommand
     {

@@ -4,9 +4,6 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
-using Controllers;
-using Commands;
-using Commands.Documents;
 using DTO.Documents;
 using Services.Exceptions;
 using Services.Interfaces;
@@ -14,8 +11,8 @@ using Xunit;
 using Documents.Tests;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Security.Principal;
+using Messages.Commands;
+using Messages;
 
 namespace Controllers
 {

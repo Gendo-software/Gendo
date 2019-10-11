@@ -1,4 +1,4 @@
-namespace Commands
+namespace Messages
 {
     public interface ICommand
     {

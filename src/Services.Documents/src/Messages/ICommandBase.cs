@@ -1,6 +1,6 @@
 using System;
 
-namespace Commands
+namespace Messages
 {
     public class ICommandBased : ICommand
     {

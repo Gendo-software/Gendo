@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Commands;
-using Commands.Documents;
 using Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.Linq;
+using Messages;
+using Messages.Commands;
 
 namespace Controllers
 {

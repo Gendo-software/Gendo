@@ -1,18 +1,12 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Newtonsoft.Json.Linq;
-using Controllers;
-using Commands;
-using Commands.Documents;
-using DTO.Documents;
-using Services.Exceptions;
 using Services.Interfaces;
 using Xunit;
 using Handlers.Documents;
+using Messages.Commands;
 
 namespace Controllers
 {

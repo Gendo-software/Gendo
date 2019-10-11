@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
+using RabbitMq;
+using Messages.Events;
 
 namespace Documents.Api
 {
@@ -82,7 +84,8 @@ namespace Documents.Api
             services.AddMvcCore()
                 .AddMetricsCore();
             var builder = new ContainerBuilder();
-            builder.Populate(services);          
+            builder.Populate(services);    
+            builder.AddRabbitMq();      
             builder.RegisterModule(new ContainerModule(Configuration));
             this.ApplicationContainer = builder.Build();
             return new AutofacServiceProvider(this.ApplicationContainer);
@@ -96,7 +99,9 @@ namespace Documents.Api
             app.UseAuthentication();
             app.UseExceptionHandlerMiddleware();
             app.UseMvc();       
-            
+            app.UseRabbitMq()
+                .SubscribeEvent<TemplateCreated>()
+                .SubscribeEvent<TemplateDeleted>();
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("v1/swagger.json", "gendo-services-documents API v1");
