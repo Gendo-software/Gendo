@@ -1,8 +1,7 @@
 using System;
-using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
-namespace Templates.Infrastructure.Commands.Templates
+namespace Templates.Infrastructure.Messages.Templates
 {
     public class CreateTemplate : ICommand
     {

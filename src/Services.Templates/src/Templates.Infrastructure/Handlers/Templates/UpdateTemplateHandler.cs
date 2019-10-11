@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using Templates.Infrastructure.Commands;
-using Templates.Infrastructure.Commands.Templates;
+using Templates.Infrastructure.Messages;
+using Templates.Infrastructure.Messages.Templates;
 using Templates.Infrastructure.Services.Interfaces;
 
 namespace Templates.Infrastructure.Handlers.Users

@@ -1,4 +1,4 @@
-namespace Templates.Infrastructure.Commands
+namespace Templates.Infrastructure.Messages
 {
     public interface ICommand
     {

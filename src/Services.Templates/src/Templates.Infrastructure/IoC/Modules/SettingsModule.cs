@@ -16,7 +16,7 @@ namespace Templates.Infrastructure.IoC.Modules
 
         protected override void Load(ContainerBuilder builder)
         {
-			builder.RegisterInstance(_configuration.GetSettings<MongoSettings>())
+			builder.RegisterInstance(_configuration.GetSettings<MongoSettings>("mongo"))
 	               .SingleInstance();
 		}  
     }

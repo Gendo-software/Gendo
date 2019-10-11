@@ -1,30 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Templates.Api.Framework;
-using Templates.Core.Repositories;
-using Templates.Database.Models;
 using Templates.Infrastructure.IoC;
 using Templates.Infrastructure.Mongo;
-using Templates.Infrastructure.Repositories;
-using Templates.Infrastructure.Services;
-using Templates.Infrastructure.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
+using Templates.Infrastructure.RabbitMq;
 
 namespace Templates.Api
 {
@@ -93,7 +83,8 @@ namespace Templates.Api
             services.AddMvcCore()
                 .AddMetricsCore();
             var builder = new ContainerBuilder();
-            builder.Populate(services);          
+            builder.Populate(services);
+            builder.AddRabbitMq();    
             builder.RegisterModule(new ContainerModule(Configuration));
             this.ApplicationContainer = builder.Build();
             return new AutofacServiceProvider(this.ApplicationContainer);
@@ -107,7 +98,6 @@ namespace Templates.Api
             app.UseAuthentication();
             app.UseExceptionHandlerMiddleware();
             app.UseMvc();       
-            
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("v1/swagger.json", "gendo-services-templates API v1");

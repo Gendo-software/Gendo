@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Templates.Infrastructure.Commands;
-using Templates.Infrastructure.Commands.Templates;
 using Templates.Infrastructure.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Templates.Infrastructure.Messages;
+using Microsoft.AspNetCore.Authorization;
+using Templates.Infrastructure.Messages.Templates;
 
 namespace Templates.Api.Controllers
 {

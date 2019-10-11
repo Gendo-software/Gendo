@@ -1,16 +1,11 @@
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
-using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Newtonsoft.Json.Linq;
-using Templates.Api.Controllers;
-using Templates.Infrastructure.Commands;
-using Templates.Infrastructure.Commands.Templates;
-using Templates.Infrastructure.DTO.Templates;
 using Templates.Infrastructure.Handlers.Users;
-using Templates.Infrastructure.Services.Exceptions;
+using Templates.Infrastructure.Messages.Templates;
+using Templates.Infrastructure.RabbitMq;
 using Templates.Infrastructure.Services.Interfaces;
 using Xunit;
 
@@ -30,7 +25,8 @@ namespace Templates.Tests.Controllers
                 Content = JObject.Parse("{\"foo\" : \"bar\"}")
             };
             var templateServiceMock = new Mock<ITemplateService>();
-            var createTemplateHandler = new CreateTemplateHandler(templateServiceMock.Object);
+            var busPublisherMock = new Mock<IBusPublisher>();
+            var createTemplateHandler = new CreateTemplateHandler(busPublisherMock.Object, templateServiceMock.Object);
 
             var result = await createTemplateHandler.HandleAsync(command);
 

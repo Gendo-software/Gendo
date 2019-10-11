@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Templates.Infrastructure.Commands
+namespace Templates.Infrastructure.Messages
 {
     public interface ICommandHandler<T> where T : ICommand 
     {

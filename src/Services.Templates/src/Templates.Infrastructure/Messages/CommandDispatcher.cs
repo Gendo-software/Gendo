@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Autofac;
 
-namespace Templates.Infrastructure.Commands
+namespace Templates.Infrastructure.Messages
 {
     public class CommandDispatcher : ICommandDispatcher
     {

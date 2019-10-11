@@ -1,6 +1,6 @@
 using System.Reflection;
 using Autofac;
-using Templates.Infrastructure.Commands;
+using Templates.Infrastructure.Messages;
 
 namespace Templates.Infrastructure.IoC.Modules
 {

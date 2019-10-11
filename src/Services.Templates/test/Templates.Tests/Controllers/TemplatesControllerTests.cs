@@ -5,12 +5,12 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Templates.Api.Controllers;
-using Templates.Infrastructure.Commands;
-using Templates.Infrastructure.Commands.Templates;
+using Templates.Infrastructure.Messages;
 using Templates.Infrastructure.DTO.Templates;
 using Templates.Infrastructure.Services.Exceptions;
 using Templates.Infrastructure.Services.Interfaces;
 using Xunit;
+using Templates.Infrastructure.Messages.Templates;
 
 namespace Templates.Tests.Controllers
 {
