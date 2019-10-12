@@ -20,6 +20,7 @@ namespace Documents.Tests.Controllers
         public async Task CreateAsync_DocumentNameIsEmpty_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateId = Guid.Parse("e28d59e8-1805-478a-98dd-0f51a427daf6");
             var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
@@ -31,7 +32,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.CreateAsync(id, templateVersionId, versionId, documentName, userId, content));
+                () => documentService.CreateAsync(id, templateId, templateVersionId, versionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("invalid_name");
@@ -41,6 +42,7 @@ namespace Documents.Tests.Controllers
         public async Task CreateAsync_DocumentContentIsEmpty_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateId = Guid.Parse("e28d59e8-1805-478a-98dd-0f51a427daf6");
             var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
@@ -52,7 +54,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.CreateAsync(id, templateVersionId, versionId, documentName, userId, content));
+                () => documentService.CreateAsync(id, templateId, templateVersionId, versionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("empty_content");
@@ -62,6 +64,7 @@ namespace Documents.Tests.Controllers
         public async Task CreateAsync_UserIdIsEmpty_ThrowException()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateId = Guid.Parse("e28d59e8-1805-478a-98dd-0f51a427daf6");
             var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = string.Empty;
@@ -73,7 +76,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.CreateAsync(id, templateVersionId, versionId, documentName, userId, content));
+                () => documentService.CreateAsync(id, templateId, templateVersionId, versionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("empty_user_id");
@@ -83,6 +86,7 @@ namespace Documents.Tests.Controllers
         public async Task CreateAsync_DocumentParametersAreGood_ReturnsZero()
         {
             var id = Guid.Parse("ae674f86-1175-4699-b5b9-702e1ef64d79");
+            var templateId = Guid.Parse("e28d59e8-1805-478a-98dd-0f51a427daf6");
             var templateVersionId = Guid.Parse("32aab85e-b7cd-492d-b550-58f38575912b");
             var versionId = Guid.Parse("3103f442-ccbe-437e-9eac-52798b60d340");
             var userId = "auth0|5c81a3686d3d732e6aa9e88f";
@@ -93,7 +97,7 @@ namespace Documents.Tests.Controllers
             var mapperMock = new Mock<IMapper>();
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
-            var result = await documentService.CreateAsync(id, templateVersionId, versionId, documentName, userId, content);
+            var result = await documentService.CreateAsync(id, templateId, templateVersionId, versionId, documentName, userId, content);
             documentRepositoryMock.Verify(x => x.AddAsync(It.IsAny<Document>()), Times.Once);
             result.Should().Be(0);
         }
@@ -115,7 +119,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<ServiceException>(
-                () => documentService.UpdateAsync(id, versionId, userId, documentName, content));
+                () => documentService.UpdateAsync(id, versionId, templateVersionId, userId, documentName, content));
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("document_not_found");
@@ -139,7 +143,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.UpdateAsync(id, versionId, documentName, userId, content));
+                () => documentService.UpdateAsync(id, versionId, templateVersionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("invalid_name");
@@ -163,7 +167,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.UpdateAsync(id, versionId, documentName, userId, content));
+                () => documentService.UpdateAsync(id, versionId, templateVersionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("empty_content");
@@ -187,7 +191,7 @@ namespace Documents.Tests.Controllers
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
             var exception = await Assert.ThrowsAsync<DomainException>(
-                () => documentService.UpdateAsync(id, versionId, documentName, userId, content));
+                () => documentService.UpdateAsync(id, versionId, templateVersionId, documentName, userId, content));
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Never);
             exception.Code.Should().Be("empty_user_id");
@@ -210,7 +214,7 @@ namespace Documents.Tests.Controllers
             var mapperMock = new Mock<IMapper>();
             var documentService = new DocumentService(documentRepositoryMock.Object, mapperMock.Object);
 
-            var result = await documentService.UpdateAsync(id, versionId, documentName, userId, content);
+            var result = await documentService.UpdateAsync(id, versionId, templateVersionId, documentName, userId, content);
 
             documentRepositoryMock.Verify(x => x.UpdateAsync(It.IsAny<Document>()), Times.Once);
             result.Should().Be(0);

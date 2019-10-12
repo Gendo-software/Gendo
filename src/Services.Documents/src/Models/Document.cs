@@ -11,6 +11,7 @@ namespace Models
         public Guid Id { get; set; }
         [BsonRepresentation(BsonType.String)]
         public Guid TemplateId { get; set; }
+        [BsonRepresentation(BsonType.String)]
         public Guid TemplateVersionId { get; set; }
         [BsonRepresentation(BsonType.String)]
         public Guid CurrentVersion { get; set; }
