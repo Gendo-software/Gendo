@@ -101,6 +101,7 @@ namespace Documents.Api
             app.UseMvc();       
             app.UseRabbitMq()
                 .SubscribeEvent<TemplateCreated>()
+                .SubscribeEvent<TemplateUpdated>()
                 .SubscribeEvent<TemplateDeleted>();
             app.UseSwagger();
             app.UseSwaggerUI(c => {

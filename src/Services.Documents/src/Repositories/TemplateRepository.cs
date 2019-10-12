@@ -21,6 +21,12 @@ namespace Repositories
         {
             _database = database;
         }
+        
+        public async Task<Template> GetAsync(Guid id)
+            => await _templates.Find(x => x.Id == id).SingleOrDefaultAsync();
+
+        public async Task UpdateAsync(Template template)
+            => await _templates.ReplaceOneAsync(x => x.Id == template.Id, template);
 
         public async Task AddAsync(Template template)
             => await _templates.InsertOneAsync(template);
