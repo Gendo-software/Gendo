@@ -29,7 +29,7 @@ namespace Templates.Infrastructure.Handlers.Users
             }
             var newVersion = Guid.NewGuid();
             await _templateService.CreateAsync(command.Id, newVersion, command.UserId, command.Name, command.Content.ToString());
-            await _busPublisher.PublishAsync(new TemplateCreated(command.Id));
+            await _busPublisher.PublishAsync(new TemplateCreated(command.Id, newVersion));
             return result;
         }
     }

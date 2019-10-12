@@ -2,12 +2,12 @@ using System;
 
 namespace Templates.Infrastructure.Messages.Events
 {
-    public class TemplateCreated : IEvent
+    public class TemplateUpdated : IEvent
     {
         public Guid Id { get; set; }
         public Guid CurrentVersionId { get; set; }
 
-        public TemplateCreated(Guid id, Guid currentVersionId)
+        public TemplateUpdated(Guid id, Guid currentVersionId)
         {
             Id = id;
             CurrentVersionId = currentVersionId;
