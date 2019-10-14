@@ -48,6 +48,8 @@ services:
   rabbitmq:    
     image: rabbitmq:3-management
     container_name: rabbitmq
+    networks:
+      - gendo
     environment:
         RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
         RABBITMQ_DEFAULT_USER: "rabbitmq"
