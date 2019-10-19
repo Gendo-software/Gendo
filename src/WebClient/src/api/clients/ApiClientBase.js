@@ -33,10 +33,13 @@ export default class ApiClientBase {
     this.axiosInstance = Axios.create({
       baseURL: baseURL,
       timeout: 30000,
-      headers: {
-        Authorization:
-          'Bearer ' + AuthManager.getAuthObject().AuthInfo.AccessToken,
-      },
+    });
+
+    this.axiosInstance.interceptors.request.use(config => {
+      config.headers.Authorization =
+        'Bearer ' + AuthManager.getAuthObject().AuthInfo.AccessToken;
+
+      return config;
     });
   }
   get = async (url, params) => {

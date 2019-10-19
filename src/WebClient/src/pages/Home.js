@@ -58,6 +58,7 @@ class Home extends Component {
       this.isLogged = appContext.isLogged;
       if (this.isLogged) {
         this.refreshTemplateList();
+        this.refreshDocumentList();
       }
     }
   }
