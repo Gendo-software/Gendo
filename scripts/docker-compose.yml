@@ -20,7 +20,9 @@ services:
     networks:
       - gendo
     environment:
+      - WAIT_HOSTS=rabbitmq:5672, mongo:27017
       - ASPNETCORE_ENVIRONMENT=docker
+      
       
   templates-service:
     build: 
