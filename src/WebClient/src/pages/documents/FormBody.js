@@ -21,7 +21,6 @@ function FormBody(props) {
       {optionalSections.map(section => (
         <FormSection key={section.id} sectionData={section} />
       ))}
-
       <div className="text-center pt-5">
         <Button
           variant="danger"

@@ -9,8 +9,13 @@ export default class AppContextProvider extends Component {
     appReady: false,
     isLogged: false,
     userProfile: null,
+    refreshPageAction: null,
   };
 
+  reloadView() {
+    this.setState({ appReady: false });
+    this.setState({ appReady: true });
+  }
   componentDidMount() {
     authCore.Events.addLoginSuccess(() => {
       authCore.GetUserProfileAsync().then(userProfile => {
@@ -25,6 +30,7 @@ export default class AppContextProvider extends Component {
         value={{
           ...this.state,
           setAppContextState: this.setState.bind(this),
+          reloadView: this.reloadView.bind(this),
         }}
       >
         {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}

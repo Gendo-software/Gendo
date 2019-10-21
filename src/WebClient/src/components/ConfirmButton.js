@@ -29,16 +29,24 @@ class ConfirmButton extends Component {
   };
 
   render() {
+    let customControl =
+      this.props.control &&
+      React.cloneElement(this.props.control, {
+        onClick: this.handleShow,
+      });
+
     return (
       <>
-        <Button
-          variant="outline-danger"
-          size="sm"
-          className="px-3"
-          onClick={this.handleShow}
-        >
-          {this.props.buttonLabel}
-        </Button>
+        {customControl || (
+          <Button
+            variant="outline-danger"
+            size="sm"
+            className="px-3"
+            onClick={this.handleShow}
+          >
+            {this.props.buttonLabel}
+          </Button>
+        )}
 
         <Modal show={this.state.modalVisible} onHide={this.handleClose}>
           <Modal.Header closeButton>
@@ -75,5 +83,6 @@ ConfirmButton.propTypes = {
   confirmText: PropTypes.string,
   confirmButtonText: PropTypes.string,
   cancelButtonText: PropTypes.string,
+  control: PropTypes.object,
 };
 export default ConfirmButton;
