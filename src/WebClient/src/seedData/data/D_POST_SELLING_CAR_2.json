@@ -1,0 +1,37 @@
+{
+  "content": {
+    "Buyer": {
+      "Name": "Theodore K. Nix",
+      "Address": "179 Cambridge Drive Phoenix, AZ 85003 ",
+      "PhoneNumber": "623-505-3480"
+    },
+    "Seller": {
+      "Name": "Betty S. Simonetti",
+      "Address": "2089 Barnes Street Orlando, FL 32801 "
+    },
+    "Vehicle": {
+      "Type": "Car",
+      "MarkAndModel": "Tipo Station Wagon 1.4 T-Jet 16v 120 KM",
+      "Year": "2019",
+      "Color": "White",
+      "VinNumber": "19UUB3F75FA889626",
+      "EngineNumber": "1GNEC13T45J172517",
+      "Millage": "1000",
+      "Price": "$23000"
+    },
+    "Agreement": {
+      "Date": "2019-10-21",
+      "AsIsResposibilityDate": "2023-10-21"
+    },
+    "Deposit": {
+      "Amount": "$1000",
+      "Date": "2019-10-25",
+      "BuyerRemainingBalance": "$1000",
+      "BuyerRemainingBalancePayDate": "2019-11-08"
+    }
+  },
+  "templateVersionId": "",
+  "templateId": "",
+  "userId": "",
+  "name": "Tipo Wagon 1.4 T-Jet 16v 120 KM - Theodore K. Nix"
+}

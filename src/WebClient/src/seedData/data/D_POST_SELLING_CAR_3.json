@@ -1,0 +1,37 @@
+{
+  "content": {
+    "Buyer": {
+      "Name": "Rodney E. Sutherland",
+      "Address": "4338 Duffy Street Crown Point, IN 46307 ",
+      "PhoneNumber": "219-776-7245"
+    },
+    "Seller": {
+      "Name": "Kristina J. Price",
+      "Address": "4086 Philadelphia Avenue Murray, UT 84107 "
+    },
+    "Vehicle": {
+      "Type": "Van",
+      "MarkAndModel": "Opel Combo",
+      "Year": "2016",
+      "Color": "White",
+      "VinNumber": "1XKDDB0X39J906363",
+      "EngineNumber": "JE3AA21A2SU054457",
+      "Millage": "15000",
+      "Price": "$11500"
+    },
+    "Agreement": {
+      "Date": "2019-10-21",
+      "AsIsResposibilityDate": "2019-12-21"
+    },
+    "Deposit": {
+      "Amount": "$5000",
+      "Date": "2019-10-25",
+      "BuyerRemainingBalance": "$5000",
+      "BuyerRemainingBalancePayDate": "2019-10-25"
+    }
+  },
+  "templateVersionId": "",
+  "templateId": "",
+  "userId": "",
+  "name": "Opel Combo 1.6 Diesel 75 HP"
+}

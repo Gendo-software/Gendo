@@ -1,0 +1,31 @@
+{
+  "content": {
+    "Child": {
+      "FullName": "Jane Goodall",
+      "Birthdate": "2016-10-14",
+      "DateEnrollmentInDaycare": "2019-10-21"
+    },
+    "Guardian": {
+      "FullName": "John Goodall",
+      "PhoneNumber": "+44 20 1234 5678",
+      "EmailAddress": "john.goodall@gmail.com"
+    },
+    "HomeAddress": "36 Neal St, London",
+    "Emergency": {
+      "ContactFullName": "Caroline Herschel",
+      "HomeAddress": "39 Earlham St, London",
+      "PhoneNumber": "+44 20 1234 5679",
+      "EmailAddress": "caroline.herschel@gmail.com"
+    },
+    "Daycare": {
+      "Name": "Sunny day care",
+      "StartDate": "2019-10-01",
+      "EndDate": "2020-06-30",
+      "Amount": "$5500"
+    }
+  },
+  "templateVersionId": "",
+  "templateId": "",
+  "userId": "",
+  "name": "Jane Goodall"
+}

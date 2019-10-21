@@ -1,0 +1,130 @@
+{
+  "name": "Selling a car",
+  "content": {
+    "sections": [
+      {
+        "name": "mainSection",
+        "id": "3eb46100-f43a-11e9-a011-f7ddde9db397",
+        "isOptional": false,
+        "text": "## BUYER: \nName: ##Buyer.Name##\nAddress: ##Buyer.Address##\nPhone Number: ##Buyer.PhoneNumber##\n## SELLER:\nName: ##Seller.Name##\nAddress: ##Seller.Address##\n\n## VEHICLE DETAILS:\nUpon the receipt of payment in full, the Seller agrees to transfer to the Buyer ownership (registration and/or title) of the following motor vehicle: Type of Vehicle: ##Vehicle.Type##\nMake and Model of Vehicle: ##Vehicle.MarkAndModel##\nYear of Vehicle: ##Vehicle.Year##\nColor of Vehicle: ##Vehicle.Color##\nVehicle Identification Number (VIN): ##Vehicle.VinNumber##\nEngine Number (optional): ##Vehicle.EngineNumber##\nMILEAGE: To the Seller's best knowledge, the current mileage is accurate and correct. Odometer reading on (date of sale): ##Vehicle.Millage##\n\n## PAYMENT INFORMATION: \nPurchase Price of Vehicle: ##Vehicle.Price##\nDate of Transaction: ##Agreement.Date##\nThe Buyer will pay the Seller the purchase price in full by cash, guaranteed check, money order, or other method of payment agreed upon by both parties. (Specify if not listed above)__________. \n\n## HOLDING DEPOSIT:\n\nThe Seller acknowledges that a holding deposit of $##Deposit.Amount## (amount) was received from the Buyer on ##Deposit.Date## (date).   The Buyer will pay the remaining balance in the sum of $##Deposit.BuyerRemainingBalance## (amount) by   ##Deposit.BuyerRemainingBalancePayDate## (date). Both parties agree that should the Buyer fail to pay the remaining balance of the agreed upon purchase price by the specified date, the Buyer will have no further claims or rights to the above mentioned vehicle unless otherwise indicated by the Seller. If payment is not received by the agreed upon date, the Seller will have no further obligations and the terms of this agreement will be null and void.  \n\n## SELLER'S RESPONSIBILITES:\n On the date of sale, the Seller promises to provide the Buyer with the vehicle title, registration, odometer reading (or odometer disclosure statement where applicable), and any other pertinent documents or agreed upon paperwork (specify) _________________________\n\n“The Buyer acknowledges that all the above mentioned paperwork and/or documentation was received from the Seller.    Yes/No.” \n\n## “AS IS” DISCLAIMER:\nBoth parties acknowledge that the above mentioned vehicle is sold as seen, that the buyer has tried and inspected the vehicle to his/her satisfaction and has approved the purchase with the understanding that the vehicle is sold “AS IS” without warranties or guarantees, either expressed or implied.   The Buyer accepts full responsibility for any repairs incurred following ##Agreement.AsIsResposibilityDate## (date of sale), as well as any costs related to vehicle registration, safety certification, or transfer of ownership.    \nAll risks and responsibilities pass to the Buyer once payment is made in full and the Buyer takes possession of the vehicle.\n\n## SIGNATURES:\nBoth parties agree to the terms specified above and signify the completion of this transaction by their signatures.\n\nBuyer's Signature ...............................................................................\tDate  ...............................................................................\n\nSeller's Signature ...............................................................................\tDate ...............................................................................",
+        "fields": [
+          {
+            "name": "Buyer.Name",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Buyer name"
+          },
+          {
+            "name": "Buyer.Address",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Buyer address"
+          },
+          {
+            "name": "Seller.Name",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Seller name"
+          },
+          {
+            "name": "Seller.Address",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Seller address"
+          },
+          {
+            "name": "Buyer.PhoneNumber",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Buyer phone number"
+          },
+          {
+            "name": "Vehicle.Type",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Vehicle type"
+          },
+          {
+            "name": "Vehicle.MarkAndModel",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Vehicle mark and model"
+          },
+          {
+            "name": "Vehicle.Year",
+            "type": "number",
+            "mandatory": true,
+            "displayName": "Vehicle Year"
+          },
+          {
+            "name": "Vehicle.Color",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Vehicle color"
+          },
+          {
+            "name": "Vehicle.VinNumber",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Vehicle vin number"
+          },
+          {
+            "name": "Vehicle.EngineNumber",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Vehicle engine number"
+          },
+          {
+            "name": "Vehicle.Millage",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Vehicle millage"
+          },
+          {
+            "name": "Vehicle.Price",
+            "type": "currency",
+            "mandatory": true,
+            "displayName": "Vehicle price"
+          },
+          {
+            "name": "Agreement.Date",
+            "type": "date",
+            "mandatory": true,
+            "displayName": "Agreement date"
+          },
+          {
+            "name": "Deposit.Amount",
+            "type": "currency",
+            "mandatory": false,
+            "displayName": "Deposit amount"
+          },
+          {
+            "name": "Deposit.Date",
+            "type": "date",
+            "mandatory": false,
+            "displayName": "Deposit date"
+          },
+          {
+            "name": "Deposit.BuyerRemainingBalance",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Deposit buyer remaining balance"
+          },
+          {
+            "name": "Deposit.BuyerRemainingBalancePayDate",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Deposit buyer remaining balance paydate"
+          },
+          {
+            "name": "Agreement.AsIsResposibilityDate",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Agreement \"As Is\" resposibility date"
+          }
+        ]
+      }
+    ]
+  },
+  "userId": "auth0|5c81a3686d3d732e6aa9e88f"
+}

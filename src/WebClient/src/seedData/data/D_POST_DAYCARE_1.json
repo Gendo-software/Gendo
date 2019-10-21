@@ -1,0 +1,31 @@
+{
+  "content": {
+    "Child": {
+      "FullName": "Elizabeth Combs",
+      "Birthdate": "2015-09-15",
+      "DateEnrollmentInDaycare": "2019-10-05"
+    },
+    "Guardian": {
+      "FullName": "Lois Combs",
+      "PhoneNumber": "361-746-2307",
+      "EmailAddress": "kaleb_weima@yahoo.com"
+    },
+    "HomeAddress": "4857 Wilson Avenue, Milford, Texas(TX), 76670",
+    "Emergency": {
+      "ContactFullName": "Terri Davis",
+      "HomeAddress": "4296 Lunetta Street,  Haskell, Texas(TX), 79521",
+      "PhoneNumber": "940-481-4226",
+      "EmailAddress": "guido2016@hotmail.com"
+    },
+    "Daycare": {
+      "Name": "Sunny day care",
+      "StartDate": "2019-10-20",
+      "EndDate": "2020-06-30",
+      "Amount": "$4990"
+    }
+  },
+  "templateVersionId": "",
+  "templateId": "",
+  "userId": "",
+  "name": "Elizabeth Combs"
+}

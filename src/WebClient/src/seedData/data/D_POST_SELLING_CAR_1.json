@@ -1,0 +1,37 @@
+{
+  "content": {
+    "Buyer": {
+      "Name": "Christopher M. Fuller",
+      "Address": "964 Cessna Drive Fort Wayne, IN 46865 ",
+      "PhoneNumber": "260-438-1056"
+    },
+    "Seller": {
+      "Name": "Edward E. Gribble",
+      "Address": "4926 Tibbs Avenue Superior, MT 59872 "
+    },
+    "Vehicle": {
+      "Type": "Car",
+      "MarkAndModel": "Tipo Sedan 1.4 95 KM",
+      "Year": "2017",
+      "Color": "navy blue",
+      "VinNumber": "1FUPCDYB2YLB12128",
+      "EngineNumber": "1GTEK14J08Z325604",
+      "Millage": "18000",
+      "Price": "$5000"
+    },
+    "Agreement": {
+      "Date": "2019-10-21",
+      "AsIsResposibilityDate": "2019-10-21"
+    },
+    "Deposit": {
+      "Amount": "$1000",
+      "Date": "2019-10-31",
+      "BuyerRemainingBalance": "$1000",
+      "BuyerRemainingBalancePayDate": "2019-11-15"
+    }
+  },
+  "templateVersionId": "",
+  "templateId": "",
+  "userId": "",
+  "name": "Tipo Sedan 1.4 95 KM - Christopher M. Fuller"
+}

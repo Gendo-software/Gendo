@@ -1,0 +1,142 @@
+{
+  "name": "Daycare Contract",
+  "content": {
+    "sections": [
+      {
+        "name": "mainSection",
+        "id": "78baee20-f384-11e9-ba56-7b2eb5b06513",
+        "isOptional": false,
+        "text": " \n# Daycare Contract\n\nFull Name of Child:\t##Child.Name##\nDate of Birth:\t##Child.Birthdate##\nDate of Enrollment in Daycare:\t##Child.DateEnrollmentInDaycare##\n\nParent/Guardian Full Name(s):\t##Guardian.FullName##\nHome Address:\t##HomeAddress##\n\t\nPhone Number:\t##Guardian.PhoneNumner##\nEmail Address:\t##Guardian.EmailAddress##\n\nEmergency Contact Full Name:\t##Emergency.ContactFullName##\nHome Address:\t##Emergency.HomeAddress##\n\t\nPhone Number:\t##Emergency.PhoneNumber##\nEmail Address:\t##Emergency.EmailAddress##\n\nThe child above will be enrolled in ##Daycare.Name## from ##Daycare.StartDate## to ##Daycare.EndDate##. This term is renewable on a yearly basis.\n\nSignature of Parent/Guardian: .................................................................................. Date: ..................................................................................\n\nSignature of Daycare Administrator: .................................................................................. Date: ..................................................................................\n\n \nCopyright information - Please read\n \n© This Free Microsoft Office Template is the copyright of Hloom.com. You can download and modify this template for your own personal use. You can (and should!) remove this copyright notice (click here to see how) before customizing the template.\n \nYou may not distribute or resell this template, or its derivatives, and you may not make it available on other websites without our prior permission. All sharing of this template must be done using a link to http://www.hloom.com/. For any questions relating to the use of this template please email us - info@hloom.com\n\n",
+        "fields": [
+          {
+            "name": "Child.FullName",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Child full name"
+          },
+          {
+            "name": "Child.Birthdate",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Child Birthdate"
+          },
+          {
+            "name": "Child.DateEnrollmentInDaycare",
+            "type": "date",
+            "mandatory": true,
+            "displayName": "Child DateEnrollmentInDaycare"
+          },
+          {
+            "name": "Guardian.FullName",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Guardian full name"
+          },
+          {
+            "name": "Guardian.PhoneNumber",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Guardian phone number"
+          },
+          {
+            "name": "Guardian.EmailAddress",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Guardian Email address"
+          },
+          {
+            "name": "Emergency.ContactFullName",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Emergency contact full name"
+          },
+          {
+            "name": "Emergency.HomeAddress",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Emergency Home address"
+          },
+          {
+            "name": "HomeAddress",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "HomeAddress"
+          },
+          {
+            "name": "Emergency.PhoneNumber",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Emergency Phone number"
+          },
+          {
+            "name": "Emergency.EmailAddress",
+            "type": "text",
+            "mandatory": false,
+            "displayName": "Emergency Email address"
+          },
+          {
+            "name": "Daycare.Name",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Daycare Name"
+          },
+          {
+            "name": "Daycare.StartDate",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Daycare startdate"
+          },
+          {
+            "name": "Daycare.EndDate",
+            "type": "text",
+            "mandatory": true,
+            "displayName": "Daycare enddate"
+          }
+        ]
+      },
+      {
+        "name": "Tuition and Fees ",
+        "id": "6cf71f20-f387-11e9-ba56-7b2eb5b06513",
+        "isOptional": true,
+        "text": "## Tuition and Fees \nEnrollment will cost a tuition rate of $##Daycare.Amount## per week. This is a flat rate, and it does not change regardless of the child’s attendance or the number of hours spent at the daycare. \n\nPayment is due by 6:00 PM on Fridays. Late payments will be charged $10 per day late fee for every day the payment is late. For these purposes, the business day is considered to end at 6:00 PM. Partial payments are still subject to this late fee unless otherwise stipulated by the daycare administrator. Repeated late payments may be grounds for termination of this contract. ",
+        "fields": [
+          {
+            "name": "Daycare.Amount",
+            "type": "currency",
+            "mandatory": false,
+            "displayName": "Daycare Amount"
+          }
+        ]
+      },
+      {
+        "name": "Hours of Enrollment ",
+        "id": "890d3730-f387-11e9-ba56-7b2eb5b06513",
+        "isOptional": true,
+        "text": "## Hours of Enrollment \nThe daycare is open from 6:00 AM to 6:00 PM Monday through Friday, with the exception of federal holidays. The child may be dropped off and picked up at any time during these hours. If the child is not picked up by 6:00 PM, a $5 late fee will be charged at the beginning of every half-hour until the child is picked up. This fee will be applied to the weekly tuition. ",
+        "fields": []
+      },
+      {
+        "name": "Illnesses",
+        "id": "948d6620-f387-11e9-ba56-7b2eb5b06513",
+        "isOptional": true,
+        "text": "## Illnesses\nIf a child is running a fever, has a rash, or exhibits flu-like symptoms, that child may not attend daycare. This policy is in place to protect the other children. If a child becomes ill while at daycare, a parent or guardian will be notified immediately and the child will need to be taken home. Following a severe illness, we ask that parents give their children 24 hours to recover before returning them to daycare. \n",
+        "fields": []
+      },
+      {
+        "name": "Food",
+        "id": "978aa090-f387-11e9-ba56-7b2eb5b06513",
+        "isOptional": true,
+        "text": "## Food\nDue to allergy concerns, food containing peanuts and shellfish are not permitted on the premises. Special snacks may be brought in and shared with the other children, but only if the daycare administrator has approved those treats beforehand.\n \n",
+        "fields": []
+      },
+      {
+        "name": "Termination ",
+        "id": "9a3b41a0-f387-11e9-ba56-7b2eb5b06513",
+        "isOptional": true,
+        "text": "## Termination \nThis contract may be terminated at any given time by either party. A termination notice is required two weeks in advance. During that period of notice, payment is expected regardless of whether the child attends the daycare or not.",
+        "fields": []
+      }
+    ]
+  },
+  "userId": "auth0|5c81a3686d3d732e6aa9e88f"
+}
