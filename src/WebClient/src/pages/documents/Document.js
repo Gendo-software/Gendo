@@ -19,10 +19,6 @@ class Document extends Component {
 
   constructor(props) {
     super(props);
-
-    //this.templatesApi = new TemplatesApiClient();
-    //this.documentsApi = new DocumentsApiClient();
-
     this.initDocumentState = {};
 
     this.state = {
