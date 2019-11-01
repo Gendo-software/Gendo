@@ -40,7 +40,7 @@ namespace Templates.Infrastructure.RabbitMq
             catch(Exception ex)
             {
                 var messageName = message.GetType().Name;
-                throw new Exception($"Unable to handle a message: '{messageName}'");
+                throw new Exception($"Unable to handle a message: '{messageName}'", ex);
             }
         }
     }
