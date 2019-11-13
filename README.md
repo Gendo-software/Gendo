@@ -1,6 +1,6 @@
 # Gendo
 
-The main purpose of the application is to learn about new tools and their practical use. The whole application acts as a **demo project**.
+>The main purpose of the application is to learn about new tools and their practical use. The whole application acts as a  **demo project**.
 
 Gendo is a simple web application that is used to easily create documents using templates. The system allows you to define your own templates using the [markdown](https://guides.github.com/features/mastering-markdown/) editor. A big advantage of the feature is the ability to define your own dynamic fields that will be used to fill in documents. Templates can be used repeatedly, which reduces the time needed to create documents. The user creating the document only needs to complete the fields in the form where they are additionally validated, so the user does not have to worry about the correctness of filling out the form.
 
@@ -22,6 +22,15 @@ We used many tools and technologies to build the application. Among them can be 
 - System is defined using [docker-compose](https://docs.docker.com/compose)
 - [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html) with [xUnit](https://xunit.net/), [Moq](https://www.nuget.org/packages/Moq/) and [Fluent Assertions](https://fluentassertions.com/)
 
+Frontend tools:
+- [ReactJS](https://reactjs.org) for web client
+- [React Bootstrap](https://react-bootstrap.github.io) for user interface
+- [Font Awesome](https://fontawesome.com) icon packs
+- [Axios](https://github.com/axios/axios) for API communication
+- [Auth0-lock](https://github.com/auth0/lock) - signup/signin component 
+- [I18next](https://www.i18next.com) for translate content
+- [React SimpleMDE](https://github.com/RIP21/react-simplemde-editor) text editor
+- [Redux Form](https://redux-form.com) for build forms
 ## Usage
 
 You can use the installed services to prepare the environment or you can use a docker (recommended)
