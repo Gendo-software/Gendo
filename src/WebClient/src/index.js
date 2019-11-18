@@ -14,11 +14,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/custom.css';
 
 //static config
-import Config from './StaticConfig/config';
+import Config from './staticConfig/config';
 
 import './locales/i18n';
 import AppContextProvider from './context/AppContext';
-import AuthManager from './Auth/AuthManager';
+import AuthManager from './auth/AuthManager';
 
 Config.SetConfig(window.StaticConfig);
 

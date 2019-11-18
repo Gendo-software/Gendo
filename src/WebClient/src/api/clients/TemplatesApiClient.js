@@ -3,7 +3,7 @@ import {
   TemplatesRoutes,
   TemplatesRoutesParam,
 } from '../routes/TemplatesRoutes';
-import Config from '../../StaticConfig/config';
+import Config from '../../staticConfig/config';
 
 export default class TemplatesApiClient extends ApiClientBase {
   constructor() {

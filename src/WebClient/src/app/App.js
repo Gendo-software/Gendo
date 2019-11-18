@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DebugInfoComponent from '../components/debugInfo/DebugInfoComponent';
-import config from '../StaticConfig/config';
+import config from '../staticConfig/config';
 
 import ContentRouter from './ContentRouter';
 import SplashScreen from '../layout/SplashScreen';

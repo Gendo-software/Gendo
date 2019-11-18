@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import SimpleMDEEditor from 'react-simplemde-editor';
 import 'simplemde/dist/simplemde.min.css';
-import { InitHashMarking, MARKING_NAME } from 'misc/HashMarking';
+import { InitHashMarking, MARKING_NAME } from 'misc/hashMarking';
 import { withTemplateConsumer } from '../../../../context/TemplateContext';
 
 var showVariableState = false;

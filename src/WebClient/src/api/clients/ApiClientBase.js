@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import AuthManager from '../../Auth/AuthManager';
+import AuthManager from '../../auth/AuthManager';
 
 const logError = error => {
   const errorDetails = getErrorDetails(error);

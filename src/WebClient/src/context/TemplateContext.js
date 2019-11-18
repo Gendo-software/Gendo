@@ -5,7 +5,7 @@ import detectHashInText from '../misc/detectHashInText';
 import sampleText from './../assets/sampleText';
 import TemplatesApiClient from '../api/clients/TemplatesApiClient';
 import { withAppContext } from './AppContext';
-import AppException from '../exceptions/AppException';
+import AppException from '../exceptions/appException';
 
 const TemplateContext = React.createContext();
 

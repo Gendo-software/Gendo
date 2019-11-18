@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { withAppContext } from '../context/AppContext';
 import assets from '../assets';
-import AuthManager from '../Auth/AuthManager';
+import AuthManager from '../auth/AuthManager';
 import storage from '../storage';
 import i18n from '../locales/i18n';
 

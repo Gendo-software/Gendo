@@ -3,7 +3,7 @@ import {
   DocumentsRoutes,
   DocumentsRoutesParam,
 } from '../routes/DocumentsRoutes';
-import Config from '../../StaticConfig/config';
+import Config from '../../staticConfig/config';
 
 export default class DocumentsApiClient extends ApiClientBase {
   constructor() {

@@ -1,7 +1,7 @@
 import AuthInfo from './AuthInfo';
 import auth0lock from 'auth0-lock';
 import jwt_decode from 'jwt-decode';
-import Config from '../StaticConfig/config';
+import Config from '../staticConfig/config';
 import AuthEvents from './AuthEvents';
 
 export default class AuthCore {

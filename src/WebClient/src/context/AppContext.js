@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthManager from '../Auth/AuthManager';
+import AuthManager from '../auth/AuthManager';
 
 const AppContext = React.createContext();
 const authCore = AuthManager.getAuthObject();

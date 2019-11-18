@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
-import AuthManager from '../../Auth/AuthManager';
+import AuthManager from '../../auth/AuthManager';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faSignOutAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AuthManager from '../../Auth/AuthManager';
+import AuthManager from '../../auth/AuthManager';
 import TemplatesApiClient from '../../api/clients/TemplatesApiClient';
 
 const debugInfoStyle = {
