@@ -13,7 +13,7 @@ We used many tools and technologies to build the application. Among them can be 
 - [RESTful API](https://restfulapi.net/) with [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-3.0)
 - Integration with the [auth0](https://auth0.com/) service
 - [JWT](https://jwt.io/) for authentication and authorization
-- [CQRS](https://martinfowler.com/bliki/CQRS.html), Commands and Events handlers
+- [Autofac](https://autofac.org/) as [IoC](https://martinfowler.com/articles/injection.html) container
 - [Domain Driven Design](https://martinfowler.com/tags/domain%20driven%20design.html) approach
 - [Grafana](https://www.app-metrics.io/) for monitoring applications health with [Influx](https://www.influxdata.com/)
 - [Docker](https://www.docker.com/) to dockerize applications
