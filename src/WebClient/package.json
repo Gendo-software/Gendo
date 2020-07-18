@@ -31,7 +31,7 @@
     "i18next": "^17.0.14",
     "i18next-markdown-jsx-plugin": "^1.0.13",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-bootstrap": "^1.0.0-beta.9",
